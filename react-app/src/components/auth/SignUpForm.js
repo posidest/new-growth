@@ -5,18 +5,49 @@ import { signUp } from '../../services/auth';
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [avatar, setAvatar] = useState(null);
+  const [bio, setBio] = useState('');
+  const [zone, setZone] = useState('');
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [imageLoading, setImageLoading] = useState(false);
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp({username, email, avatar, bio, zone, password});
       if (!user.errors) {
         setAuthenticated(true);
       }
     }
   };
+
+//   const updateAvatar = async (e) => {
+//     const file = e.target.files[0];
+//     const formData = new FormData();
+//     formData.append("image", file);
+//     setImageLoading(true);
+//     const res = await fetch('/api/images', {
+//         method: "POST",
+//         body: formData,
+//     });
+
+//     if (res.ok) {
+//         const json = await res.json();
+//         setImageLoading(false);
+//         await setAvatar(json.url)
+//     }
+
+//     else {
+//         setImageLoading(false);
+//         console.log("Something went wrong");
+//         return (
+//             <p style={{color: 'red'}}>
+//                 There was an error with your upload. Please try again.
+//             </p>
+//         )
+//     }
+// }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -25,6 +56,41 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
+
+  const updateAvatar = async (e) => {
+    const image = e.target.files[0]
+    const formData = new FormData();
+    formData.append("image", image);
+    setImageLoading(true);
+    const res = await fetch('/api/images/avatar', {
+        method: "POST",
+        body: formData,
+    });
+
+    if (res.ok) {
+        const json = await res.json();
+        setImageLoading(false);
+        await setAvatar(json.url)
+    }
+    else {
+        setImageLoading(false);
+        console.log("Something went wrong");
+        return (
+            <p style={{color: 'red'}}>
+                There was an error with your upload. Please try again.
+            </p>
+        )
+      }
+    };
+
+  const updateBio = (e) => {
+    setBio(e.target.value);
+  };
+
+  const updateZone = (e) => {
+    setZone(e.target.value);
+  };
+
 
   const updatePassword = (e) => {
     setPassword(e.target.value);
@@ -56,6 +122,40 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           name="email"
           onChange={updateEmail}
           value={email}
+        ></input>
+      </div>
+      <div className='uploadDiv'>
+        <label>Upload an avatar:</label>
+        <input
+          type="file"
+          name="avatar"
+          accept="image/*"
+          placeholder="Avatar"
+          onChange={updateAvatar}
+        ></input>
+        {(imageLoading)&& <p>Loading...</p>}
+          <div className='avatar'>
+            <img 
+            src={avatar}
+            style={{width: '200px', borderRadius: '50%'}}
+            />
+          </div>
+      </div>
+      <div>
+        <textarea
+          name="bio"
+          onChange={updateBio}
+          placeholder="Biography"
+          value={bio}
+        ></textarea>
+      </div>
+      <div>
+        <label>Hardiness Zone</label>
+        <input
+          type="number"
+          name='zone'
+          onChange={updateZone}
+          value={zone}
         ></input>
       </div>
       <div>
