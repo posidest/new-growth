@@ -14,6 +14,9 @@ class User(db.Model, UserMixin):
     zone = db.Column(db.Integer)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    entries = db.relationship('Entry')
+    plants = db.relationship('Plant')
+
     @property
     def password(self):
         return self.hashed_password
@@ -33,4 +36,5 @@ class User(db.Model, UserMixin):
             "avatar": self.avatar,
             "bio": self.bio,
             "zone": self.zone,
+            "plants": [plant.to_dict() for plant in self.plants]
         }
