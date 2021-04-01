@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
+import './Auth.css'
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -34,9 +35,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       <div>
         {errors.map((error) => (
           <div>{error}</div>
-        ))}
+          ))}
       </div>
-      <div>
+      <div className='auth'>
         <label htmlFor="email">Email</label>
         <input
           name="email"

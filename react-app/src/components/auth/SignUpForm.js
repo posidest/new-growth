@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
+import './Auth.css'
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
@@ -21,33 +22,6 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       }
     }
   };
-
-//   const updateAvatar = async (e) => {
-//     const file = e.target.files[0];
-//     const formData = new FormData();
-//     formData.append("image", file);
-//     setImageLoading(true);
-//     const res = await fetch('/api/images', {
-//         method: "POST",
-//         body: formData,
-//     });
-
-//     if (res.ok) {
-//         const json = await res.json();
-//         setImageLoading(false);
-//         await setAvatar(json.url)
-//     }
-
-//     else {
-//         setImageLoading(false);
-//         console.log("Something went wrong");
-//         return (
-//             <p style={{color: 'red'}}>
-//                 There was an error with your upload. Please try again.
-//             </p>
-//         )
-//     }
-// }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -106,7 +80,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   return (
     <form onSubmit={onSignUp}>
-      <div>
+      <div className='auth'>
         <label>User Name</label>
         <input
           type="text"

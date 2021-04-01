@@ -1,0 +1,40 @@
+const ADD_PLANT = 'plant/addPlant';
+
+
+
+const addPlant = (plant) => ({
+   type: ADD_PLANT,
+   plant
+})
+
+
+export const newPlant = (plant) => async (dispatch) => {
+   const {plant_pic, name, nickname, profile_id} = plant;
+   const res = await fetch(`/api/users/plants`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+         plant_pic, 
+         name, 
+         nickname, 
+         profile_id
+      })
+   });
+   if (res.ok) {
+      const data = await res.json()
+      dispatch(addPlant(data.plant))
+      return data;
+   }
+}
+
+
+export default function reducer(state={}, action) {
+   let newState;
+   switch(action.type) {
+      case ADD_PLANT:
+         newState={...state};
+         newState['plant'] = action.plant;
+         return newState;
+      default: return state; 
+   }
+}

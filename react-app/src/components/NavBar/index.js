@@ -6,27 +6,27 @@ import './NavBar.css'
 const NavBar = ({ setAuthenticated }) => {
   return (
     <nav className='nav-bar'>
-        <div>
+        <div className='home-btn'>
           <NavLink to="/" exact={true} activeClassName="active">
             Home
           </NavLink>
         </div>
-        <div>
+        <div className='login-btn'>
           <NavLink to="/login" exact={true} activeClassName="active">
             Login
           </NavLink>
         </div>
-        <div>
+        <div className='sign-up-btn'>
           <NavLink to="/sign-up" exact={true} activeClassName="active">
             Sign Up
           </NavLink>
         </div>
-        <div>
+        <div className='users-btn'>
           <NavLink to="/users" exact={true} activeClassName="active">
             Users
           </NavLink>
         </div>
-        <div className='log-out'>
+        <div className='log-out-btn'>
           <LogoutButton setAuthenticated={setAuthenticated} />
         </div>
     </nav>

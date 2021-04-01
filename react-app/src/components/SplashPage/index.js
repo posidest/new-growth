@@ -10,7 +10,7 @@ const SplashPage = ({authenticated}) => {
             <h1>new growth</h1>
             <p>how does your garden grow?</p>
          </div>
-         <div className='auth'>
+         <div className='auth-btns'>
             <div className='login'>
                <NavLink to="/login" exact={true} activeClassName="active">
                   Login

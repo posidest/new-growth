@@ -7,14 +7,18 @@
   background-color: rgba(200, 200, 200, 0.4);
   background-size: cover;
   position: fixed;
+  top: 0;
 }
 
-.nav-bar a {
+.login-btn a,
+.sign-up-btn a,
+.user-btn a,
+.home-btn a {
   position: absolute;
   top: 10px;
 }
 
-.log-out {
+.log-out-btn {
   position: absolute;
   top: 10px;
   right: 15px;
