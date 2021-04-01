@@ -54,11 +54,11 @@ function App() {
           <PlantProfiles />
         </Route>
         <Route path='/plants/profile/:id'>
-          <PlantProfile />
+          <PlantProfile/>
         </Route>
-        {/* <Route path='/plants/:id'>
+        <Route path='/plants/:id'>
           <PlantPage authenticated={authenticated}/>
-        </Route> */}
+        </Route>
         <ProtectedRoute path='/plants/:id/tend' exact={true} authenticated={authenticated}>
           <EntryForm/>
         </ProtectedRoute>

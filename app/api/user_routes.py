@@ -34,3 +34,9 @@ def add_plant():
     db.session.add(plant)
     db.session.commit()
     return plant.to_dict()
+
+
+@user_routes.route('/plants/<int:id>')
+def get_plant(id):
+    plant = db.session.query(Plant).get(id)
+    return plant.to_dict()

@@ -1,13 +1,47 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {authenticate} from '../../store/session'
+import {Link} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import UsersPlants from './UsersPlants'
+import './Dashboard.css'
 
 const Dashboard = () => {
-   
-   
-   return (
-      <h1>Dashboard</h1>
-   )
-}
+   const dispatch = useDispatch()
+   const [me, setMe] = useState(null)
+
+   useEffect(async() => {
+      const user = await dispatch(authenticate())
+      await console.log(user)
+      await setMe(user)
+      return me
+   }, [])
+
+
+   if (me) {
+      return (
+         <div className='dash'>
+            <div 
+            className='user-info'
+            style={{marginTop: '100px'}}>
+               <img src={me.avatar}
+               style={{width:'200px', height:'200px', borderRadius: '50%'}}
+               />
+               <h4>{me.username}</h4>
+               <p>{me.bio}</p>
+               <p>{`USDA Zone: ${me.zone}`}</p>
+            </div>
+            <div className='plants'>
+               <UsersPlants />
+            </div>
+         </div>
+      )
+   } else {
+      return (
+      <h1>Loading...</h1>
+      )
+   }
+
+   }
 
 
 
