@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import './SplashPage.css'
+import Dashboard from '../Dashboard'
 
 const SplashPage = ({authenticated}) => {
    
+if (authenticated) {
+   return <Dashboard />
+}
+
    return (
       <div className='splash'>
          <div className='center'>

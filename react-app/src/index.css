@@ -1,1 +1,46 @@
 /* TODO Add site wide styles */
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Montserrat&display=swap");
+p,
+input,
+file-input,
+button,
+a,
+label {
+  font-family: "Dosis", sans-serif;
+  padding: 5px;
+  margin: 5px;
+}
+
+input[file] {
+  display: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+button {
+  font-family: "Dosis", sans-serif;
+  padding: 5px;
+  margin: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+}
+
+h1 {
+  margin-top: 100px;
+  font-family: "Montserrat", sans-serif;
+}
+
+td {
+  font-family: "Dosis", sans-serif;
+}

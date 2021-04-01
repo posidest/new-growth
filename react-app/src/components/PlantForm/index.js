@@ -13,6 +13,7 @@ const PlantForm = () => {
    const [imageLoading, setImageLoading] = useState(false)
    const [ loaded, setLoaded ] = useState(false)
    const dispatch = useDispatch()
+   const [profiles, setProfiles] = useState([])
 
    const submitPlant = async (e) => {
       e.preventDefault()
@@ -24,16 +25,35 @@ const PlantForm = () => {
       return <Redirect to='/plants'/>
    }
 
-   useEffect(async() => {
-      await dispatch(showProfiles())
-      setLoaded(true)
-   },[dispatch])
+   const getProfiles = async () => {
+   const res = await fetch(`/api/profiles/`)
+      if (res.ok) {
+      const data = await res.json()
+      await console.log(data, 'data')
+      return data;
+   }
+}
+
+   useEffect(async () => {
+      const profileObject = await getProfiles()
+      await console.log(profileObject, 'profile object')
+      const plantProfiles = await Object.values(profileObject)
+      await setProfiles(plantProfiles[0])
+      // await setLoaded(true)       
+      return profiles
+   }, [])
+   
+
+   // useEffect(async() => {
+   //    await dispatch(showProfiles())
+   //    setLoaded(true)
+   // },[dispatch])
 
    // useEffect(() => {
    //    console.log('hello')
    // }, [plant, plantPic, name, nickname, profileId])
 
-   const profiles = useSelector((state) => state.profile.profiles)
+   // const profiles = useSelector((state) => state.profile.profiles)
  
 
   const updatePic = async (e) => {
@@ -78,8 +98,9 @@ const PlantForm = () => {
       setPlant({...plant, 'profile_id': profileId})
     }
 
-    if(profiles) {
+    if (profiles) {
        console.log(profiles, 'profiles from plantform')
+
        return (
           <div className='plant-form'>
              <h1>New Plant</h1>
@@ -119,7 +140,9 @@ const PlantForm = () => {
                    onChange={updateProfile}>
                       <option value='0'>Choose A Plant Profile</option>
                       {profiles.map((profile) => (
-                         <option value={profile.id}>{profile.common_names[0]}</option>
+                         <option value={profile.id}>
+                            {profile.common_names[0]}
+                        </option>
                       ))}
                    </select>
                 </div>
