@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {authenticate} from '../../store/session'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import UsersPlants from './UsersPlants'
 import './Dashboard.css'
@@ -11,15 +11,27 @@ const Dashboard = () => {
 
    useEffect(async() => {
       const user = await dispatch(authenticate())
-      await console.log(user)
+      // await console.log(user)
       await setMe(user)
       return me
    }, [])
 
 
+   const addPlant = (e) => {
+      return <Redirect to='/plants/new'/>
+   }
+
+
    if (me) {
       return (
+      <>
          <div className='dash'>
+            <div 
+            className='dash-nav'>
+               <h4 onClick={addPlant}>
+               Add A Plant
+               </h4>
+            </div>
             <div 
             className='user-info'
             style={{marginTop: '100px'}}>
@@ -34,6 +46,7 @@ const Dashboard = () => {
                <UsersPlants />
             </div>
          </div>
+      </>
       )
    } else {
       return (

@@ -6,7 +6,7 @@ import PlantProfile from '../PlantProfile'
 
 const PlantPage = () => {
     
-   const [plant, setPlant] = useState(null)
+   const [plant, setPlant] = useState({})
    const [me, setMe] = useState(null)
    const dispatch = useDispatch()
    const [profile, setProfile] = useState(null)
@@ -18,44 +18,39 @@ const PlantPage = () => {
       const res = await fetch(`/api/users/plants/${id}`)
       if (res.ok) {
          const data = await res.json()
-         await console.log(data, 'data from getplant')
-         return data
+         await setPlant(data)
+         return plant
       }
    }
    
-   const showProfile = async (e) => {
-      const thisProfile = getProfile(e.target.value)
-      await setProfile(thisProfile)
-      return profile
-   }
+   // const showProfile = async (e) => {
+   //    const thisProfile = getProfile(e.target.value)
+   //    await setProfile(thisProfile)
+   //    return profile
+   // }
 
-   const getProfile = async (id) => {
-      const res = await fetch(`/api/profiles/${id}`)
-         if (res.ok) {
-         const data = await res.json()
-         await console.log(data, 'data')
-         // setLoaded(true)
-         return data;
-   }
-}
+//    const getProfile = async (id) => {
+//       const res = await fetch(`/api/profiles/${id}`)
+//          if (res.ok) {
+//          const data = await res.json()
+//          // await console.log(data, 'data')
+//          // setLoaded(true)
+//          return data;
+//    }
+// }
    useEffect(async() => {
-      const selectedPlant = await getPlant(id)
-      await console.log(selectedPlant)
-      await setPlant(selectedPlant)
-      await console.log(plant, 'plant in plantpage useeffect')
-      await setProfileId(selectedPlant.profile_id)
-      return plant
+      await getPlant(id)
    }, [])
 
 
-   useEffect(async() => {
-      const oneProfile = await getProfile(profileId)
-      await setProfile(oneProfile)       
-      await console.log(profile, 'profile')
-      return profile
-   }, [plant])
+   // useEffect(async() => {
+   //    const oneProfile = await getProfile(profileId)
+   //    await setProfile(oneProfile)       
+   //    await console.log(profile, 'profile')
+   //    return profile
+   // }, [plant])
 
-   if (plant && profile) {
+   if (plant) {
       return (
          <div>
             <h1>{plant.nickname}</h1>

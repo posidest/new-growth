@@ -15,7 +15,7 @@ const UsersPlants = () => {
       await console.log(user)
       await setMe(user)
       const myPlants = await Object.values(user.plants)
-      await console.log(myPlants, 'my plants')
+      // await console.log(myPlants, 'my plants')
       await setPlants(myPlants)
       return plants;
    }, [])
@@ -25,7 +25,6 @@ const UsersPlants = () => {
       return (
          <div>
             <h1 >My Plants</h1>
-            <Link to='/plants/new'>Add A Plant</Link>
             <div className='plants'>
                {plants.map((plant) => (
                   <div key={plant.id} className='single-plant'>

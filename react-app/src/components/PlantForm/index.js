@@ -15,6 +15,7 @@ const PlantForm = () => {
    const dispatch = useDispatch()
    const [profiles, setProfiles] = useState([])
 
+   
    const submitPlant = async (e) => {
       e.preventDefault()
       const myPlant = {...plant, 'plant_pic': plantPic, 'profile_id': profileId}
@@ -24,16 +25,16 @@ const PlantForm = () => {
       // return await <Redirect to={`/plants/${plantId}`}/>
       return <Redirect to='/plants'/>
    }
-
+   
    const getProfiles = async () => {
-   const res = await fetch(`/api/profiles/`)
+      const res = await fetch(`/api/profiles/`)
       if (res.ok) {
-      const data = await res.json()
-      await console.log(data, 'data')
-      return data;
+         const data = await res.json()
+         await console.log(data, 'data')
+         return data;
+      }
    }
-}
-
+   
    useEffect(async () => {
       const profileObject = await getProfiles()
       await console.log(profileObject, 'profile object')
