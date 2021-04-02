@@ -17,29 +17,30 @@ const PlantForm = () => {
    
    const submitPlant = async (e) => {
       e.preventDefault()
-      const myPlant = {'name': name, 'nickname': nickname, 'plant_pic': plantPic, 'profile_id': profileId, 'description': description}
+      const myPlant = {
+         'name': name, 
+         'nickname': nickname, 
+         'plant_pic': plantPic, 
+         'profile_id': profileId, 
+         'description': description
+      }
       const res = await dispatch(newPlant(myPlant))
       await console.log(res, 'res in plantform')
-      // await setPlantId(res.id)
-      // return await <Redirect to={`/plants/${plantId}`}/>
-      return <Redirect to='/plants'/>
+      return <Redirect to='/'/>
    }
    
    const getProfiles = async () => {
       const res = await fetch(`/api/profiles/`)
       if (res.ok) {
          const data = await res.json()
-         await console.log(data, 'data')
          return data;
       }
    }
    
    useEffect(async () => {
       const profileObject = await getProfiles()
-      await console.log(profileObject, 'profile object')
       const plantProfiles = await Object.values(profileObject)
-      await setProfiles(plantProfiles[0])
-      // await setLoaded(true)       
+      await setProfiles(plantProfiles[0])     
       return profiles
    }, [])
    
@@ -69,7 +70,6 @@ const PlantForm = () => {
     if (res.ok) {
         const json = await res.json();
         await setPlantPic(json.url)
-        await setPlant({...plant, 'plant_pic': plantPic})
         setImageLoading(false);
     }
     else {
@@ -85,7 +85,6 @@ const PlantForm = () => {
 
     const updateName = (e) => {
        setName(e.target.value)
-      setPlant({...plant, 'name': e.target.value})
     }
 
     const updateNickname = (e) => {
@@ -102,8 +101,6 @@ const PlantForm = () => {
     }
 
     if (profiles) {
-      //  console.log(profiles, 'profiles from plantform')
-
        return (
           <div className='plant-form'>
              <h1>New Plant</h1>

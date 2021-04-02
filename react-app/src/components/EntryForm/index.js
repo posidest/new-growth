@@ -19,7 +19,14 @@ const EntryForm = () => {
 
    const postEntry = async (e) => {
       e.preventDefault()
-      const newEntry = {'plant_id': id, 'watered': watered, 'fertilized': fertilized, 'location': location, 'details': details, 'progress_pic': progressPic}
+      const newEntry = {
+         'plant_id': id, 
+         'watered': watered, 
+         'fertilized': fertilized, 
+         'location': location, 
+         'details': details, 
+         'progress_pic': progressPic
+      }
       console.log(newEntry)
       const res = await dispatch(createEntry(newEntry))
       await console.log(res, 'res from entry form')

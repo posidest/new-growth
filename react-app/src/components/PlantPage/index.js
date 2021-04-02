@@ -27,42 +27,25 @@ const PlantPage = () => {
       }
    }
 
-   // const tend = (e) => {
-   //    return <EntryForm />
-   // }
-   
-   // const showProfile = async (e) => {
-   //    const thisProfile = getProfile(e.target.value)
-   //    await setProfile(thisProfile)
-   //    return profile
-   // }
+   const deleteEntry = async (e) => {
+      const entryId = e.target.value;
+      const res = await fetch(`/api/plants/entries/${entryId}`, {
+         method: 'DELETE'
+      })
+      if (res.ok) {
+         const data = await res.json()
+         return data
+      }
+   }
 
-//    const getProfile = async (id) => {
-//       const res = await fetch(`/api/profiles/${id}`)
-//          if (res.ok) {
-//          const data = await res.json()
-//          // await console.log(data, 'data')
-//          // setLoaded(true)
-//          return data;
-//    }
-// }
    useEffect(async() => {
       await getPlant(id)
       // await dispatch(showEntries(id))
    }, [])
 
-   // useEffect(async() => {
-   //    const oneProfile = await getProfile(profileId)
-   //    await setProfile(oneProfile)       
-   //    await console.log(profile, 'profile')
-   //    return profile
-   // }, [plant])
-
-   // const entries = useSelector((state) => state.entry.entries)
 
    if (plant) {
-      // setEntries(plant.entries)
-      // console.log(entries)
+
       return (
          <div>
             <h1>{plant.nickname}</h1>
@@ -98,6 +81,14 @@ const PlantPage = () => {
                   )}
                   <h4>{`Location: ${entry.location}`}</h4>
                   <p>{entry.details}</p>
+                  <div 
+                  onClick={deleteEntry} 
+                  value={entry.id}>
+                     <i 
+                     className="far fa-trash-alt">
+                     </i>
+                  </div>
+                  {/* <div onClick={editEntry}><i className="far fa-edit"></i></div> */}
                </div>
             ))}
          </div>
