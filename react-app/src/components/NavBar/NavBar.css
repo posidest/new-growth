@@ -4,18 +4,29 @@
   justify-content: space-around;
   height: 40px;
   width: 100%;
-  background-color: rgba(200, 200, 200, 0.4);
+  /* background-color: rgba(200, 200, 200, 0.4); */
+  /* background-color: rgba(8, 32, 16, 0.6); */
+  background-color: white;
   background-size: cover;
   position: fixed;
+  top: 0;
 }
 
-.nav-bar a {
+.login-btn a,
+.sign-up-btn a,
+.user-btn a,
+.home-btn a {
   position: absolute;
   top: 10px;
 }
 
-.log-out {
+.log-out-btn {
   position: absolute;
   top: 10px;
   right: 15px;
+}
+
+.log-out-btn button {
+  background-color: white;
+  border-radius: 4px;
 }

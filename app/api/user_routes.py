@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import User, Plant
+from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
+from app.models import db, User, Plant
 
 user_routes = Blueprint('users', __name__)
 
@@ -23,3 +23,20 @@ def user(id):
 # def get_users_plants(id):
 #     plants = Plant.query.filter_by(Plant.user_id=id).all()
 #     return {'plants': [plant.to_dict() for plant in plants]
+
+
+@user_routes.route('/plants', methods=['POST'])
+@login_required
+def add_plant():
+    data = request.get_json()
+    plant = Plant(user_id=current_user.id, plant_pic=data['plant_pic'],
+                  name=data['name'], nickname=data['nickname'], description=data['description'], profile_id=data['profile_id'])
+    db.session.add(plant)
+    db.session.commit()
+    return plant.to_dict()
+
+
+@user_routes.route('/plants/<int:id>')
+def get_plant(id):
+    plant = db.session.query(Plant).get(id)
+    return plant.to_dict()

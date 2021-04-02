@@ -1,0 +1,28 @@
+/* td {
+  padding: 10px;
+} */
+table {
+  table-layout: fixed;
+  width: 50%;
+  border-collapse: collapse;
+}
+
+/* thead th:nth-child(1) {
+  width: 30%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 15%;
+}
+
+thead th:nth-child(4) {
+  width: 35%;
+} */
+
+td {
+  padding: 20px;
+}
