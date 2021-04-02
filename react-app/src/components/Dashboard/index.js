@@ -17,20 +17,19 @@ const Dashboard = () => {
    }, [])
 
 
-   const addPlant = (e) => {
-      return <Redirect to='/plants/new'/>
-   }
+   // const addPlant = (e) => {
+   //    return <Redirect to='/plants/new'/>
+   // }
 
 
    if (me) {
       return (
       <>
          <div className='dash'>
-            <div 
-            className='dash-nav'>
-               <h4 onClick={addPlant}>
+            <div className='dash-nav'>
+               <Link to='/plants/new'>
                Add A Plant
-               </h4>
+               </Link>    
             </div>
             <div 
             className='user-info'

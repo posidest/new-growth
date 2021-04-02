@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import plant from './plant';
 import profile from './profile';
 import session from './session';
+import entry from './entry';
 
 const rootReducer = combineReducers({
 plant,
 profile,
-session
+session,
+entry
 })
 
 

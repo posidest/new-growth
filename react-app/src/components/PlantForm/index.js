@@ -13,7 +13,7 @@ const PlantForm = () => {
    const [imageLoading, setImageLoading] = useState(false)
    const [ loaded, setLoaded ] = useState(false)
    const dispatch = useDispatch()
-   const [profiles, setProfiles] = useState([])
+   // const [profiles, setProfiles] = useState([])
 
    
    const submitPlant = async (e) => {
@@ -26,35 +26,35 @@ const PlantForm = () => {
       return <Redirect to='/plants'/>
    }
    
-   const getProfiles = async () => {
-      const res = await fetch(`/api/profiles/`)
-      if (res.ok) {
-         const data = await res.json()
-         await console.log(data, 'data')
-         return data;
-      }
-   }
+   // const getProfiles = async () => {
+   //    const res = await fetch(`/api/profiles/`)
+   //    if (res.ok) {
+   //       const data = await res.json()
+   //       await console.log(data, 'data')
+   //       return data;
+   //    }
+   // }
    
-   useEffect(async () => {
-      const profileObject = await getProfiles()
-      await console.log(profileObject, 'profile object')
-      const plantProfiles = await Object.values(profileObject)
-      await setProfiles(plantProfiles[0])
-      // await setLoaded(true)       
-      return profiles
-   }, [])
+   // useEffect(async () => {
+   //    const profileObject = await getProfiles()
+   //    await console.log(profileObject, 'profile object')
+   //    const plantProfiles = await Object.values(profileObject)
+   //    await setProfiles(plantProfiles[0])
+   //    // await setLoaded(true)       
+   //    return profiles
+   // }, [])
    
 
-   // useEffect(async() => {
-   //    await dispatch(showProfiles())
-   //    setLoaded(true)
-   // },[dispatch])
+   useEffect(async() => {
+      await dispatch(showProfiles())
+      setLoaded(true)
+   },[dispatch])
 
    // useEffect(() => {
    //    console.log('hello')
    // }, [plant, plantPic, name, nickname, profileId])
 
-   // const profiles = useSelector((state) => state.profile.profiles)
+   const profiles = useSelector((state) => state.profile.profiles)
  
 
   const updatePic = async (e) => {
@@ -100,7 +100,7 @@ const PlantForm = () => {
     }
 
     if (profiles) {
-       console.log(profiles, 'profiles from plantform')
+      //  console.log(profiles, 'profiles from plantform')
 
        return (
           <div className='plant-form'>

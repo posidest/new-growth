@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux'
-import {showProfile} from '../../store/profile'
-import {useParams} from 'react-router-dom'
-import './PlantProfile.css'
+import {useDispatch, useSelector} from 'react-redux';
+import {showProfile} from '../../store/profile';
+import {useParams} from 'react-router-dom';
+import './PlantProfile.css';
 
 const PlantProfile = () => {
    const dispatch = useDispatch();

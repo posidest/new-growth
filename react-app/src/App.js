@@ -54,7 +54,7 @@ function App() {
           <PlantProfiles />
         </Route>
         <Route path='/plants/profile/:id'>
-          <PlantProfile/>
+          <PlantProfile />
         </Route>
         <Route path='/plants/:id'>
           <PlantPage authenticated={authenticated}/>

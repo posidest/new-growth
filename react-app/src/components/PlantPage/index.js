@@ -12,7 +12,6 @@ const PlantPage = () => {
    const [profile, setProfile] = useState(null)
    const [profileId, setProfileId] = useState(null)
    const {id} = useParams()
-
    
    const getPlant = async(id) => {
       const res = await fetch(`/api/users/plants/${id}`)
