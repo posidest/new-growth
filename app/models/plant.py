@@ -9,6 +9,7 @@ class Plant(db.Model):
     plant_pic = db.Column(db.Text, nullable=False)
     name = db.Column(db.String(256), nullable=False)
     nickname = db.Column(db.String(256))
+    description = db.Column(db.String(1000))
     profile_id = db.Column(db.Integer, db.ForeignKey('profiles.id'))
 
     entries = db.relationship("Entry")
@@ -20,6 +21,7 @@ class Plant(db.Model):
             "plant_pic": self.plant_pic,
             "name": self.name,
             "nickname": self.nickname,
+            "description": self.description,
             "profile_id": self.profile_id,
             "entries": [entry.to_dict() for entry in self.entries]
         }

@@ -5,20 +5,19 @@ import {newPlant} from '../../store/plant'
 import {showProfiles} from '../../store/profile'
 
 const PlantForm = () => {
-   const [plant, setPlant] = useState({})
    const [plantPic, setPlantPic] = useState(null)
    const [name, setName] = useState('')
    const [nickname, setNickname] = useState(null)
    const [profileId, setProfileId] = useState(null)
+   const [description, setDescription] = useState('')
    const [imageLoading, setImageLoading] = useState(false)
-   const [ loaded, setLoaded ] = useState(false)
    const dispatch = useDispatch()
-   // const [profiles, setProfiles] = useState([])
+   const [profiles, setProfiles] = useState([])
 
    
    const submitPlant = async (e) => {
       e.preventDefault()
-      const myPlant = {...plant, 'plant_pic': plantPic, 'profile_id': profileId}
+      const myPlant = {'name': name, 'nickname': nickname, 'plant_pic': plantPic, 'profile_id': profileId, 'description': description}
       const res = await dispatch(newPlant(myPlant))
       await console.log(res, 'res in plantform')
       // await setPlantId(res.id)
@@ -26,35 +25,35 @@ const PlantForm = () => {
       return <Redirect to='/plants'/>
    }
    
-   // const getProfiles = async () => {
-   //    const res = await fetch(`/api/profiles/`)
-   //    if (res.ok) {
-   //       const data = await res.json()
-   //       await console.log(data, 'data')
-   //       return data;
-   //    }
-   // }
+   const getProfiles = async () => {
+      const res = await fetch(`/api/profiles/`)
+      if (res.ok) {
+         const data = await res.json()
+         await console.log(data, 'data')
+         return data;
+      }
+   }
    
-   // useEffect(async () => {
-   //    const profileObject = await getProfiles()
-   //    await console.log(profileObject, 'profile object')
-   //    const plantProfiles = await Object.values(profileObject)
-   //    await setProfiles(plantProfiles[0])
-   //    // await setLoaded(true)       
-   //    return profiles
-   // }, [])
+   useEffect(async () => {
+      const profileObject = await getProfiles()
+      await console.log(profileObject, 'profile object')
+      const plantProfiles = await Object.values(profileObject)
+      await setProfiles(plantProfiles[0])
+      // await setLoaded(true)       
+      return profiles
+   }, [])
    
 
-   useEffect(async() => {
-      await dispatch(showProfiles())
-      setLoaded(true)
-   },[dispatch])
+   // useEffect(async() => {
+   //    await dispatch(showProfiles())
+   //    setLoaded(true)
+   // },[dispatch])
 
    // useEffect(() => {
    //    console.log('hello')
    // }, [plant, plantPic, name, nickname, profileId])
 
-   const profiles = useSelector((state) => state.profile.profiles)
+   // const profiles = useSelector((state) => state.profile.profiles)
  
 
   const updatePic = async (e) => {
@@ -91,12 +90,15 @@ const PlantForm = () => {
 
     const updateNickname = (e) => {
       setNickname(e.target.value)
-      setPlant({...plant, 'nickname': e.target.value})
     }
+
+   const updateDescription = (e) => {
+      setDescription(e.target.value)
+    }
+
 
     const updateProfile = (e) => {
       setProfileId(e.target.value)
-      setPlant({...plant, 'profile_id': profileId})
     }
 
     if (profiles) {
@@ -137,6 +139,13 @@ const PlantForm = () => {
                    </div>
                 </div>
                 <div>
+                   <textarea
+                   placeholder='Description'
+                   value={description}
+                   onChange={updateDescription}
+                   />
+                </div>
+                <div>
                    <select value={profileId}
                    onChange={updateProfile}>
                       <option value='0'>Choose A Plant Profile</option>
@@ -147,9 +156,9 @@ const PlantForm = () => {
                       ))}
                    </select>
                 </div>
-                <div>
+                <>
                    <button type='submit'>Add Plant</button>
-                </div>
+                </>
              </form>
           </div>
        )

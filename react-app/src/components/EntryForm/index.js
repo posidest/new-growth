@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, Redirect, useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {createEntry} from '../../store/entry'
 
 const EntryForm = () => {
-   const [entry, setEntry = useState({})]
-   const [plantId, setPlantId] = useState('')
+   const [entry, setEntry] = useState({})
    const [plantId, setPlantId] = useState('')
    const [watered, setWatered] = useState(false)
    const [fertilized, setFertilized] = useState(false)
@@ -15,13 +14,18 @@ const EntryForm = () => {
    const [progressPic, setProgressPic] = useState(null)
    const {id} = useParams()
    const dispatch = useDispatch()
-      
+   const history = useHistory()   
    console.log(id, 'this is the id from the entry form')
 
    const postEntry = async (e) => {
       e.preventDefault()
-      const res = await dispatch(createEntry(entry))
+      const newEntry = {'plant_id': id, 'watered': watered, 'fertilized': fertilized, 'location': location, 'details': details, 'progress_pic': progressPic}
+      console.log(newEntry)
+      const res = await dispatch(createEntry(newEntry))
       await console.log(res, 'res from entry form')
+      await setEntry(res)
+      history.push(`/plants/${id}`)
+      // return <Redirect to={`/plants/${plantId}`} />
    }
 
    const updateWatered = (e) => {
@@ -46,6 +50,7 @@ const EntryForm = () => {
       setLocation(e.target.value)
       setEntry({...entry, 'location': location}) 
    }
+
 
     const updateDetails = (e) => {
       setDetails(e.target.value)
@@ -79,13 +84,9 @@ const EntryForm = () => {
       }
     };
 
-    const updateLocation = (e) => {
-      setLocation(e.target.value)
-      setEntry({...entry, 'location': location})
-   }
-
    return (
       <div>
+         <h1>Make Care Entry</h1>
          <form onSubmit={postEntry}>
             <div>
                <label className='file-input'>
@@ -94,7 +95,7 @@ const EntryForm = () => {
                   accept='image/*'
                   name='plant-pic'
                   onChange={updateProgressPic}/>
-               Upload a Picture
+               Upload a Progress Picture
                </label>
                   {(imageLoading) && <p>Loading...</p>}
                    <div className='progress-pic'>
@@ -104,26 +105,30 @@ const EntryForm = () => {
                   </div>
                </div>
             <div>
+               <label>Watered?</label>
                <input 
                type='checkbox'
-               value={watered}
-               onChange={updateWatered}/>
+               // value={watered}
+               onClick={updateWatered}/>
             </div>
             <div>
+               <label>Fertilized?</label>
                <input
                type='checkbox'
-               value={fertilized}
-               onChange={updateFertilized}/>
+               // value={fertilized}
+               onClick={updateFertilized}/>
             </div>
             <div>
                <input
                type='text'
                value={location}
+               placeholder='Location'
                onChange={updateLocation}/>
             </div>
             <div>
                <textarea
                value={details}
+               placeholder='Details...'
                onChange={updateDetails}
                />
             </div>
@@ -133,7 +138,7 @@ const EntryForm = () => {
                </button>
             </div>
          </form>
-      </div>
+   </div>
    )
 }
 

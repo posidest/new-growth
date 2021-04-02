@@ -1,14 +1,17 @@
 import React, {useState, useEffect} from 'react';
 // import {authenticate} from '../../store/session'
-import {useDispatch} from 'react-redux'
-import {useParams} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+import {useParams, Link} from 'react-router-dom'
 import PlantProfile from '../PlantProfile'
+import EntryForm from '../EntryForm'
+import {showEntries} from '../../store/entry';
 
 const PlantPage = () => {
-    
-   const [plant, setPlant] = useState({})
-   const [me, setMe] = useState(null)
+   
    const dispatch = useDispatch()
+   const [plant, setPlant] = useState({})
+   const [entries, setEntries] = useState([])
+   const [me, setMe] = useState(null)
    const [profile, setProfile] = useState(null)
    const [profileId, setProfileId] = useState(null)
    const {id} = useParams()
@@ -18,9 +21,15 @@ const PlantPage = () => {
       if (res.ok) {
          const data = await res.json()
          await setPlant(data)
+         await setEntries(data.entries)
+         console.log(plant, 'plant')
          return plant
       }
    }
+
+   // const tend = (e) => {
+   //    return <EntryForm />
+   // }
    
    // const showProfile = async (e) => {
    //    const thisProfile = getProfile(e.target.value)
@@ -39,8 +48,8 @@ const PlantPage = () => {
 // }
    useEffect(async() => {
       await getPlant(id)
+      // await dispatch(showEntries(id))
    }, [])
-
 
    // useEffect(async() => {
    //    const oneProfile = await getProfile(profileId)
@@ -49,7 +58,11 @@ const PlantPage = () => {
    //    return profile
    // }, [plant])
 
+   // const entries = useSelector((state) => state.entry.entries)
+
    if (plant) {
+      // setEntries(plant.entries)
+      // console.log(entries)
       return (
          <div>
             <h1>{plant.nickname}</h1>
@@ -63,6 +76,30 @@ const PlantPage = () => {
                   <PlantProfile /> 
                </div>
             )}
+            <div>
+               <Link to={`/plants/${id}/tend`}>
+                  Tend to me
+                  </Link>
+               {/* <button type='button' onClick={tend}>Tend to me</button> */}
+            </div>
+            {entries.map((entry) => (
+               <div key={entry.id}>
+                  {entry.watered && (
+                     <i className="fas fa-tint"></i>
+                  )}
+                  {entry.fertilized && (
+                     <i className="fas fa-poo"></i>
+                  )}
+                  {entry.progress_pic && (
+                  <img 
+                  src={entry.progress_pic}
+                  style={{width: '400px'}}
+                  />
+                  )}
+                  <h4>{`Location: ${entry.location}`}</h4>
+                  <p>{entry.details}</p>
+               </div>
+            ))}
          </div>
       )}
    else {

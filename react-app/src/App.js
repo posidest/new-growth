@@ -56,15 +56,18 @@ function App() {
         <Route path='/plants/profile/:id'>
           <PlantProfile />
         </Route>
-        <Route path='/plants/:id'>
-          <PlantPage authenticated={authenticated}/>
-        </Route>
-        <ProtectedRoute path='/plants/:id/tend' exact={true} authenticated={authenticated}>
-          <EntryForm/>
-        </ProtectedRoute>
         <ProtectedRoute path='/plants/new' exact={true} authenticated={authenticated}>
           <PlantForm />
         </ProtectedRoute>
+        <ProtectedRoute exact path='/plants/:id/tend' exact={true} authenticated={authenticated}>
+          <EntryForm/>
+        </ProtectedRoute>
+        <Route exact path='/plants/:id'>
+          <PlantPage authenticated={authenticated}/>
+        </Route>
+        {/* <Route exact path='/plants/new'>
+          <PlantForm authenticated={authenticated}/>
+        </Route> */}
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>
         </ProtectedRoute>

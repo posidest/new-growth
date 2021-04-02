@@ -9,7 +9,7 @@ const addPlant = (plant) => ({
 
 
 export const newPlant = (plant) => async (dispatch) => {
-   const {plant_pic, name, nickname, profile_id} = plant;
+   const {plant_pic, name, nickname, profile_id, description} = plant;
    const res = await fetch(`/api/users/plants`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -17,7 +17,8 @@ export const newPlant = (plant) => async (dispatch) => {
          plant_pic, 
          name, 
          nickname, 
-         profile_id
+         profile_id,
+         description
       })
    });
    if (res.ok) {
