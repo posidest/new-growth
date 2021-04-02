@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Redirect} from 'react-router-dom'
+import {Redirect, useHistory} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {newPlant} from '../../store/plant'
 import {showProfiles} from '../../store/profile'
@@ -13,7 +13,7 @@ const PlantForm = () => {
    const [imageLoading, setImageLoading] = useState(false)
    const dispatch = useDispatch()
    const [profiles, setProfiles] = useState([])
-
+   const history = useHistory()
    
    const submitPlant = async (e) => {
       e.preventDefault()
@@ -26,7 +26,7 @@ const PlantForm = () => {
       }
       const res = await dispatch(newPlant(myPlant))
       await console.log(res, 'res in plantform')
-      return <Redirect to='/'/>
+      history.push('/')
    }
    
    const getProfiles = async () => {

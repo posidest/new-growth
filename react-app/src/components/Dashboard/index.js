@@ -25,12 +25,12 @@ const Dashboard = () => {
    if (me) {
       return (
       <>
+         <div className='dash-nav'>
+            <Link to='/plants/new'>
+            Add A Plant
+            </Link>    
+         </div>
          <div className='dash'>
-            <div className='dash-nav'>
-               <Link to='/plants/new'>
-               Add A Plant
-               </Link>    
-            </div>
             <div 
             className='user-info'
             style={{marginTop: '100px'}}>

@@ -30,7 +30,7 @@ def user(id):
 def add_plant():
     data = request.get_json()
     plant = Plant(user_id=current_user.id, plant_pic=data['plant_pic'],
-                  name=data['name'], nickname=data['nickname'], profile_id=data['profile_id'])
+                  name=data['name'], nickname=data['nickname'], description=data['description'], profile_id=data['profile_id'])
     db.session.add(plant)
     db.session.commit()
     return plant.to_dict()

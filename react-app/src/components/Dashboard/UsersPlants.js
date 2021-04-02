@@ -24,7 +24,7 @@ const UsersPlants = () => {
 
       return (
          <div>
-            <h1 >My Plants</h1>
+            <h2>My Plants</h2>
             <div className='plants'>
                {plants.map((plant) => (
                   <div key={plant.id} className='single-plant'>
@@ -32,7 +32,7 @@ const UsersPlants = () => {
                         <h4>{plant.nickname}</h4>
                         <div>
                            <img src={plant.plant_pic}
-                           style={{width: '200px'}}
+                           style={{width: '250px'}}
                            alt='plant-pic'
                            />
                            <h4>{plant.name}</h4>
