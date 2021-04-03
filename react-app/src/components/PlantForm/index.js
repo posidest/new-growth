@@ -146,7 +146,7 @@ const PlantForm = () => {
                    <select value={profileId}
                    onChange={updateProfile}>
                       <option value='0'>Choose A Plant Profile</option>
-                      {profiles.map((profile) => (
+                      {profiles.map((profile, i) => (
                          <option value={profile.id}>
                             {profile.common_names[0]}
                         </option>
