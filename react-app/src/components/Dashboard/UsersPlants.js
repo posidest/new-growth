@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {authenticate} from '../../store/session'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import './Dashboard.css';
 
@@ -9,6 +9,7 @@ const UsersPlants = () => {
    const [plants, setPlants] = useState(null)
    const [me, setMe] = useState(null)
    const dispatch = useDispatch()
+   // const user = useSelector((state) => state.session.user)
 
    useEffect(async() => {
       const user = await dispatch(authenticate())
@@ -19,6 +20,7 @@ const UsersPlants = () => {
       await setPlants(myPlants)
       return plants;
    }, [])
+
 
    if (plants) {
 

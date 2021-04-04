@@ -25,7 +25,6 @@ function App() {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
-        // return user;
       }
       setLoaded(true);
     })();
@@ -37,7 +36,7 @@ function App() {
 
   return (
     <>
-      <NavBar setAuthenticated={setAuthenticated} />
+      <NavBar setAuthenticated={setAuthenticated}/>
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm
@@ -76,7 +75,7 @@ function App() {
           <UserProfile />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <Dashboard />
+          <Dashboard/>
         </ProtectedRoute>
       </Switch>
     </>

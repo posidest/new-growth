@@ -12,22 +12,19 @@ const Dashboard = () => {
 
    useEffect(async() => {
       const user = await dispatch(authenticate())
-      // await console.log(user)
       await setMe(user)
       return me
    }, [])
 
-
-   // const addPlant = (e) => {
-   //    return <Redirect to='/plants/new'/>
-   // }
-
+   const addPlant = (e) => {
+      return <Redirect to='/plants/new'/>
+   }
 
    if (me) {
       return (
       <>
          <div>
-            <DashNav />   
+            <DashNav me={me}/>   
          </div>
          <div className='dash'>
             <div 
@@ -51,9 +48,7 @@ const Dashboard = () => {
       return (
       <h1>Loading...</h1>
       )
-   }
-
-   }
+   }}
 
 
 

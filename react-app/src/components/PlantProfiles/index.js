@@ -26,8 +26,11 @@ const PlantProfiles = () => {
 
    if (profiles) {
       return (
-         <div className='profiles-page'>
+         <>
+         <div className='profiles-header'>
             <h1>Plant Profiles</h1>
+         </div>
+         <div className='profiles-page'>
             {profiles.map((profile) => (
                <div key={profile.id} className='individual-profile'>
                   <Link to={`/plants/profile/${profile.id}`}>
@@ -39,6 +42,7 @@ const PlantProfiles = () => {
                   </div>
                ))}
             </div>
+            </>
             )
    } else {
       return <h1>loading...</h1>

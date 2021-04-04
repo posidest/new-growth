@@ -15,7 +15,7 @@ const IndividualPlant = ({plantId}) => {
    const [me, setMe] = useState(null)
    const [profile, setProfile] = useState(null)
    const [profileId, setProfileId] = useState(null)
-   const {id} = useParams()
+   // const {id} = useParams()
    const [showProfile, setShowProfile] = useState(false)
    
    const getPlant = async(plantId) => {
@@ -109,9 +109,9 @@ const IndividualPlant = ({plantId}) => {
                   <div 
                   onClick={deleteEntry} 
                   value={entry.id}>
-                     <i 
-                     className="far fa-trash-alt" style={{color: 'green'}}> 
-                     </i>
+                        <i 
+                        className="far fa-trash-alt" style={{color: 'green'}}> 
+                        </i>
                   </div>
                   )}
    {/* <div onClick={editEntry}><i className="far fa-edit"></i></div> */}
