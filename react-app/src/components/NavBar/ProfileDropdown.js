@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import {login, logout, signUp, authenticate} from '../../store/session'; 
+import {authenticate} from '../../store/session'; 
+import LogoutButton from '../auth/LogoutButton.js'
 
-const ProfileButton = () => {
+const ProfileButton = ({authenticated, setAuthenticated}) => {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     const [me, setMe] = useState(null)
@@ -44,7 +45,7 @@ const ProfileButton = () => {
     return (
         <div>
             <div onClick={openMenu} className='post-btn'>
-                <img src={me.avatar} style={{width: '30px', height: '30px'}}/>
+                <img src={me.avatar} style={{width: '40px', height: '40px', borderRadius: '50%'}}/>
             </div>
             {showMenu && (
                 <div className="drop-down-profile">
@@ -58,8 +59,8 @@ const ProfileButton = () => {
 
                         {/* <li>{me.username}</li> */}
                         <li>{me.email}</li>
-                        <li onClick={logout} className='logout'>
-                            Log Out
+                        <li>
+                            <LogoutButton setAuthenticated={setAuthenticated} />
                         </li>
                     </ul>
                 </div>
@@ -67,9 +68,7 @@ const ProfileButton = () => {
         </div>
     )} else {
         return (
-            <div>
-                <h1>loading...</h1>
-            </div>
+            null
         )
     }
 }

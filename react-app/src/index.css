@@ -7,8 +7,9 @@ button,
 a,
 label {
   font-family: "Dosis", sans-serif;
-  padding: 5px;
-  margin: 5px;
+  font-weight: lighter;
+  /* padding: 5px;
+  margin: 5px; */
 }
 
 input[file] {
@@ -24,29 +25,42 @@ form {
 a {
   color: black;
   text-decoration: none;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 button {
   font-family: "Dosis", sans-serif;
   padding: 5px;
   margin: 5px;
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 16px;
   border: none;
+  background-color: green;
 }
 
 h1 {
-  margin-top: 100px;
+  /* margin-top: 100px; */
   font-family: "Montserrat", sans-serif;
+  color: green;
+  font-weight: lighter;
 }
 
 h4,
 h2,
 h3 {
   font-family: "Montserrat", sans-serif;
+  font-weight: lighter;
 }
 
 td {
   font-family: "Dosis", sans-serif;
+  font-weight: lighter;
+}
+
+/* body {
+  overflow: auto;
+} */
+
+img {
+  border-radius: 4px;
 }

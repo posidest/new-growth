@@ -98,6 +98,7 @@ const PlantForm = () => {
 
     const updateProfile = (e) => {
       setProfileId(e.target.value)
+      console.log(e.target.value, 'profileId in update profile handler')
     }
 
     if (profiles) {
@@ -148,7 +149,7 @@ const PlantForm = () => {
                       <option value='0'>Choose A Plant Profile</option>
                       {profiles.map((profile, i) => (
                          <option value={profile.id}>
-                            {profile.common_names[0]}
+                            {profile.common_names[0]} {profile.id}
                         </option>
                       ))}
                    </select>

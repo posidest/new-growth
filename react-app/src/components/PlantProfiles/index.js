@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import './PlantProfiles.css'
 
 const PlantProfiles = () => {
 
@@ -25,10 +26,10 @@ const PlantProfiles = () => {
 
    if (profiles) {
       return (
-         <div>
+         <div className='profiles-page'>
             <h1>Plant Profiles</h1>
             {profiles.map((profile) => (
-               <div key={profile.id}>
+               <div key={profile.id} className='individual-profile'>
                   <Link to={`/plants/profile/${profile.id}`}>
                   <h4>{profile.genus_species}</h4>
                   <img src={profile.picture}

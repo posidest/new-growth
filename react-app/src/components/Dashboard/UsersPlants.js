@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {authenticate} from '../../store/session'
 import {useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom'
-import './Dashboard.css'
+import './Dashboard.css';
 
 const UsersPlants = () => {
    
@@ -24,12 +24,12 @@ const UsersPlants = () => {
 
       return (
          <div>
-            <h2>My Plants</h2>
+            <h2 className='plant-header'>My Plants</h2>
             <div className='plants'>
                {plants.map((plant) => (
                   <div key={plant.id} className='single-plant'>
                      <Link to={`/plants/${plant.id}`}>
-                        <h4>{plant.nickname}</h4>
+                        <h4 style={{color: 'green'}}>{plant.nickname}</h4>
                         <div>
                            <img src={plant.plant_pic}
                            style={{width: '250px'}}

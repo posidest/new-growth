@@ -4,13 +4,13 @@ import {showProfile} from '../../store/profile';
 import {useParams} from 'react-router-dom';
 import './PlantProfile.css';
 
-const PlantProfile = ({profileId}) => {
+const PlantProfilePage = () => {
    const dispatch = useDispatch();
-   // const {id} = useParams();
+   const {id} = useParams();
    const [loaded, setLoaded] = useState(false)
    const [profile, setProfile] = useState({})
 
-   // console.log(id, 'id')
+   console.log(id, 'id')
 
    const getProfile = async (id) => {
       const res = await fetch(`/api/profiles/${id}`)
@@ -23,7 +23,7 @@ const PlantProfile = ({profileId}) => {
 }
 
    useEffect(async() => {
-      const oneProfile = await getProfile(profileId)
+      const oneProfile = await getProfile(id)
       await setProfile(oneProfile)       
       await console.log(profile, 'profile')
       return profile
@@ -34,7 +34,7 @@ const PlantProfile = ({profileId}) => {
       if(profile) {
          return (
             <div>
-               <h2>{profile.genus_species}</h2>
+               <h1>Plant Profile</h1>
                   <div className='img'>
                      <img 
                      src={profile.picture}
@@ -107,4 +107,4 @@ const PlantProfile = ({profileId}) => {
 
 
 
-export default PlantProfile
+export default PlantProfilePage

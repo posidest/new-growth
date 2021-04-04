@@ -9,7 +9,7 @@ import User from "./components/User";
 import SplashPage from './components/SplashPage'
 import PlantPage from './components/PlantPage'
 import UserProfile from './components/UserProfile'
-import PlantProfile from './components/PlantProfile'
+import PlantProfilePage from './components/PlantProfile'
 import PlantProfiles from './components/PlantProfiles'
 import EntryForm from './components/EntryForm'
 import PlantForm from './components/PlantForm'
@@ -54,7 +54,7 @@ function App() {
           <PlantProfiles />
         </Route>
         <Route path='/plants/profile/:id'>
-          <PlantProfile />
+          <PlantProfilePage />
         </Route>
         <ProtectedRoute path='/plants/new' exact={true} authenticated={authenticated}>
           <PlantForm />

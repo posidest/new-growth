@@ -3,6 +3,7 @@ import {authenticate} from '../../store/session'
 import {Link, Redirect} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import UsersPlants from './UsersPlants'
+import DashNav from './DashNav'
 import './Dashboard.css'
 
 const Dashboard = () => {
@@ -25,17 +26,16 @@ const Dashboard = () => {
    if (me) {
       return (
       <>
-         <div className='dash-nav'>
-            <Link to='/plants/new'>
-            Add A Plant
-            </Link>    
+         <div>
+            <DashNav />   
          </div>
          <div className='dash'>
             <div 
             className='user-info'
-            style={{marginTop: '100px'}}>
+            // style={{marginTop: '100px'}}
+            >
                <img src={me.avatar}
-               style={{width:'200px', height:'200px', borderRadius: '50%'}}
+               style={{width:'250px', height:'250px', borderRadius: '50%'}}
                />
                <h4>{me.username}</h4>
                <p>{me.bio}</p>
