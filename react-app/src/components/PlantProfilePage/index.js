@@ -3,14 +3,16 @@ import {useDispatch, useSelector} from 'react-redux';
 import {showProfile} from '../../store/profile';
 import {useParams} from 'react-router-dom';
 import './PlantProfile.css';
+import IndividualPlant from './IndividualPlant'
 
 const PlantProfilePage = () => {
    const dispatch = useDispatch();
    const {id} = useParams();
    const [loaded, setLoaded] = useState(false)
    const [profile, setProfile] = useState({})
-
-   console.log(id, 'id')
+   const [showPlants, setShowPlants] = useState(false)
+ 
+   console.log(id, 'id from plantprofile page')
 
    const getProfile = async (id) => {
       const res = await fetch(`/api/profiles/${id}`)
@@ -29,6 +31,12 @@ const PlantProfilePage = () => {
       return profile
    }, [])
    
+
+   const displayPlants = (e) => {
+      showPlants ? setShowPlants(false) :
+      setShowPlants(true)
+   }
+
    
    // const profile = useSelector((state) => state.profile);
       if(profile) {
@@ -96,6 +104,15 @@ const PlantProfilePage = () => {
                         </tbody>
                      </table>
                   </div> 
+                  <div>
+                     <button type='button'
+                     onClick={displayPlants}>
+                        View Plants
+                     </button>
+                     {showPlants && profile.plants.map((plant) => (
+                        <IndividualPlant plantId={plant.id}/>
+                     ))}
+                  </div>
                </div>
             )
           } else {

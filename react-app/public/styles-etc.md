@@ -16,3 +16,7 @@ potential color theme:
 #72b01d - limey green
 #454955 - dark gray
 ```
+
+dark slate gray 283f3b
+
+spanish gray 9f9492s
