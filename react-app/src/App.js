@@ -36,7 +36,7 @@ function App() {
 
   return (
     <>
-      <NavBar setAuthenticated={setAuthenticated}/>
+      <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated}/>
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm
@@ -50,32 +50,26 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <Route exact path='/plants/profile'>
-          <PlantProfiles />
-        </Route>
         <Route path='/plants/profile/:id'>
           <PlantProfilePage />
         </Route>
+        <Route exact path='/plants/profile'>
+          <PlantProfiles />
+        </Route>
         <ProtectedRoute path='/plants/new' exact={true} authenticated={authenticated}>
-          <PlantForm />
+          <PlantForm authenticated={authenticated}/>
         </ProtectedRoute>
         <ProtectedRoute exact path='/plants/:id/tend' exact={true} authenticated={authenticated}>
-          <EntryForm/>
+          <EntryForm authenticated={authenticated}/>
         </ProtectedRoute>
         <Route exact path='/plants/:id'>
           <PlantPage authenticated={authenticated}/>
         </Route>
-        {/* <Route exact path='/plants/new'>
-          <PlantForm authenticated={authenticated}/>
-        </Route> */}
-        <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UsersList/>
-        </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <UserProfile />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <Dashboard/>
+          <Dashboard authenticated={authenticated}/>
         </ProtectedRoute>
       </Switch>
     </>

@@ -239,6 +239,67 @@ def seed_profiles():
         propogation_methods=['stem-cuttings', 'seeds', 'air layering'],
         toxic_to_pets=False
     )
+    parlor = Profile(
+        picture='https://newgrowthbucket.s3.amazonaws.com/parlor-palm.jpeg',
+        common_names=['Parlor Palm', 'Neanthe Bella Palm'],
+        genus_species='Chamaeodorea elegans',
+        family='Arecaceae',
+        native_range='Rain forests in Southern Mexico and Guatemala',
+        temp_range='65-80',
+        light='Bright Indirect',
+        soil_type='Well-draining',
+        water_when='Water when the top two inches of soil is dry, less in winter.',
+        fertilization='Use a well-balanced fertilizer at half strength monthly during the growing season',
+        pests=['spider mites', 'scale'],
+        propogation_methods=['seeds'],
+        toxic_to_pets=False
+    )
+    dragon = Profile(
+        picture='https://newgrowthbucket.s3.amazonaws.com/dracaena-dracaena-marginata-candelabra.jpg',
+        common_names=['Dragon Tree', 'Dragon Plant', 'Madagascar Dragon Tree'],
+        genus_species='Dracaena marginata',
+        family='Asparagaceae',
+        native_range='Madagascar',
+        temp_range='65-75',
+        light='Bright indirect to full sun',
+        soil_type='Loamy, well-draining',
+        water_when='Water when the soil is dry.',
+        fertilization='Use a well-balanced fertilizer at half strength annually at the start of the growing season',
+        pests=['spider mites', 'scale'],
+        propogation_methods=['stem cuttings'],
+        toxic_to_pets=True
+    )
+    aloe = Profile(
+        picture='https://newgrowthbucket.s3.amazonaws.com/aloe.jpg',
+        common_names=['Aloe', 'Aloe Vera'],
+        genus_species='Aloe barbadensis',
+        family='Asphodelaceae',
+        native_range='North African Mediterranean',
+        temp_range='50-80',
+        light='Bright indirect to full sun',
+        soil_type='Succulent mix',
+        water_when='Water when the soil is completely dry.',
+        fertilization='Use a succulent or well-balanced fertilizer once during spring and once again during summer ',
+        pests=['spider mites', 'gall mites'],
+        propogation_methods=['stem cuttings', 'pups', 'root division'],
+        toxic_to_pets=True
+    )
+    jade = Profile(
+        picture='https://newgrowthbucket.s3.amazonaws.com/aloe.jpg',
+        common_names=['Jade Plant', 'Lucky Plant',
+                      'Money Plant', 'Money Tree'],
+        genus_species='Crassula ovata',
+        family='Crassulaceae',
+        native_range='Eastern South Africa',
+        temp_range='50-80',
+        light='Bright indirect to full sun',
+        soil_type='Succulent mix',
+        water_when='Water when the soil is completely dry.',
+        fertilization='Use a succulent or well-balanced fertilizer once during spring and once again during summer ',
+        pests=['mealybugs'],
+        propogation_methods=['stem cuttings', 'leaf cuttings'],
+        toxic_to_pets=True
+    )
 
     db.session.add(boston_fern)
     db.session.add(tradescantia)
@@ -249,11 +310,14 @@ def seed_profiles():
     db.session.add(pothos)
     db.session.add(adansonii)
     db.session.add(deliciosa)
-    db.session.add(philodenron)
+    db.session.add(philodendron)
     db.session.add(syngonium)
     db.session.add(zz)
     db.session.add(rhaphidophora)
     db.session.add(fatsia)
+    db.session.add(parlor)
+    db.session.add(dragon)
+    db.session.add(jade)
 
     db.session.commit()
 

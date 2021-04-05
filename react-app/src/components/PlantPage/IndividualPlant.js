@@ -81,7 +81,7 @@ const IndividualPlant = ({plantId}) => {
                   )}
                </div>
             )}
-            {me.id === <div className='tend-btn'>
+            {me.id === plant.user_id && <div className='tend-btn'>
                <button type='button'>
                <Link to={`/plants/${id}/tend`}>
                   Tend to me
@@ -89,6 +89,7 @@ const IndividualPlant = ({plantId}) => {
                </button>   
                {/* <button type='button' onClick={tend}>Tend to me</button> */}
             </div>
+            }
             {entries.map((entry) => (
                <div key={entry.id}>
                   {entry.watered && (

@@ -6,7 +6,7 @@ import UsersPlants from './UsersPlants'
 import DashNav from './DashNav'
 import './Dashboard.css'
 
-const Dashboard = () => {
+const Dashboard = ({authenticated}) => {
    const dispatch = useDispatch()
    const [me, setMe] = useState(null)
 

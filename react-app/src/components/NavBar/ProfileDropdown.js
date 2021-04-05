@@ -19,6 +19,9 @@ const ProfileButton = ({authenticated, setAuthenticated}) => {
    useEffect(async() => {
       const user = await dispatch(authenticate())
       await setMe(user)
+      if (user) {
+          setAuthenticated(true)
+      }
       return me
    }, [])
 
@@ -36,12 +39,12 @@ const ProfileButton = ({authenticated, setAuthenticated}) => {
     }, [showMenu]);
 
 
-    const logout = (e) => {
-        e.preventDefault();
-        dispatch(logout());
-    };
+    // const logout = (e) => {
+    //     e.preventDefault();
+    //     dispatch(logout());
+    // };
 
-    if (me) {
+    if (authenticated && me) {
     return (
         <div>
             <div onClick={openMenu} className='post-btn'>
@@ -50,12 +53,12 @@ const ProfileButton = ({authenticated, setAuthenticated}) => {
             {showMenu && (
                 <div className="drop-down-profile">
                     <ul>
-                        {/* <li>
-                            <NavLink to='/likes'>Likes </NavLink>
+                        <li>
+                            <NavLink to='/'>My Plants</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/following'>Following</NavLink>
-                        </li> */}
+                            <NavLink to='/plants/profile'>Find Plants</NavLink>
+                        </li>
 
                         {/* <li>{me.username}</li> */}
                         <li>{me.email}</li>

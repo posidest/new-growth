@@ -17,10 +17,8 @@ const PlantProfiles = () => {
    
    useEffect(async () => {
       const profileObject = await getProfiles()
-      await console.log(profileObject, 'profile object')
       const plantProfiles = await Object.values(profileObject)
-      await setProfiles(plantProfiles[0])
-      // await setLoaded(true)       
+      await setProfiles(plantProfiles[0])    
       return profiles
    }, [])
 
@@ -34,12 +32,12 @@ const PlantProfiles = () => {
             {profiles.map((profile) => (
                <div key={profile.id} className='individual-profile'>
                   <Link to={`/plants/profile/${profile.id}`}>
-                  <h4>{profile.genus_species}</h4>
-                  <img src={profile.picture}
-                  alt='picture' />
-                  <h4>{profile.common_names[0]}</h4>
+                     <h4>{profile.genus_species}</h4>
+                     <img src={profile.picture}
+                     alt='picture' />
+                     <h4>{profile.common_names[0]}</h4>
                   </Link>
-                  </div>
+               </div>
                ))}
             </div>
             </>
