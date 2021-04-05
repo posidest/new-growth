@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {authenticate} from '../../store/session'
 import {useDispatch, useSelector} from 'react-redux'
 import {useParams, Link} from 'react-router-dom'
 import PlantProfile from '../PlantProfile'
@@ -12,13 +11,16 @@ const IndividualPlant = ({plantId}) => {
    const dispatch = useDispatch()
    const [plant, setPlant] = useState({})
    const [entries, setEntries] = useState([])
-   const [me, setMe] = useState(null)
    const [profile, setProfile] = useState(null)
    const [profileId, setProfileId] = useState(null)
    // const {id} = useParams()
    const [showProfile, setShowProfile] = useState(false)
    
+
+   const me = useSelector((state) => state.session.user)
+
    const getPlant = async(plantId) => {
+
       const res = await fetch(`/api/users/plants/${plantId}`)
       if (res.ok) {
          const data = await res.json()
@@ -45,6 +47,7 @@ const IndividualPlant = ({plantId}) => {
       // await dispatch(showEntries(id))
    }, [])
 
+
    const displayProfile = (e) => {
       if (showProfile) {
          setShowProfile(false)
@@ -53,12 +56,6 @@ const IndividualPlant = ({plantId}) => {
       }
    }
 
-      useEffect(async() => {
-      const user = await dispatch(authenticate())
-      // await console.log(user)
-      await setMe(user)
-      return me
-   }, [])
 
    if (plant) {
 
@@ -73,17 +70,9 @@ const IndividualPlant = ({plantId}) => {
                />
                <p>{plant.description}</p>
             </div>
-            {plant.profile_id && (
-               <div className='plant-profile'>
-                  <button onClick={displayProfile} type='button'>Show Profile Details </button>
-                  {showProfile && (
-                  <PlantProfile profileId={plant.profile_id}/> 
-                  )}
-               </div>
-            )}
             {me.id === plant.user_id && <div className='tend-btn'>
                <button type='button'>
-               <Link to={`/plants/${id}/tend`}>
+               <Link to={`/plants/${plantId}/tend`}>
                   Tend to me
                   </Link>
                </button>   

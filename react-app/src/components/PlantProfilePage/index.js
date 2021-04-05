@@ -2,14 +2,14 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {showProfile} from '../../store/profile';
 import {useParams} from 'react-router-dom';
-import './PlantProfile.css';
-import IndividualPlant from './IndividualPlant'
+import '../PlantProfile/PlantProfile.css';
+import IndividualPlant from '../PlantPage/IndividualPlant'
 
 const PlantProfilePage = () => {
    const dispatch = useDispatch();
    const {id} = useParams();
    const [loaded, setLoaded] = useState(false)
-   const [profile, setProfile] = useState({})
+   const [profile, setProfile] = useState(null)
    const [showPlants, setShowPlants] = useState(false)
  
    console.log(id, 'id from plantprofile page')
@@ -19,18 +19,30 @@ const PlantProfilePage = () => {
          if (res.ok) {
          const data = await res.json()
          await console.log(data, 'data')
-         setLoaded(true)
-         return data;
+         await setProfile(data)
+   
+         return profile;
    }
 }
 
-   useEffect(async() => {
-      const oneProfile = await getProfile(id)
-      await setProfile(oneProfile)       
-      await console.log(profile, 'profile')
-      return profile
+   useEffect(() => {
+      getProfile(id)
    }, [])
+   // const profileGetter = async (id) => {
+   //    const oneProfile = await dispatch(showProfile(id))
+   //    await setProfile(oneProfile)
+   //    await console.log(profile)
+   //    return profile;
+   // }
+
+
+
+   // useEffect(async() => {
+   //    profileGetter(id)
+   // },[])
    
+
+
 
    const displayPlants = (e) => {
       showPlants ? setShowPlants(false) :

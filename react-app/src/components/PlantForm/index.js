@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {newPlant} from '../../store/plant'
 import {showProfiles} from '../../store/profile'
 
-const PlantForm = ({authenticated}) => {
+const PlantForm = () => {
    const [plantPic, setPlantPic] = useState(null)
    const [name, setName] = useState('')
    const [nickname, setNickname] = useState(null)
@@ -15,7 +15,7 @@ const PlantForm = ({authenticated}) => {
    const [profiles, setProfiles] = useState([])
    const history = useHistory()
 
-   // const me = useSelector((state) => state.session.user)
+   const me = useSelector((state) => state.session.user)
    
    const submitPlant = async (e) => {
       e.preventDefault()

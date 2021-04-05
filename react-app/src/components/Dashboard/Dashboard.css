@@ -22,6 +22,7 @@
 
 .plants {
   display: flex;
+  margin-top: 50px;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;

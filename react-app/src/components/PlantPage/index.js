@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-// import {authenticate} from '../../store/session'
 import {useDispatch, useSelector} from 'react-redux'
 import {useParams, Link} from 'react-router-dom'
 import PlantProfile from '../PlantProfile'
@@ -12,12 +11,14 @@ const PlantPage = () => {
    const dispatch = useDispatch()
    const [plant, setPlant] = useState({})
    const [entries, setEntries] = useState([])
-   const [me, setMe] = useState(null)
    const [profile, setProfile] = useState(null)
    const [profileId, setProfileId] = useState(null)
    const {id} = useParams()
    const [showProfile, setShowProfile] = useState(false)
    
+   const me = useSelector((state) => state.session.user)
+
+
    const getPlant = async(id) => {
       const res = await fetch(`/api/users/plants/${id}`)
       if (res.ok) {

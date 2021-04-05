@@ -16,9 +16,9 @@ export const authenticate = () => async(dispatch) => {
       'Content-Type': 'application/json'
     }
   });
-  if (res.ok) {
-      const data = await res.json()
-      dispatch(setUser(data.user))
+  const data = await res.json()
+  if (!data.errors) {
+      dispatch(setUser(data))
       return data;
   }
 }
@@ -36,8 +36,12 @@ export const login = (email, password) => async (dispatch) => {
   });
   if (res.ok) {
       const data = await res.json()
-      dispatch(setUser(data.user))
+      console.log(data, 'login data from thunk')
+      dispatch(setUser(data))
       return data;
+  } else {
+    const data = await res.json()
+    return data
   }
 }
 
@@ -49,7 +53,7 @@ export const logout = () => async (dispatch) => {
   });
   if (res.ok) {
       const data = await res.json()
-      dispatch(removeUser(data.user))
+      dispatch(removeUser())
       return data;
   }
 };
@@ -73,7 +77,7 @@ export const signUp = (user) => async (dispatch) => {
   });
   if (res.ok) {
       const data = await res.json()
-      dispatch(setUser(data.user))
+      dispatch(setUser(data))
       return data;
   }
 }
@@ -87,7 +91,6 @@ export default function reducer(state = {}, action) {
             newState = { ...state, ['user']: action.payload }
             return newState;
         case REMOVE_USER:
-            delete state.user;
             newState = { ...state };
             newState.user = null;
             return newState;

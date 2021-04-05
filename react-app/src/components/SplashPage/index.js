@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
+import {useSelector} from 'react-redux';
 import './SplashPage.css'
 import Dashboard from '../Dashboard'
 
-const SplashPage = ({authenticated}) => {
+const SplashPage = () => {
+   const me = useSelector((state) => state.session.user)
    
-if (authenticated) {
-   return <Dashboard />
-}
-
+   if (me) {
+      return <Dashboard />
+   }
+   
    return (
       <div className='splash'>
          <div className='center'>

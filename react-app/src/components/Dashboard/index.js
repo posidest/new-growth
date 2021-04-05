@@ -1,22 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {authenticate} from '../../store/session'
 import {Link, Redirect} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 import UsersPlants from './UsersPlants'
 import DashNav from './DashNav'
 import './Dashboard.css'
 
-const Dashboard = ({authenticated}) => {
-   const dispatch = useDispatch()
-   const [me, setMe] = useState(null)
+const Dashboard = () => {
+ 
+   const me = useSelector((state) => state.session.user)
 
-   useEffect(async() => {
-      const user = await dispatch(authenticate())
-      await setMe(user)
-      return me
-   }, [])
-
-   const addPlant = (e) => {
+   const addPlant = (e) => {  
       return <Redirect to='/plants/new'/>
    }
 
@@ -38,7 +31,7 @@ const Dashboard = ({authenticated}) => {
                <p>{me.bio}</p>
                <p>{`USDA Zone: ${me.zone}`}</p>
             </div>
-            <div className='plants'>
+            <div className='users-plants-container'>
                <UsersPlants />
             </div>
          </div>

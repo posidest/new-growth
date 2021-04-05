@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import {authenticate} from '../../store/session'; 
 import LogoutButton from '../auth/LogoutButton.js'
 
-const ProfileButton = ({authenticated, setAuthenticated}) => {
-    const dispatch = useDispatch();
+const ProfileButton = () => {
     const [showMenu, setShowMenu] = useState(false);
-    const [me, setMe] = useState(null)
    
 
     const openMenu = () => {
@@ -15,15 +12,7 @@ const ProfileButton = ({authenticated, setAuthenticated}) => {
         setShowMenu(true);
     };
 
-
-   useEffect(async() => {
-      const user = await dispatch(authenticate())
-      await setMe(user)
-      if (user) {
-          setAuthenticated(true)
-      }
-      return me
-   }, [])
+    const me = useSelector((state) => state.session.user)
 
 
     useEffect(() => {
@@ -44,7 +33,7 @@ const ProfileButton = ({authenticated, setAuthenticated}) => {
     //     dispatch(logout());
     // };
 
-    if (authenticated && me) {
+    if (me) {
     return (
         <div>
             <div onClick={openMenu} className='post-btn'>
@@ -63,7 +52,7 @@ const ProfileButton = ({authenticated, setAuthenticated}) => {
                         {/* <li>{me.username}</li> */}
                         <li>{me.email}</li>
                         <li>
-                            <LogoutButton setAuthenticated={setAuthenticated} />
+                            <LogoutButton />
                         </li>
                     </ul>
                 </div>
