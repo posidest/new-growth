@@ -7,6 +7,7 @@ const EntryForm = () => {
    const [entry, setEntry] = useState({})
    const [plantId, setPlantId] = useState('')
    const [watered, setWatered] = useState(false)
+   const [date, setDate] = useState(null)
    const [fertilized, setFertilized] = useState(false)
    const [location, setLocation] = useState('')
    const [details, setDetails] = useState('')
@@ -17,20 +18,21 @@ const EntryForm = () => {
    const history = useHistory()   
    console.log(id, 'this is the id from the entry form')
 
-   const postEntry = async (e) => {
+   const postEntry = (e) => {
       e.preventDefault()
       const newEntry = {
          'plant_id': id, 
          'watered': watered, 
-         'fertilized': fertilized, 
+         'fertilized': fertilized,
+         'date': date, 
          'location': location, 
          'details': details, 
          'progress_pic': progressPic
       }
       console.log(newEntry)
-      const res = await dispatch(createEntry(newEntry))
-      await console.log(res, 'res from entry form')
-      await setEntry(res)
+      const res = dispatch(createEntry(newEntry))
+      console.log(res, 'res from entry form')
+      setEntry(res)
       history.push(`/plants/${id}`)
       // return <Redirect to={`/plants/${plantId}`} />
    }
@@ -41,7 +43,6 @@ const EntryForm = () => {
       } else {
          setWatered(true)
       }
-      setEntry({...entry, 'watered': watered})
    }
 
    const updateFertilized = (e) => {
@@ -50,18 +51,19 @@ const EntryForm = () => {
       } else {
          setFertilized(true)
       }
-      setEntry({...entry, 'fertilized': fertilized})
    }
 
    const updateLocation = (e) => {
       setLocation(e.target.value)
-      setEntry({...entry, 'location': location}) 
    }
 
 
     const updateDetails = (e) => {
       setDetails(e.target.value)
-      setEntry({...entry, 'details': details})
+   }
+
+   const updateDate = (e) => {
+      setDate(e.target.value)
    }
 
     const updateProgressPic = async (e) => {
@@ -124,6 +126,12 @@ const EntryForm = () => {
                type='checkbox'
                // value={fertilized}
                onClick={updateFertilized}/>
+            </div>
+            <div>
+               <input
+               type='date'
+               onChange={updateDate}
+               value={date}/>
             </div>
             <div>
                <input

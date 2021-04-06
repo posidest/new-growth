@@ -2,39 +2,59 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {showProfile} from '../../store/profile';
 import {useParams} from 'react-router-dom';
-import './PlantProfile.css';
+import '../PlantProfile/PlantProfile.css';
+import IndividualPlant from '../PlantPage/IndividualPlant'
 
-const PlantProfile = ({profileId}) => {
+const PlantProfilePage = () => {
    const dispatch = useDispatch();
-   // const {id} = useParams();
+   const {id} = useParams();
    const [loaded, setLoaded] = useState(false)
-   const [profile, setProfile] = useState({})
-
-   // console.log(id, 'id')
+   const [profile, setProfile] = useState(null)
+   const [showPlants, setShowPlants] = useState(false)
+ 
+   console.log(id, 'id from plantprofile page')
 
    const getProfile = async (id) => {
       const res = await fetch(`/api/profiles/${id}`)
          if (res.ok) {
          const data = await res.json()
          await console.log(data, 'data')
-         setLoaded(true)
-         return data;
+         await setProfile(data)
+   
+         return profile;
    }
 }
 
-   useEffect(async() => {
-      const oneProfile = await getProfile(profileId)
-      await setProfile(oneProfile)       
-      await console.log(profile, 'profile')
-      return profile
+   useEffect(() => {
+      getProfile(id)
    }, [])
+   // const profileGetter = async (id) => {
+   //    const oneProfile = await dispatch(showProfile(id))
+   //    await setProfile(oneProfile)
+   //    await console.log(profile)
+   //    return profile;
+   // }
+
+
+
+   // useEffect(async() => {
+   //    profileGetter(id)
+   // },[])
    
+
+
+
+   const displayPlants = (e) => {
+      showPlants ? setShowPlants(false) :
+      setShowPlants(true)
+   }
+
    
    // const profile = useSelector((state) => state.profile);
       if(profile) {
          return (
             <div>
-               <h2>{profile.genus_species}</h2>
+               <h1>Plant Profile</h1>
                   <div className='img'>
                      <img 
                      src={profile.picture}
@@ -96,6 +116,15 @@ const PlantProfile = ({profileId}) => {
                         </tbody>
                      </table>
                   </div> 
+                  <div>
+                     <button type='button'
+                     onClick={displayPlants}>
+                        View Plants
+                     </button>
+                     {showPlants && profile.plants.map((plant) => (
+                        <IndividualPlant plantId={plant.id}/>
+                     ))}
+                  </div>
                </div>
             )
           } else {
@@ -107,4 +136,4 @@ const PlantProfile = ({profileId}) => {
 
 
 
-export default PlantProfile
+export default PlantProfilePage

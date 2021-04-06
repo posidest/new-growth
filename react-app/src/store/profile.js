@@ -17,20 +17,20 @@ export const showProfiles = () => async (dispatch) => {
    if (res.ok) {
       const data = await res.json()
       console.log(data, 'data from thunk')
-      dispatch(getProfiles(data.profiles))
+      dispatch(getProfiles(data))
       return data;
    }
 }
 
-// export const showProfile = (id) => async(dispatch) => {
-//    const res = await fetch(`/api/profiles/${id}`)
-//    if (res.ok) {
-//       const data = await res.json()
-//       console.log(data, 'data from individual profile thunk')
-//       dispatch(getProfile(data.profile))
-//       return data;
-//    }
-// }
+export const showProfile = (id) => async(dispatch) => {
+   const res = await fetch(`/api/profiles/${id}`)
+   if (res.ok) {
+      const data = await res.json()
+      console.log(data, 'data from individual profile thunk')
+      dispatch(getProfile(data.profile))
+      return data;
+   }
+}
 
 
 export default function reducer(state={}, action) {

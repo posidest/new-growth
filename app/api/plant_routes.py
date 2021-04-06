@@ -26,13 +26,11 @@ def get_entries(id):
 @plant_routes.route('/entries/<int:id>', methods=['DELETE'])
 @login_required
 def delete_entry(id):
-    try:
-        entry = db.session.query(Entry).get(id)
-        if entry.user_id == current_user.id:
+    entry = db.session.query(Entry).get(id)
+    if entry.user_id == current_user.id:
+        try:
             db.session.delete(entry)
             db.session.commit()
-        else:
-            print("you can't do that")
-    except:
-        return "unsuccessful"
-    return "successful"
+        except:
+            return "unsuccessful"
+        return "successful"

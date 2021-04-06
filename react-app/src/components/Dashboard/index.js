@@ -1,39 +1,29 @@
 import React, {useState, useEffect} from 'react';
-import {authenticate} from '../../store/session'
 import {Link, Redirect} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 import UsersPlants from './UsersPlants'
+import DashNav from './DashNav'
 import './Dashboard.css'
 
 const Dashboard = () => {
-   const dispatch = useDispatch()
-   const [me, setMe] = useState(null)
+ 
+   const me = useSelector((state) => state.session.user)
 
-   useEffect(async() => {
-      const user = await dispatch(authenticate())
-      // await console.log(user)
-      await setMe(user)
-      return me
-   }, [])
-
-
-   // const addPlant = (e) => {
-   //    return <Redirect to='/plants/new'/>
-   // }
-
+   const addPlant = (e) => {  
+      return <Redirect to='/plants/new'/>
+   }
 
    if (me) {
       return (
       <>
-         <div className='dash-nav'>
-            <Link to='/plants/new'>
-            Add A Plant
-            </Link>    
+         <div>
+            <DashNav me={me}/>   
          </div>
          <div className='dash'>
             <div 
             className='user-info'
-            style={{marginTop: '100px'}}>
+            // style={{marginTop: '100px'}}
+            >
                <img src={me.avatar}
                style={{width:'200px', height:'200px', borderRadius: '50%'}}
                />
@@ -41,7 +31,7 @@ const Dashboard = () => {
                <p>{me.bio}</p>
                <p>{`USDA Zone: ${me.zone}`}</p>
             </div>
-            <div className='plants'>
+            <div className='users-plants-container'>
                <UsersPlants />
             </div>
          </div>
@@ -51,9 +41,7 @@ const Dashboard = () => {
       return (
       <h1>Loading...</h1>
       )
-   }
-
-   }
+   }}
 
 
 

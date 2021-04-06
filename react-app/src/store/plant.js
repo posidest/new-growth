@@ -23,7 +23,8 @@ export const newPlant = (plant) => async (dispatch) => {
    });
    if (res.ok) {
       const data = await res.json()
-      dispatch(addPlant(data.plant))
+      console.log(data)
+      dispatch(addPlant(data))
       return data;
    }
 }

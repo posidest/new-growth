@@ -12,12 +12,10 @@ class Entry(db.Model):
         'plants.id'), nullable=False)
     watered = db.Column(db.Boolean, nullable=False)
     fertilized = db.Column(db.Boolean, nullable=False)
+    date = db.Column(db.Date, nullable=False)
     location = db.Column(db.String)
     details = db.Column(db.String(1000))
     progress_pic = db.Column(db.Text)
-   #  created_at = db.Column(db.DateTime(timezone=True), db.server_default=func.now())
-   #  created_at = db.Column(Db.TIMESTAMP, server_default=FetchedValue())
-   #
 
     def to_dict(self):
         return {
@@ -26,6 +24,7 @@ class Entry(db.Model):
             "plant_id": self.plant_id,
             "watered": self.watered,
             "fertilized": self.fertilized,
+            "date": self.date,
             "location": self.location,
             "details": self.details,
             "progress_pic": self.progress_pic

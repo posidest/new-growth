@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 import './Auth.css'
+import {useDispatch, useSelector} from 'react-redux'
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+
+const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState(null);
@@ -12,16 +14,19 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
-
+  const dispatch = useDispatch()
+  
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp({username, email, avatar, bio, zone, password});
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
+      await dispatch(signUp({username, email, avatar, bio, zone, password}));
+      // if (!user.errors) {
+      //   setAuthenticated(true);
+      // }
     }
   };
+
+  const me = useSelector((state) => state.session.user)
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -74,7 +79,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     setRepeatPassword(e.target.value);
   };
 
-  if (authenticated) {
+  if (me) {
     return <Redirect to="/" />;
   }
 

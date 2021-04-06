@@ -1,25 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import {login, logout, signUp, authenticate} from '../../store/session'; 
+import LogoutButton from '../auth/LogoutButton.js'
+import {logout} from '../../store/session'
 
 const ProfileButton = () => {
-    const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
-    const [me, setMe] = useState(null)
-   
+    const dispatch = useDispatch()
 
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
     };
 
-
-   useEffect(async() => {
-      const user = await dispatch(authenticate())
-      await setMe(user)
-      return me
-   }, [])
+    const me = useSelector((state) => state.session.user)
 
 
     useEffect(() => {
@@ -35,7 +29,7 @@ const ProfileButton = () => {
     }, [showMenu]);
 
 
-    const logout = (e) => {
+    const logOut = (e) => {
         e.preventDefault();
         dispatch(logout());
     };
@@ -44,22 +38,27 @@ const ProfileButton = () => {
     return (
         <div>
             <div onClick={openMenu} className='post-btn'>
-                <img src={me.avatar} style={{width: '30px', height: '30px'}}/>
+                <img src={me.avatar} style={{width: '40px', height: '40px', borderRadius: '50%'}}/>
             </div>
             {showMenu && (
                 <div className="drop-down-profile">
                     <ul>
-                        {/* <li>
-                            <NavLink to='/likes'>Likes </NavLink>
+                        <li>
+                            <NavLink to='/'>My Plants</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/following'>Following</NavLink>
-                        </li> */}
+                            <NavLink to='/plants/profile'>Find Plants</NavLink>
+                        </li>
 
                         {/* <li>{me.username}</li> */}
                         <li>{me.email}</li>
-                        <li onClick={logout} className='logout'>
-                            Log Out
+                        <li>
+                            <button 
+                            type='button'
+                            onClick={logOut}>
+                                Log Out
+                            </button>
+                            {/* <LogoutButton /> */}
                         </li>
                     </ul>
                 </div>
@@ -67,9 +66,7 @@ const ProfileButton = () => {
         </div>
     )} else {
         return (
-            <div>
-                <h1>loading...</h1>
-            </div>
+            null
         )
     }
 }
