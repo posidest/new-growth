@@ -15,10 +15,9 @@ return (
    <Link to='/plants/new'>
       Add a Plant
    </Link>
-   {/* <Link to='/plants/find'>
+   <Link to='/plants/search'>
       Find a Plant
-   </Link> */}
-   <LogoutButton />
+   </Link>
 </div>
 )
 

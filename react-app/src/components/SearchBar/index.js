@@ -1,0 +1,73 @@
+import React, {useEffect, useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import SearchResults from './SearchResults';
+import {showProfiles} from '../../store/profile'
+import '../NavBar/NavBar.css'
+
+   const SearchBar = () => {
+      const dispatch = useDispatch()
+      const [results, setResults] = useState(null)
+      const [query, setQuery] = useState('')
+      let profiles = useSelector((state) => state.profile.profiles)
+      if (profiles) {
+         profiles = profiles['profile']
+      }
+      console.log(profiles, 'profiles from search bar')
+      
+      const search = (e) => {
+         e.preventDefault()
+         let searchResults = []
+         profiles.forEach((profile) => {
+            let names = []
+            profile.common_names.forEach((name) => {
+               names.push(name.toLowerCase())
+            })
+            if (names.includes(query.toLowerCase())) {
+               searchResults.push(profile)
+            }
+         })
+         // const results = profiles.filter(profile => profile.common_names.includes(query.toLowerCase()))
+         console.log(searchResults)
+         setResults(searchResults)
+         return results;
+      }
+
+      useEffect(() => {
+         dispatch(showProfiles())
+      },[])
+
+      const updateSearch = (e) => {
+         setQuery(e.target.value)
+      }
+      if (profiles) {
+         return (
+         <div>
+           <form onSubmit={search}>
+             <div className='search'>
+               <input type='text'
+               value={query}
+               onChange={updateSearch}
+               placeholder='search common plant names'
+               />
+               <button type='submit'>
+               <i className="fas fa-search"></i>
+               </button>
+             </div>
+           </form>
+           <div>
+            {results && (
+               <div>
+                  <SearchResults results={results}/>
+               </div>
+            )}
+           </div>
+         </div>
+         )
+      } else {
+         return (
+            <h1>...loading</h1>
+         )
+      }
+      }
+
+      export default SearchBar

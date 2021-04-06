@@ -17,7 +17,7 @@ export const showProfiles = () => async (dispatch) => {
    if (res.ok) {
       const data = await res.json()
       console.log(data, 'data from thunk')
-      dispatch(getProfiles(data.profiles))
+      dispatch(getProfiles(data))
       return data;
    }
 }

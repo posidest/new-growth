@@ -18,7 +18,7 @@ const EntryForm = () => {
    const history = useHistory()   
    console.log(id, 'this is the id from the entry form')
 
-   const postEntry = async (e) => {
+   const postEntry = (e) => {
       e.preventDefault()
       const newEntry = {
          'plant_id': id, 
@@ -30,9 +30,9 @@ const EntryForm = () => {
          'progress_pic': progressPic
       }
       console.log(newEntry)
-      const res = await dispatch(createEntry(newEntry))
-      await console.log(res, 'res from entry form')
-      await setEntry(res)
+      const res = dispatch(createEntry(newEntry))
+      console.log(res, 'res from entry form')
+      setEntry(res)
       history.push(`/plants/${id}`)
       // return <Redirect to={`/plants/${plantId}`} />
    }
@@ -127,12 +127,12 @@ const EntryForm = () => {
                // value={fertilized}
                onClick={updateFertilized}/>
             </div>
-            {/* <div>
+            <div>
                <input
                type='date'
                onChange={updateDate}
                value={date}/>
-            </div> */}
+            </div>
             <div>
                <input
                type='text'

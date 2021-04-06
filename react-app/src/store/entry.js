@@ -23,17 +23,16 @@ export const showEntries = (id) => async (dispatch) => {
 
 
 
-
-
 export const createEntry = (entry) => async (dispatch) => {
-   const {plant_id, watered, fertilized, location, details, progress_pic} = entry;
+   const {plant_id, watered, fertilized, date, location, details, progress_pic} = entry;
    const res = await fetch(`/api/plants/${plant_id}/entries`, {
          method: 'POST',
          headers: {'Content-Type': 'application/json'},
          body: JSON.stringify({
             plant_id, 
             watered, 
-            fertilized, 
+            fertilized,
+            date, 
             location,
             details,
             progress_pic

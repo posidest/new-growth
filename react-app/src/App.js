@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import SearchBar from './components/SearchBar'
 import SplashPage from './components/SplashPage'
 import PlantPage from './components/PlantPage'
 import UserProfile from './components/UserProfile'
@@ -55,7 +56,11 @@ function App() {
           <PlantForm/>
         </ProtectedRoute>
         <ProtectedRoute path='/plants/:id/tend' exact={true}>
+          <EntryForm />
         </ProtectedRoute>
+        <Route exact path='/plants/search'>
+          <SearchBar/>
+        </Route>
         <Route path='/plants/:id'>
           <PlantPage/>
         </Route>
