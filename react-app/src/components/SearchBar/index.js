@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import SearchResults from './SearchResults';
 import {showProfiles} from '../../store/profile'
-import '../NavBar/NavBar.css'
+import './SearchBar.css'
 
    const SearchBar = () => {
       const dispatch = useDispatch()
@@ -12,7 +12,6 @@ import '../NavBar/NavBar.css'
       if (profiles) {
          profiles = profiles['profile']
       }
-      console.log(profiles, 'profiles from search bar')
       
       const search = (e) => {
          e.preventDefault()
@@ -20,14 +19,13 @@ import '../NavBar/NavBar.css'
          profiles.forEach((profile) => {
             let names = []
             profile.common_names.forEach((name) => {
-               names.push(name.toLowerCase())
+               names.push(...name.toLowerCase().split(' '))
             })
-            if (names.includes(query.toLowerCase())) {
+            if (names.includes(query[0]) || names.includes(query[1])) {
                searchResults.push(profile)
             }
          })
-         // const results = profiles.filter(profile => profile.common_names.includes(query.toLowerCase()))
-         console.log(searchResults)
+         
          setResults(searchResults)
          return results;
       }
@@ -37,11 +35,11 @@ import '../NavBar/NavBar.css'
       },[])
 
       const updateSearch = (e) => {
-         setQuery(e.target.value)
+         setQuery(e.target.value.toLowerCase().split(' '))
       }
       if (profiles) {
          return (
-         <div>
+         <div className='search-page'>
            <form onSubmit={search}>
              <div className='search'>
                <input type='text'

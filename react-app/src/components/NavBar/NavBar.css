@@ -23,9 +23,9 @@
   left: 10px;
 }
 
-.fa-search {
+/* .fa-search {
   color: rgba(8, 32, 16, 0.6);
-}
+} */
 
 .nav-bar button {
   border: none;
@@ -42,13 +42,13 @@
   margin-top: 15px;
 }
 
-.search input {
+/* .search input {
   width: 200px;
   border: 1px solid rgba(200, 200, 200, 0.6);
   border-radius: 2px;
-}
+} */
 
-.search {
+/* .search {
   position: absolute;
   left: 140px;
-}
+} */

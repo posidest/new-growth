@@ -5,33 +5,35 @@ import {useParams} from 'react-router-dom';
 import './PlantProfile.css';
 
 const PlantProfile = ({profileId}) => {
-   const dispatch = useDispatch();
-   // const {id} = useParams();
-   const [loaded, setLoaded] = useState(false)
-   const [profile, setProfile] = useState({})
 
-   // console.log(id, 'id')
-
-   const getProfile = async (id) => {
-      const res = await fetch(`/api/profiles/${id}`)
-         if (res.ok) {
-         const data = await res.json()
-         await console.log(data, 'data')
-         setLoaded(true)
-         return data;
+   let profiles = useSelector((state) => state.profile.profiles);
+   if (profiles) {
+      profiles = profiles['profile']
    }
-}
 
-   useEffect(async() => {
-      const oneProfile = await getProfile(profileId)
-      await setProfile(oneProfile)       
-      await console.log(profile, 'profile')
-      return profile
-   }, [])
+   let profile = profiles.filter((profile) => (
+      profile.id === profileId
+   ))
+   profile = profile[0]
+
    
-   
-   // const profile = useSelector((state) => state.profile);
+   const stringifier = (arr) => {
+      let str = '';
+      arr.forEach((el) => {
+         if (el === arr[arr.length - 1]) {
+            str+= el
+            return str
+         }
+         str+= el + ', '
+      })
+      return str;
+   }
+
       if(profile) {
+         const names = stringifier(profile.common_names)
+         const pests = stringifier(profile.pests)
+         const propogations = stringifier(profile.propogation_methods)
+
          return (
             <div>
                <h2>{profile.genus_species}</h2>
@@ -47,7 +49,7 @@ const PlantProfile = ({profileId}) => {
                         <tbody>
                            <tr>
                               <td>Common Names</td>
-                              <td>{profile.common_names}</td>
+                              <td>{names}</td>
                            </tr>
                            <tr>
                               <td>Genus Species</td>
@@ -83,11 +85,11 @@ const PlantProfile = ({profileId}) => {
                            </tr>
                            <tr>
                               <td>Pests</td>
-                              <td>{profile.pests}</td>
+                              <td>{pests}</td>
                            </tr>
                            <tr>
                               <td>Propogation Methods</td>
-                              <td>{profile.propogation_methods}</td>
+                              <td>{propogations}</td>
                            </tr>
                            <tr>
                               <td>Toxic to pets?</td>

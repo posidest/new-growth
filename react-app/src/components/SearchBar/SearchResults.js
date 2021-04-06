@@ -6,9 +6,6 @@ const SearchResults = ({results}) => {
    // if (results) {
       return (
          <>
-         <div className='profiles-header'>
-            <h1>Search Results</h1>
-         </div>
          <div className='profiles-page'>
             {results.map((result) => (
                <div key={result.id} className='individual-profile'>
