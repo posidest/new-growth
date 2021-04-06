@@ -6,11 +6,11 @@ import './Dashboard.css';
 const UsersPlants = () => {
    
    const dispatch = useDispatch()
-   const me = useSelector((state) => state.session.user);
-   const plants = Object.values(me.plants)
- 
-   if (plants) {
 
+   const me = useSelector((state) => state.session.user);
+   const plants = useSelector((state) => Object.values(state.session.user.plants))
+
+   if (plants) {
       return (
          <div>
             <h2 className='plant-header'>My Plants</h2>

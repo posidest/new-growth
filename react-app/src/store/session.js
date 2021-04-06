@@ -46,7 +46,7 @@ export const login = (email, password) => async (dispatch) => {
 }
 
 export const logout = () => async (dispatch) => {
-  const res = await fetch("/api/auth/logout", {
+  const res = await fetch('/api/auth/logout', {
     headers: {
       "Content-Type": "application/json",
     }
@@ -91,8 +91,8 @@ export default function reducer(state = {}, action) {
             newState = { ...state, ['user']: action.payload }
             return newState;
         case REMOVE_USER:
-            newState = { ...state };
-            newState.user = null;
+            newState = {};
+            // newState.user = null;
             return newState;
         default: return state;
     }

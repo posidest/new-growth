@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton.js'
+import {logout} from '../../store/session'
 
 const ProfileButton = () => {
     const [showMenu, setShowMenu] = useState(false);
-    
+    const dispatch = useDispatch()
 
     const openMenu = () => {
         if (showMenu) return;
@@ -28,10 +29,10 @@ const ProfileButton = () => {
     }, [showMenu]);
 
 
-    // const logout = (e) => {
-    //     e.preventDefault();
-    //     dispatch(logout());
-    // };
+    const logOut = (e) => {
+        e.preventDefault();
+        dispatch(logout());
+    };
 
     if (me) {
     return (
@@ -52,7 +53,12 @@ const ProfileButton = () => {
                         {/* <li>{me.username}</li> */}
                         <li>{me.email}</li>
                         <li>
-                            <LogoutButton />
+                            <button 
+                            type='button'
+                            onClick={logOut}>
+                                Log Out
+                            </button>
+                            {/* <LogoutButton /> */}
                         </li>
                     </ul>
                 </div>

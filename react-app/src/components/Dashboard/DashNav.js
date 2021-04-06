@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux'
 import {authenticate} from '../../store/session'
 import {NavLink, Link} from 'react-router-dom'
 import './Dashboard.css'
+import LogoutButton from '../auth/LogoutButton';
 
 const DashNav = ({authenticated}) => {
    // const me = useSelector((state) => state.session.user)
@@ -14,9 +15,10 @@ return (
    <Link to='/plants/new'>
       Add a Plant
    </Link>
-   <Link to='/plants/find'>
+   {/* <Link to='/plants/find'>
       Find a Plant
-   </Link>
+   </Link> */}
+   <LogoutButton />
 </div>
 )
 

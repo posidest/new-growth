@@ -54,12 +54,12 @@ function App() {
         <ProtectedRoute path='/plants/new' exact={true}>
           <PlantForm/>
         </ProtectedRoute>
-        <ProtectedRoute exact path='/plants/:id/tend' exact={true}>
+        <ProtectedRoute path='/plants/:id/tend' exact={true}>
         </ProtectedRoute>
-        <Route exact path='/plants/:id'>
+        <Route path='/plants/:id'>
           <PlantPage/>
         </Route>
-        <ProtectedRoute path="/users/:userId" exact={true}>
+        <ProtectedRoute path='/users/:userId' exact={true}>
           <UserProfile />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>

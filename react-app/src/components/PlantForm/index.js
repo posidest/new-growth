@@ -18,7 +18,7 @@ const PlantForm = () => {
 
    const me = useSelector((state) => state.session.user)
    
-   const submitPlant = async (e) => {
+   const submitPlant = (e) => {
       e.preventDefault()
       const myPlant = {
          'name': name, 
@@ -27,8 +27,8 @@ const PlantForm = () => {
          'profile_id': profileId, 
          'description': description
       }
-      const res = await dispatch(newPlant(myPlant))
-      await console.log(res, 'res in plantform')
+      const res = dispatch(newPlant(myPlant))
+      console.log(res, 'res in plantform')
       history.push('/')
    }
    
