@@ -1,11 +1,8 @@
 .nav-bar {
   display: flex;
-  /* flex-direction: row; */
   justify-content: space-around;
-  height: 50px;
+  height: 55px;
   width: 100%;
-  /* background-color: rgba(200, 200, 200, 0.4); */
-  /* background-color: rgba(8, 32, 16, 0.6); */
   background-color: white;
   background-size: cover;
   position: fixed;
@@ -20,25 +17,38 @@
   top: 10px;
 }
 
-.log-out-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-}
-
-.log-out-btn button {
-  background-color: white;
-  border-radius: 4px;
-}
-
-.nav-bar i {
+.fa-leaf {
   position: fixed;
   top: 10px;
   left: 10px;
+}
+
+.fa-search {
+  color: rgba(8, 32, 16, 0.6);
+}
+
+.nav-bar button {
+  border: none;
 }
 
 .navatar {
   position: fixed;
   top: 10px;
   right: 10px;
+}
+
+.nav-bar input {
+  padding: 5px;
+  margin-top: 15px;
+}
+
+.search input {
+  width: 200px;
+  border: 1px solid rgba(200, 200, 200, 0.6);
+  border-radius: 2px;
+}
+
+.search {
+  position: absolute;
+  left: 140px;
 }

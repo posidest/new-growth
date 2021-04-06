@@ -35,3 +35,17 @@ def find_a_profile():
         text('%' + data['query'] + '%')).in_(Profile.common_names).all()
     if profiles:
         return {'profile': [profile.to_dict() for profile in profiles]}
+
+
+# @profile_routes.route('/search', methods=['GET', 'POST'])
+# def search_profiles():
+#     form = SearchForm()
+#     profiles = Profile.query.all()
+
+#     if form.validate_on_submit():
+#         profiles = Profile.query.filter(Profile.common_names[0].ilike(
+#             '%' + form.query.data + '%'))
+
+#     # profiles = profiles.order_by(Profile.common_names).all()
+
+#     return {'profile': [profile.to_dict() for profile in profiles]}

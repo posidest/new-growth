@@ -8,14 +8,7 @@ const UsersPlants = () => {
    const dispatch = useDispatch()
    const me = useSelector((state) => state.session.user);
    const plants = Object.values(me.plants)
-   // useEffect(async() => {
-   //    const myPlants = await Object.values(user.plants)
-   //    // await console.log(myPlants, 'my plants')
-   //    await setPlants(myPlants)
-   //    return plants;
-   // }, [])
-
-
+ 
    if (plants) {
 
       return (
@@ -25,13 +18,16 @@ const UsersPlants = () => {
                {plants.map((plant) => (
                   <div key={plant.id} className='single-plant'>
                      <Link to={`/plants/${plant.id}`}>
-                        <h4 style={{color: 'green'}}>{plant.nickname}</h4>
+                        <h4>{plant.nickname}</h4>
                         <div>
                            <img src={plant.plant_pic}
                            style={{width: '250px'}}
                            alt='plant-pic'
                            />
-                           <h4>{plant.name}</h4>
+                           <h4 
+                           style={{color: 'rgba(8, 32, 16, 0.6)'}}>
+                              {plant.name}
+                           </h4>
                         </div>
                      </Link>
                </div>

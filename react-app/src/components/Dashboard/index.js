@@ -25,7 +25,7 @@ const Dashboard = () => {
             // style={{marginTop: '100px'}}
             >
                <img src={me.avatar}
-               style={{width:'250px', height:'250px', borderRadius: '50%'}}
+               style={{width:'200px', height:'200px', borderRadius: '50%'}}
                />
                <h4>{me.username}</h4>
                <p>{me.bio}</p>

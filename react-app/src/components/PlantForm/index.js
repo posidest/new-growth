@@ -3,6 +3,7 @@ import {Redirect, useHistory} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {newPlant} from '../../store/plant'
 import {showProfiles} from '../../store/profile'
+import './PlantForm.css'
 
 const PlantForm = () => {
    const [plantPic, setPlantPic] = useState(null)
@@ -45,18 +46,6 @@ const PlantForm = () => {
       await setProfiles(plantProfiles[0])     
       return profiles
    }, [])
-   
-
-   // useEffect(async() => {
-   //    await dispatch(showProfiles())
-   //    setLoaded(true)
-   // },[dispatch])
-
-   // useEffect(() => {
-   //    console.log('hello')
-   // }, [plant, plantPic, name, nickname, profileId])
-
-   // const profiles = useSelector((state) => state.profile.profiles)
  
 
   const updatePic = async (e) => {
@@ -105,61 +94,63 @@ const PlantForm = () => {
 
     if (profiles) {
        return (
-          <div className='plant-form'>
-             <h1>New Plant</h1>
-             <form onSubmit={submitPlant}>
-                <div>
-                   <input 
-                   type='text'
-                   onChange={updateName}
-                   value={name}
-                   placeholder='Plant Name' />
-                </div>
-               <div>
-                  <input 
-                  type='text'
-                  onChange={updateNickname}
-                  value={nickname}
-                  placeholder='Add a Nickname' />
-               </div>
-                <div>
-                   <label className='file-input'>
-                      <input
-                      type='file'
-                      accept='image/*'
-                      name='plant-pic'
-                      onChange={updatePic}/>
-                   Upload a Picture
-                   </label>
-                   {(imageLoading) && <p>Loading...</p>}
-                   <div className='plant-pic'>
-                      <img src={plantPic}
-                      style={{width: '200px'}}
-                      />
-                   </div>
-                </div>
-                <div>
-                   <textarea
-                   placeholder='Description'
-                   value={description}
-                   onChange={updateDescription}
-                   />
-                </div>
-                <div>
-                   <select value={profileId}
-                   onChange={updateProfile}>
-                      <option value='0'>Choose A Plant Profile</option>
-                      {profiles.map((profile, i) => (
-                         <option value={profile.id}>
-                            {profile.common_names[0]} {profile.id}
-                        </option>
-                      ))}
-                   </select>
-                </div>
-                <>
-                   <button type='submit'>Add Plant</button>
-                </>
-             </form>
+          <div className = 'plant-form-page'>
+            <div className='plant-form'>
+               <h1>New Plant</h1>
+               <form onSubmit={submitPlant}>
+                  <div>
+                     <input 
+                     type='text'
+                     onChange={updateName}
+                     value={name}
+                     placeholder='Plant Name' />
+                  </div>
+                  <div>
+                     <input 
+                     type='text'
+                     onChange={updateNickname}
+                     value={nickname}
+                     placeholder='Add a Nickname' />
+                  </div>
+                  <div>
+                     <label className='file-input'>
+                        <input
+                        type='file'
+                        accept='image/*'
+                        name='plant-pic'
+                        onChange={updatePic}/>
+                     Upload a Picture
+                     </label>
+                     {(imageLoading) && <p>Loading...</p>}
+                     <div className='plant-pic'>
+                        <img src={plantPic}
+                        style={{width: '200px'}}
+                        />
+                     </div>
+                  </div>
+                  <div>
+                     <textarea
+                     placeholder='Description'
+                     value={description}
+                     onChange={updateDescription}
+                     />
+                  </div>
+                  <div>
+                     <select value={profileId}
+                     onChange={updateProfile}>
+                        <option value='0'>Choose A Plant Profile</option>
+                        {profiles.map((profile, i) => (
+                           <option value={profile.id}>
+                              {profile.common_names[0]}
+                           </option>
+                        ))}
+                     </select>
+                  </div>
+                  <>
+                     <button type='submit'>Add Plant</button>
+                  </>
+               </form>
+            </div>
           </div>
        )
     }

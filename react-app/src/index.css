@@ -4,6 +4,8 @@ p,
 input,
 file-input,
 button,
+select,
+textarea,
 a,
 label {
   font-family: "Dosis", sans-serif;
@@ -12,8 +14,16 @@ label {
   margin: 5px; */
 }
 
-input[file] {
+input[type="file"] {
   display: none;
+}
+
+.file-input {
+  padding: 4px 8px 4px 8px;
+  border: 1px solid rgba(200, 200, 200, 0.6);
+  font-size: 14px;
+  margin: 20px 20px 20px 10px;
+  background-color: white;
 }
 
 form {
@@ -30,18 +40,20 @@ a {
 
 button {
   font-family: "Dosis", sans-serif;
-  padding: 5px;
+  padding: 4px 8px 4px 8px;
   margin: 5px;
   /* font-weight: bold; */
   font-size: 16px;
-  border: none;
-  background-color: green;
+  border: 1px solid rgba(200, 200, 200, 0.6);
+  /* background-color: rgba(8, 32, 16, 0.6); */
+  background-color: white;
+  border-radius: 2px;
 }
 
 h1 {
   /* margin-top: 100px; */
   font-family: "Montserrat", sans-serif;
-  color: green;
+  color: rgba(8, 32, 16, 0.6);
   font-weight: lighter;
 }
 
@@ -62,5 +74,9 @@ td {
 } */
 
 img {
-  border-radius: 4px;
+  border-radius: 2px;
+}
+
+select {
+  background-color: white;
 }

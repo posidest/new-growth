@@ -7,6 +7,7 @@ const EntryForm = () => {
    const [entry, setEntry] = useState({})
    const [plantId, setPlantId] = useState('')
    const [watered, setWatered] = useState(false)
+   const [date, setDate] = useState(null)
    const [fertilized, setFertilized] = useState(false)
    const [location, setLocation] = useState('')
    const [details, setDetails] = useState('')
@@ -22,7 +23,8 @@ const EntryForm = () => {
       const newEntry = {
          'plant_id': id, 
          'watered': watered, 
-         'fertilized': fertilized, 
+         'fertilized': fertilized,
+         'date': date, 
          'location': location, 
          'details': details, 
          'progress_pic': progressPic
@@ -41,7 +43,6 @@ const EntryForm = () => {
       } else {
          setWatered(true)
       }
-      setEntry({...entry, 'watered': watered})
    }
 
    const updateFertilized = (e) => {
@@ -50,18 +51,19 @@ const EntryForm = () => {
       } else {
          setFertilized(true)
       }
-      setEntry({...entry, 'fertilized': fertilized})
    }
 
    const updateLocation = (e) => {
       setLocation(e.target.value)
-      setEntry({...entry, 'location': location}) 
    }
 
 
     const updateDetails = (e) => {
       setDetails(e.target.value)
-      setEntry({...entry, 'details': details})
+   }
+
+   const updateDate = (e) => {
+      setDate(e.target.value)
    }
 
     const updateProgressPic = async (e) => {
@@ -125,6 +127,12 @@ const EntryForm = () => {
                // value={fertilized}
                onClick={updateFertilized}/>
             </div>
+            {/* <div>
+               <input
+               type='date'
+               onChange={updateDate}
+               value={date}/>
+            </div> */}
             <div>
                <input
                type='text'

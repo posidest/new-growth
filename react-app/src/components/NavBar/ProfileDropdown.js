@@ -5,7 +5,7 @@ import LogoutButton from '../auth/LogoutButton.js'
 
 const ProfileButton = () => {
     const [showMenu, setShowMenu] = useState(false);
-   
+    
 
     const openMenu = () => {
         if (showMenu) return;

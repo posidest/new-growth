@@ -37,16 +37,18 @@ const NavBar = () => {
             <i className="fas fa-leaf fa-2x" style={{color: 'rgba(8, 32, 16, 0.6)'}}></i>
           </NavLink>
         </div>
-        <div className='search'>
+        <div>
           <form onSubmit={search}>
-            <input type='text'
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder='search common plant names'
-            />
-            <button type='submit'>
-            <i className="fas fa-search"></i>
-            </button>
+            <div className='search'>
+              <input type='text'
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder='search common plant names'
+              />
+              <button type='submit'>
+              <i className="fas fa-search"></i>
+              </button>
+            </div>
           </form>
         </div>
         <div className='navatar'>
