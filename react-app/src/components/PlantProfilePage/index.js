@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {showProfile} from '../../store/profile';
+import {showProfiles} from '../../store/profile';
 import {useParams} from 'react-router-dom';
 import '../PlantProfile/PlantProfile.css';
 import IndividualPlant from '../PlantPage/IndividualPlant'
@@ -8,11 +8,20 @@ import IndividualPlant from '../PlantPage/IndividualPlant'
 const PlantProfilePage = () => {
    const dispatch = useDispatch();
    const {id} = useParams();
-   const [loaded, setLoaded] = useState(false)
    const [profile, setProfile] = useState(null)
    const [showPlants, setShowPlants] = useState(false)
- 
-   console.log(id, 'id from plantprofile page')
+   
+   const stringifier = (arr) => {
+      let str = '';
+      arr.forEach((el) => {
+         if (el === arr[arr.length - 1]) {
+            str+= el
+            return str
+         }
+         str+= el + ', '
+      })
+      return str;
+   }
 
    const getProfile = async (id) => {
       const res = await fetch(`/api/profiles/${id}`)
@@ -24,24 +33,9 @@ const PlantProfilePage = () => {
          return profile;
    }
 }
-
-   useEffect(() => {
-      getProfile(id)
-   }, [])
-   // const profileGetter = async (id) => {
-   //    const oneProfile = await dispatch(showProfile(id))
-   //    await setProfile(oneProfile)
-   //    await console.log(profile)
-   //    return profile;
-   // }
-
-
-
-   // useEffect(async() => {
-   //    profileGetter(id)
-   // },[])
-   
-
+   useEffect(async() => {
+      await getProfile(id)
+   },[])
 
 
    const displayPlants = (e) => {
@@ -49,9 +43,11 @@ const PlantProfilePage = () => {
       setShowPlants(true)
    }
 
-   
-   // const profile = useSelector((state) => state.profile);
       if(profile) {
+         const names = stringifier(profile.common_names)
+         const pests = stringifier(profile.pests)
+         const propogations = stringifier(profile.propogation_methods)
+
          return (
             <div>
                <h1>Plant Profile</h1>
@@ -67,7 +63,7 @@ const PlantProfilePage = () => {
                         <tbody>
                            <tr>
                               <td>Common Names</td>
-                              <td>{profile.common_names}</td>
+                              <td>{names}</td>
                            </tr>
                            <tr>
                               <td>Genus Species</td>
@@ -103,11 +99,11 @@ const PlantProfilePage = () => {
                            </tr>
                            <tr>
                               <td>Pests</td>
-                              <td>{profile.pests}</td>
+                              <td>{pests}</td>
                            </tr>
                            <tr>
                               <td>Propogation Methods</td>
-                              <td>{profile.propogation_methods}</td>
+                              <td>{propogations}</td>
                            </tr>
                            <tr>
                               <td>Toxic to pets?</td>

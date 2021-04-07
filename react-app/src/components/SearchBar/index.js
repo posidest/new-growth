@@ -8,6 +8,7 @@ import './SearchBar.css'
       const dispatch = useDispatch()
       const [results, setResults] = useState(null)
       const [query, setQuery] = useState('')
+      const [value, setValue] = useState('')
       let profiles = useSelector((state) => state.profile.profiles)
       if (profiles) {
          profiles = profiles['profile']
@@ -21,7 +22,7 @@ import './SearchBar.css'
             profile.common_names.forEach((name) => {
                names.push(...name.toLowerCase().split(' '))
             })
-            if (names.includes(query[0]) || names.includes(query[1])) {
+            if (names.includes(value[0]) || names.includes(value[1])) {
                searchResults.push(profile)
             }
          })
@@ -35,8 +36,10 @@ import './SearchBar.css'
       },[])
 
       const updateSearch = (e) => {
-         setQuery(e.target.value.toLowerCase().split(' '))
+         setQuery(e.target.value)
+         setValue(e.target.value.toLowerCase().split(' '))
       }
+
       if (profiles) {
          return (
          <div className='search-page'>

@@ -35,7 +35,7 @@ const PlantProfile = ({profileId}) => {
          const propogations = stringifier(profile.propogation_methods)
 
          return (
-            <div>
+            <div className='profile-component'>
                <h2>{profile.genus_species}</h2>
                   <div className='img'>
                      <img 
