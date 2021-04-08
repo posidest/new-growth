@@ -15,7 +15,7 @@ const Dashboard = () => {
 
    if (me) {
       return (
-      <>
+      <div className='dashboard'>
          <div>
             <DashNav me={me}/>   
          </div>
@@ -35,7 +35,7 @@ const Dashboard = () => {
                <UsersPlants />
             </div>
          </div>
-      </>
+      </div>
       )
    } else {
       return (

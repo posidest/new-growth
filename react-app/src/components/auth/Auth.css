@@ -1,3 +1,15 @@
 .auth {
   margin-top: 100px;
 }
+
+.sign-up-page {
+  background: url("../../images/Peperomia_perciliata.jpg") center no-repeat;
+  background-size: cover;
+  height: 900px;
+}
+
+.login-page {
+  background: url("../../images/maiden-hair.jpg") center no-repeat;
+  background-size: cover;
+  height: 1000px;
+}

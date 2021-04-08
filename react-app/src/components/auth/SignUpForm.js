@@ -84,80 +84,83 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div className='auth'>
-        <label>User Name</label>
-        <input
-          type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div className='uploadDiv'>
-        <label>Upload an avatar:</label>
-        <input
-          type="file"
-          name="avatar"
-          accept="image/*"
-          placeholder="Avatar"
-          onChange={updateAvatar}
-        ></input>
-        {(imageLoading)&& <p>Loading...</p>}
-          <div className='avatar'>
-            <img 
-            src={avatar}
-            style={{width: '200px', borderRadius: '50%'}}
-            />
-          </div>
-      </div>
-      <div>
-        <textarea
-          name="bio"
-          onChange={updateBio}
-          placeholder="Biography"
-          value={bio}
-        ></textarea>
-      </div>
-      <div>
-        <label>Hardiness Zone</label>
-        <input
-          type="number"
-          name='zone'
-          onChange={updateZone}
-          value={zone}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+    <div className='sign-up-page'>
+      <form onSubmit={onSignUp}>
+        <div className='auth'>
+          <label>User Name</label>
+          <input
+            type="text"
+            name="username"
+            onChange={updateUsername}
+            value={username}
+          ></input>
+        </div>
+        <div>
+          <label>Email</label>
+          <input
+            type="text"
+            name="email"
+            onChange={updateEmail}
+            value={email}
+          ></input>
+        </div>
+        <div className='uploadDiv'>
+          <label>Upload an avatar:</label>
+          <input
+            type="file"
+            name="avatar"
+            accept="image/*"
+            placeholder="Avatar"
+            onChange={updateAvatar}
+          ></input>
+          {(imageLoading)&& <p>Loading...</p>}
+            <div className='avatar'>
+              <img 
+              src={avatar}
+              style={{width: '200px', borderRadius: '50%'}}
+              />
+            </div>
+        </div>
+        <div>
+          <textarea
+            name="bio"
+            onChange={updateBio}
+            placeholder="Biography"
+            value={bio}
+          ></textarea>
+        </div>
+        <div>
+          <label>Hardiness Zone</label>
+          <input
+            type="number"
+            name='zone'
+            onChange={updateZone}
+            value={zone}
+          ></input>
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            onChange={updatePassword}
+            value={password}
+          ></input>
+        </div>
+        <div>
+          <label>Repeat Password</label>
+          <input
+            type="password"
+            name="repeat_password"
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          ></input>
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+
+    </div>
   );
 };
 

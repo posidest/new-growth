@@ -7,6 +7,7 @@
   background-size: cover;
   position: fixed;
   top: 0;
+  /* background-color: rgba(8, 32, 16, 0.6); */
 }
 
 .login-btn a,
@@ -52,3 +53,7 @@
   position: absolute;
   left: 140px;
 } */
+
+.nav-bar a {
+  padding-top: 5px;
+}

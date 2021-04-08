@@ -21,6 +21,7 @@ import './SearchBar.css'
             let names = []
             profile.common_names.forEach((name) => {
                names.push(...name.toLowerCase().split(' '))
+               names.push(...profile.genus_species.toLowerCase().split(' '))
             })
             if (names.includes(value[0]) || names.includes(value[1])) {
                searchResults.push(profile)

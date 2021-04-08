@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {useParams, Redirect, useHistory} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {showPlant} from '../../store/plant'
 import {createEntry} from '../../store/entry'
+import './EntryForm.css'
 
 const EntryForm = () => {
    const [entry, setEntry] = useState({})
@@ -17,6 +19,12 @@ const EntryForm = () => {
    const dispatch = useDispatch()
    const history = useHistory()   
    console.log(id, 'this is the id from the entry form')
+
+   useEffect(() => {
+      dispatch(showPlant(id))
+   })
+
+   const plant = useSelector((state) => state.plant.currentPlant)
 
    const postEntry = (e) => {
       e.preventDefault()
@@ -93,68 +101,75 @@ const EntryForm = () => {
       }
     };
 
-   return (
-      <div>
-         <h1>Make Care Entry</h1>
-         <form onSubmit={postEntry}>
-            <div>
-               <label className='file-input'>
-                  <input
-                  type='file'
-                  accept='image/*'
-                  name='plant-pic'
-                  onChange={updateProgressPic}/>
-               Upload a Progress Picture
-               </label>
-                  {(imageLoading) && <p>Loading...</p>}
-                   <div className='progress-pic'>
-                      <img src={progressPic}
-                      style={{width: '200px'}}
-                      />
+    if (plant) {
+       console.log(plant)
+      return (
+         <div style={{background: `url(${plant.plant_pic}) center no-repeat`, backgroundSize: 'cover', height: '900px'}}>
+            <h1>Make Care Entry</h1>
+            <form onSubmit={postEntry}>
+               <div>
+                  <label className='file-input'>
+                     <input
+                     type='file'
+                     accept='image/*'
+                     name='plant-pic'
+                     onChange={updateProgressPic}/>
+                  Upload a Progress Picture
+                  </label>
+                     {(imageLoading) && <p>Loading...</p>}
+                      <div className='progress-pic'>
+                         <img src={progressPic}
+                         style={{width: '200px'}}
+                         />
+                     </div>
                   </div>
+               <div>
+                  <label>Watered?</label>
+                  <input 
+                  type='checkbox'
+                  // value={watered}
+                  onClick={updateWatered}/>
                </div>
-            <div>
-               <label>Watered?</label>
-               <input 
-               type='checkbox'
-               // value={watered}
-               onClick={updateWatered}/>
-            </div>
-            <div>
-               <label>Fertilized?</label>
-               <input
-               type='checkbox'
-               // value={fertilized}
-               onClick={updateFertilized}/>
-            </div>
-            <div>
-               <input
-               type='date'
-               onChange={updateDate}
-               value={date}/>
-            </div>
-            <div>
-               <input
-               type='text'
-               value={location}
-               placeholder='Location'
-               onChange={updateLocation}/>
-            </div>
-            <div>
-               <textarea
-               value={details}
-               placeholder='Details...'
-               onChange={updateDetails}
-               />
-            </div>
-            <div>
-               <button type='submit'>
-                  Add Entry
-               </button>
-            </div>
-         </form>
-   </div>
-   )
+               <div>
+                  <label>Fertilized?</label>
+                  <input
+                  type='checkbox'
+                  // value={fertilized}
+                  onClick={updateFertilized}/>
+               </div>
+               <div>
+                  <input
+                  type='date'
+                  onChange={updateDate}
+                  value={date}/>
+               </div>
+               <div>
+                  <input
+                  type='text'
+                  value={location}
+                  placeholder='Location'
+                  onChange={updateLocation}/>
+               </div>
+               <div>
+                  <textarea
+                  value={details}
+                  placeholder='Details...'
+                  onChange={updateDetails}
+                  />
+               </div>
+               <div>
+                  <button type='submit'>
+                     Add Entry
+                  </button>
+               </div>
+            </form>
+      </div>
+      )
+    } else {
+       return (
+          <h1>loading...</h1>
+       )
+    }
 }
 
 
