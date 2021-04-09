@@ -1,9 +1,21 @@
 import React, { useState } from "react";
+import Modal from 'react-modal';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
+import HardinessZone from './HardinessZone'
 import './Auth.css'
 import {useDispatch, useSelector} from 'react-redux'
 
+const customStyles = {
+content : {
+  top                   : '50%',
+  left                  : '50%',
+  right                 : 'auto',
+  bottom                : 'auto',
+  marginRight           : '-50%',
+  transform             : 'translate(-50%, -50%)'
+}
+};
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
@@ -11,15 +23,18 @@ const SignUpForm = () => {
   const [avatar, setAvatar] = useState(null);
   const [bio, setBio] = useState('');
   const [zone, setZone] = useState('');
+  const [showZone, setShowZone] = useState(false)
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
   const dispatch = useDispatch()
   
-  const onSignUp = async (e) => {
+
+
+  const onSignUp = (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      await dispatch(signUp({username, email, avatar, bio, zone, password}));
+      dispatch(signUp({username, email, avatar, bio, zone, password}));
       // if (!user.errors) {
       //   setAuthenticated(true);
       // }
@@ -27,6 +42,12 @@ const SignUpForm = () => {
   };
 
   const me = useSelector((state) => state.session.user)
+
+
+  const showMap = (e) => {
+    setShowZone(!showZone)
+  }
+
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -67,7 +88,9 @@ const SignUpForm = () => {
   };
 
   const updateZone = (e) => {
-    setZone(e.target.value);
+    let { value, min, max } = e.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
+    setZone(value);
   };
 
 
@@ -86,26 +109,32 @@ const SignUpForm = () => {
   return (
     <div className='sign-up-page'>
       <form onSubmit={onSignUp}>
+        <h1>Sign Up</h1>
         <div className='auth'>
-          <label>User Name</label>
+          {/* <label>User Name</label> */}
           <input
             type="text"
             name="username"
             onChange={updateUsername}
             value={username}
+            placeholder='User Name'
           ></input>
         </div>
         <div>
-          <label>Email</label>
+          {/* <label>Email</label> */}
           <input
             type="text"
             name="email"
             onChange={updateEmail}
             value={email}
+            placeholder='Email'
           ></input>
         </div>
         <div className='uploadDiv'>
-          <label>Upload an avatar:</label>
+          <label 
+          className='file-input'
+          style={{color: 'black'}}>
+            Upload an avatar
           <input
             type="file"
             name="avatar"
@@ -113,6 +142,7 @@ const SignUpForm = () => {
             placeholder="Avatar"
             onChange={updateAvatar}
           ></input>
+          </label>
           {(imageLoading)&& <p>Loading...</p>}
             <div className='avatar'>
               <img 
@@ -129,32 +159,55 @@ const SignUpForm = () => {
             value={bio}
           ></textarea>
         </div>
-        <div>
-          <label>Hardiness Zone</label>
+        <div className='zone'>
+          {/* <label>Hardiness Zone</label> */}
           <input
             type="number"
             name='zone'
             onChange={updateZone}
             value={zone}
+            min='1'
+            max='13'
+            placeholder='Hardiness Zone'
           ></input>
-        </div>
+              <div
+              className='zone'>
+              <p
+              onClick={showMap}
+              title='Show Map'>
+                What's this?
+                </p>
+              </div>
+          </div>
+          {showZone && (
+            <Modal
+            isOpen={showZone}
+            onRequestClose={showMap}
+            style={customStyles}
+            contentLabel='Hardiness Zones'
+            >
+              <HardinessZone />
+            </Modal>
+          )}
         <div>
-          <label>Password</label>
+          {/* <label>Password</label> */}
           <input
             type="password"
             name="password"
             onChange={updatePassword}
             value={password}
+            placeholder='Password'
           ></input>
         </div>
         <div>
-          <label>Repeat Password</label>
+          {/* <label>Repeat Password</label> */}
           <input
             type="password"
             name="repeat_password"
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
+            placeholder='Repeat Password'
           ></input>
         </div>
         <button type="submit">Sign Up</button>

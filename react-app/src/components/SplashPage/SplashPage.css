@@ -16,6 +16,8 @@
   /* margin-top: 200px; */
   font-size: 5em;
   color: white;
+  font-weight: bold;
+  /* font-style: italic; */
 }
 
 .center p {
@@ -44,7 +46,8 @@
   border-radius: 2px;
   margin-top: 200px;
   height: 400px;
-  width: 500px;
+  width: 540px;
+  text-align: center;
 }
 
 .login,
@@ -55,7 +58,11 @@
   height: 30px;
   box-sizing: border-box;
 }
-
+/* 
 .animation {
   text-align: center;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 40px;
+} */

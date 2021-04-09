@@ -10,7 +10,7 @@ function Animation() {
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
   const [messageNum, setMessageNum] = useState(0)
-  const messages = ["New Growth is a place to track your plants' growth!", 'Discover plants and care information', 'Compare notes with your friends!']
+  const messages = ["new growth is a place to track your plants' growth!", 'discover plants and care information', 'compare notes with other gardeners!']
   const history = useHistory()
   const getStarted = (e) => {
     history.push('/sign-up')
@@ -38,30 +38,23 @@ function Animation() {
         onEnter={() => setShowButton(false)}
         onExited={() => setShowButton(true)}
       >
-        {/* {messages.map((message) => ( */}
         <Alert
           variant="primary"
           dismissible
           onClose={() => setShowMessage(false)}
         >
-          {/* <Alert.Heading>
-            Animated alert message
-          </Alert.Heading> */}
-          <p>
+          <p className='message'>
             {messages[messageNum]}
           </p>
           {messageNum < 3 && (
           <Button onClick={next}>
-            Tell me more!
+            tell me more!
           </Button>
           )}
           <Button onClick={getStarted}>
-            Get Started!
+            get started!
           </Button>
-        </Alert>
-
-        {/* ))} */}
-
+         </Alert>
       </CSSTransition>
     </Container>
   );

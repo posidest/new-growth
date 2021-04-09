@@ -39,11 +39,16 @@
   align-self: center;
 }
 
-.entry-form label {
+/* .entry-form label {
   color: white;
-}
+} */
 
 .file-input {
   margin-top: 20px;
   color: black;
+}
+
+.fertilized label,
+.watered label {
+  color: white;
 }

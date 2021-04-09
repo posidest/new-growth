@@ -8,7 +8,7 @@ import './Dashboard.css'
 const Dashboard = () => {
  
    const me = useSelector((state) => state.session.user)
-
+  
    const addPlant = (e) => {  
       return <Redirect to='/plants/new'/>
    }
@@ -22,7 +22,6 @@ const Dashboard = () => {
          <div className='dash'>
             <div 
             className='user-info'
-            // style={{marginTop: '100px'}}
             >
                <img src={me.avatar}
                style={{width:'200px', height:'200px', borderRadius: '50%'}}

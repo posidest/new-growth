@@ -54,7 +54,6 @@ const PlantPage = () => {
       }
    }
 
-
    if (plant) {
 
       return (
@@ -68,24 +67,30 @@ const PlantPage = () => {
                />
                <p>{plant.description}</p>
             </div>
-            {plant.profile_id && (
-               <div className='plant-profile'>
-                  <button onClick={displayProfile} type='button'>Show Profile Details </button>
-                  {showProfile && (
-                  <PlantProfile profileId={plant.profile_id}/> 
+            <div className='buttons'>
+               {plant.profile_id && (
+                     <>
+                     <button onClick={displayProfile} type='button'>Show Profile Details </button>
+                     <div className='plant-profile'>
+                        {showProfile && (
+                         <PlantProfile profileId={plant.profile_id}/> 
+                        )}
+                     </div>
+                     </>
                   )}
-               </div>
-            )}
-            <div className='tend-btn'>
-               <button type='button'>
-               <Link to={`/plants/${id}/tend`}>
-                  Tend to me
-                  </Link>
-               </button>   
-               {/* <button type='button' onClick={tend}>Tend to me</button> */}
+               {plant.user_id === me.id && (
+                  <>
+                  <button type='button'>
+                  <Link to={`/plants/${id}/tend`}>
+                     Tend to me
+                     </Link>
+                  </button>   
+                  {/* <button type='button' onClick={tend}>Tend to me</button> */}
+                  </>
+               )}
             </div>
             {entries.map((entry) => (
-               <div key={entry.id}>
+               <div key={entry.id} className='individual-entry'>
                   {entry.watered && (
                      <i className="fas fa-tint" style={{color: 'deepskyblue'}}></i>
                   )}
@@ -98,7 +103,8 @@ const PlantPage = () => {
                   style={{width: '400px'}}
                   />
                   )}
-                  <h4>{`Location: ${entry.location}`}</h4>
+                  <h4>{entry.date}</h4>
+                  <p>{`Location: ${entry.location}`}</p>
                   <p>{entry.details}</p>
                   <div 
                   onClick={deleteEntry} 

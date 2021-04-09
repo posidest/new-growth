@@ -16,8 +16,6 @@ const SplashPage = () => {
       <div className='splash'>
          <div className='center'>
             <h1>new growth</h1>
-            {/* <p>how does your garden grow?</p> */}
-            {/* <p>learn, share, tend, grow.</p> */}
             <div className='animation'>
                <Animation />
             </div>

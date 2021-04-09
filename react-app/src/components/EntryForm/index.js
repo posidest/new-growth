@@ -124,14 +124,14 @@ const EntryForm = () => {
                            />
                         </div>
                      </div>
-                  <div>
+                  <div className='watered'>
                      <label>Watered?</label>
                      <input 
                      type='checkbox'
                      // value={watered}
                      onClick={updateWatered}/>
                   </div>
-                  <div>
+                  <div className='fertilized'>
                      <label>Fertilized?</label>
                      <input
                      type='checkbox'

@@ -23,3 +23,9 @@
 button.close {
   display: none;
 }
+
+.message {
+  font-size: 10pt;
+  width: 500px;
+  text-align: center;
+}
