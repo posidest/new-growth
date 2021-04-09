@@ -1,15 +1,59 @@
-.auth {
+/* .auth {
   margin-top: 100px;
-}
+} */
 
 .sign-up-page {
   background: url("../../images/Peperomia_perciliata.jpg") center no-repeat;
-  background-size: cover;
-  height: 900px;
 }
 
 .login-page {
   background: url("../../images/maiden-hair.jpg") center no-repeat;
+}
+
+.sign-up-page,
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-size: cover;
   height: 1000px;
+}
+
+.sign-up-page form,
+.login-page form {
+  background-color: rgba(8, 32, 16, 0.4);
+  margin-top: 200px;
+  padding: 20px 20px 30px 20px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.4);
+}
+
+.sign-up-page h1,
+.login-page h1 {
+  color: white;
+  text-align: center;
+}
+
+.sign-up-page input,
+.sign-up-page textarea,
+.login-page input {
+  margin: 10px;
+  border-radius: 2px;
+  width: 200px;
+  border: 1px solid rgba(200, 200, 200, 0.4);
+}
+
+.sign-up-page button,
+.login-page button {
+  margin-top: 40px;
+  align-self: center;
+}
+
+.file-input {
+  margin-top: 20px;
+}
+
+.sign-up-page label,
+.login-page label {
+  color: white;
 }

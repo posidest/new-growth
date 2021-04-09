@@ -21,18 +21,6 @@ const SplashPage = () => {
             <div className='animation'>
                <Animation />
             </div>
-            {/* <div className='auth-btns'>
-               <div className='login'>
-                  <NavLink to="/login" exact={true} activeClassName="active">
-                     Login
-                  </NavLink>
-               </div>
-               <div className='sign-up'>
-                  <NavLink to="/sign-up" exact={true} activeClassName="active">
-                     Sign Up
-                  </NavLink>
-               </div>
-            </div> */}
          </div>
       </div>
    )

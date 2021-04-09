@@ -13,8 +13,8 @@
   /* align-items: center; */
   /* justify-content: center; */
   padding: 20px;
-  border: 1px solid rgba(200, 200, 200, 0.6);
-  box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.6);
+  border: 1px solid rgba(200, 200, 200, 0.4);
+  box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.4);
   position: absolute;
   left: 40px;
   top: 80px;
@@ -22,7 +22,7 @@
 }
 
 .user-info h4 {
-  color: rgba(8, 32, 16, 0.6);
+  color: rgba(8, 32, 16, 0.4);
 }
 
 .plants {
@@ -40,9 +40,9 @@
 .single-plant {
   margin: 20px;
   padding: 0 20px 0 20px;
-  border: 1px solid rgba(200, 200, 200, 0.6);
+  border: 1px solid rgba(200, 200, 200, 0.4);
   border-radius: 2px;
-  box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.6);
+  box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.4);
 }
 
 .dash-nav {
@@ -53,14 +53,14 @@
   box-sizing: border-box;
   justify-content: space-around;
   /* background-color: green; */
-  background-color: rgba(8, 32, 16, 0.6);
+  background-color: rgba(8, 32, 16, 0.4);
 }
 
 .plant-header {
   text-align: center;
   margin-top: 40px;
   font-weight: lighter;
-  color: rgba(8, 32, 16, 0.6);
+  color: rgba(8, 32, 16, 0.4);
 }
 
 .dash-nav a {
