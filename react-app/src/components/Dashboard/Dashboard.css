@@ -1,12 +1,15 @@
 .user-info {
   display: flex;
   flex-direction: column;
+  background: white;
+  height: fit-content;
   padding: 20px;
   border: 1px solid rgba(200, 200, 200, 0.6);
-  box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.6);
+  /* box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.6); */
+  box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.1);
   border-radius: 2px;
   margin-top: 40px;
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
 .user-info h4 {
@@ -17,21 +20,33 @@
 
 .plants {
   display: flex;
-  margin-top: 40px;
+  margin: 40px 0 40px 20px;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
   text-align: center;
   grid-column-start: 3;
   grid-column-end: 6;
 }
 
-.single-plant {
-  margin: 20px;
-  padding: 0 20px 0 20px;
+.single-plant a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px 20px 20px;
+  text-align: center;
+  padding: 0 0 20px 0;
   border: 1px solid rgba(200, 200, 200, 0.6);
   border-radius: 2px;
   box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.6);
+  background-color: white;
+  height: fit-content;
+}
+
+.single-plant a p {
+  width: 250px;
+  color: rgba(8, 32, 16, 1);
 }
 
 .dash-nav {
@@ -61,6 +76,8 @@
 
 .dash {
   display: grid;
+  background: rgba(8, 32, 16, 0.2);
+  height: 4000px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   width: 100%;
 }

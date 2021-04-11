@@ -4,8 +4,9 @@ import {showProfile} from '../../store/profile';
 import {useParams} from 'react-router-dom';
 import './PlantProfile.css';
 
-const PlantProfile = ({profileId}) => {
 
+
+const PlantProfile = ({profileId}) => {
    let profiles = useSelector((state) => state.profile.profiles);
    if (profiles) {
       profiles = profiles['profile']
@@ -51,51 +52,51 @@ const PlantProfile = ({profileId}) => {
                      <table>
                         <tbody>
                            <tr>
-                              <td>Common Names</td>
+                              <td className='title'>Common Names</td>
                               <td>{names}</td>
                            </tr>
                            <tr>
-                              <td>Genus Species</td>
+                              <td className='title'>Genus Species</td>
                               <td>{profile.genus_species}</td>
                            </tr>
                            <tr>
-                              <td>Family</td>
+                              <td className='title'>Family</td>
                               <td>{profile.family}</td>
                            </tr>
                            <tr>
-                              <td>Native Range</td>
+                              <td className='title'>Native Range</td>
                               <td>{profile.native_range}</td>
                            </tr>
                            <tr>
-                              <td>Temperature Range</td>
+                              <td className='title'>Temperature Range</td>
                               <td>{profile.temp_range}</td>
                            </tr>
                            <tr>
-                              <td>Light</td>  
+                              <td className='title'>Light</td>  
                               <td>{profile.light}</td>
                            </tr>
                            <tr>
-                              <td>Soil Type</td>   
+                              <td className='title'>Soil Type</td>   
                               <td>{profile.soil_type}</td>
                            </tr>
                            <tr>
-                              <td>Water</td>
+                              <td className='title'>Water</td>
                               <td>{profile.water_when}</td>
                            </tr>
                            <tr>
-                              <td>Fertilization</td>
+                              <td className='title'>Fertilization</td>
                               <td>{profile.fertilization}</td>
                            </tr>
                            <tr>
-                              <td>Pests</td>
+                              <td className='title'>Pests</td>
                               <td>{pests}</td>
                            </tr>
                            <tr>
-                              <td>Propogation Methods</td>
+                              <td className='title'>Propogation Methods</td>
                               <td>{propogations}</td>
                            </tr>
                            <tr>
-                              <td>Toxic to pets?</td>
+                              <td className='title'>Toxic to pets?</td>
                               <td>{toxic}</td>
                            </tr>
                         </tbody>

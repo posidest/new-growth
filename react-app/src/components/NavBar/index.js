@@ -25,16 +25,17 @@ const NavBar = () => {
       <>
         <div className='home-btn'>
           <NavLink to="/" exact={true} activeClassName="active">
-            <i className="fas fa-leaf fa-2x" style={{color: 'rgba(8, 32, 16, 0.6)'}}></i>
+            <i className="fas fa-leaf fa-2x" 
+            style={{color: 'rgba(8, 32, 16, 0.6)'}}
+            // style={{color: 'white'}}
+            ></i>
           </NavLink>
         </div>
-        <div className='right-btns'>
-          <div className='navatar'>
-            <ProfileButton />
-          </div>
-          <div className='logout-btn'>
-            <LogoutButton />
-          </div>
+        <div className='navatar'>
+          <ProfileButton />
+        </div>
+        <div className='logout-btn'>
+          <LogoutButton />
         </div>
       </>
     )
@@ -45,18 +46,23 @@ const NavBar = () => {
       <>
         <div className='home-btn'>
           <NavLink to="/" exact={true} activeClassName="active">
-            <i className="fas fa-leaf fa-2x" style={{color: 'rgba(8, 32, 16, 0.6)'}}></i>
+            <i className="fas fa-leaf fa-2x" 
+            style={{color: 'rgba(8, 32, 16, 0.6)'}}
+            // style={{color: 'white'}}
+            ></i>
           </NavLink>
         </div>
-        <div className='login-btn'>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
-        </div>
-        <div className='sign-up-btn'>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
+        <div className='auth-btns'>
+          <div className='login-btn'>
+            <NavLink to="/login" exact={true} activeClassName="active">
+              Login
+            </NavLink>
+          </div>
+          <div className='sign-up-btn'>
+            <NavLink to="/sign-up" exact={true} activeClassName="active">
+              Sign Up
+            </NavLink>
+          </div>
         </div>
       </>
     )

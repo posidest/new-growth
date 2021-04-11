@@ -26,7 +26,6 @@ function Animation() {
         <Button
           onClick={() => setShowMessage(true)}
           size="lg"
-          style={{padding: '4px 8px 4px 8px'}}
         >
           what is new growth?
         </Button>

@@ -1,7 +1,7 @@
 .entry-form {
   background-color: rgba(8, 32, 16, 0.5);
-  margin-top: 200px;
-  padding: 20px 20px 40px 20px;
+  margin-top: 160px;
+  padding: 10px 30px 40px 30px;
   border-radius: 2px;
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.5);
   display: flex;
@@ -11,9 +11,7 @@
 }
 
 .entry-form h1 {
-  /* margin-top: 100px; */
   color: white;
-  text-align: center;
 }
 
 .entry-form input,
@@ -21,34 +19,42 @@
 .entry-form select {
   margin: 10px;
   border-radius: 2px;
-  width: 180px;
+  width: 200px;
   border: 1px solid rgba(200, 200, 200, 0.6);
 }
 
 .entry-form-page {
-  background: url("../../images/fuzzy.jpg") center no-repeat;
-  background-size: cover;
-  height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .entry-form button {
-  margin-top: 40px;
-  align-self: center;
-}
-
-/* .entry-form label {
-  color: white;
-} */
-
-.file-input {
   margin-top: 20px;
-  color: black;
 }
 
 .fertilized label,
 .watered label {
   color: white;
+}
+
+.checks input {
+  width: 20px;
+}
+
+.watered,
+.fertilized {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.entry-form-buttons {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.entry-form-buttons button {
+  margin: 40px 10px 0 10px;
 }

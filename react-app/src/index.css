@@ -9,16 +9,15 @@ select,
 textarea,
 label {
   font-family: "Dosis", sans-serif;
-  font-weight: lighter;
-  font-size: 12px;
+  /* font-weight: lighter; */
+  font-size: 14px;
+  color: rgba(8, 32, 16, 1);
 }
 
 a,
 button {
   font-family: "Dosis", sans-serif;
-  font-size: 14px;
-  box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.6);
-  font-weight: bold;
+  font-size: 15px;
 }
 
 input[type="file"] {
@@ -26,12 +25,14 @@ input[type="file"] {
 }
 
 .file-input {
-  padding: 4px 8px 4px 8px;
-  border: 1px solid rgba(200, 200, 200, 0.6);
-  font-size: 14px;
+  padding: 6px 10px 7px 10px;
+  border: 0.5px solid rgba(200, 200, 200, 0.6);
+  font-size: 15px;
   margin: 20px 20px 20px 10px;
   background-color: white;
-  border-radius: 2px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: rgba(8, 32, 16, 0.6);
 }
 
 form {
@@ -43,36 +44,42 @@ form {
 a {
   color: rgba(8, 32, 16, 0.6);
   text-decoration: none;
-  padding: 4px 8px 4px 8px;
-  border: 1px solid rgba(200, 200, 200, 0.6);
-  background-color: white;
-  border-radius: 2px;
-  padding: 8px 12px 8px 12px;
 }
 
 button {
-  padding: 8px 16px 8px 16px;
-  font-size: 14px;
-  border: 1px solid rgba(200, 200, 200, 0.6);
+  padding: 6px 10px 7px 10px;
+  /* font-size: 14px; */
+  font-weight: bold;
+  /* border: 1px solid rgba(200, 200, 200, 0.6); */
+  border: 0.5px solid rgba(8, 32, 16, 0.2);
+  box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.2);
   background-color: white;
-  border-radius: 2px;
+  color: rgba(8, 32, 16, 0.8);
+  /* background-color: rgba(8, 32, 16, 0.2); */
+  border-radius: 20px;
+  /* background-color: rgba(8, 32, 16, 0.6); */
+  /* height: 40px;
+  width: 180px; */
+  /* border-radius: 4px; */
+  /* color: white; */
 }
 
 h1 {
-  font-family: "Raleway", sans-serif;
   color: rgba(8, 32, 16, 0.6);
-  /* font-weight: lighter; */
+  font-family: "Raleway", sans-serif;
 }
 
 h4,
 h2,
 h3 {
-  font-family: "Dosis", sans-serif;
+  color: rgba(8, 32, 16, 0.8);
+  font-family: "Raleway", sans-serif;
 }
 
 td {
   font-family: "Dosis", sans-serif;
   font-weight: lighter;
+  font-size: 13px;
 }
 
 img {
@@ -82,11 +89,9 @@ img {
 
 select {
   background-color: white;
-  box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.6);
 }
 
 input {
   padding: 5px;
   width: 200px;
-  box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.6);
 }

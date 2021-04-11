@@ -8,7 +8,6 @@ import './Dashboard.css'
 const Dashboard = () => {
  
    const me = useSelector((state) => state.session.user)
-  
    const addPlant = (e) => {  
       return <Redirect to='/plants/new'/>
    }

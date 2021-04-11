@@ -18,11 +18,15 @@
 
 .sign-up-form,
 .login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: rgba(8, 32, 16, 0.6);
-  margin-top: 100px;
-  padding: 20px 20px 30px 20px;
+  margin-top: 150px;
+  padding: 10px 30px 40px 30px;
   border-radius: 2px;
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.6);
+  text-align: center;
 }
 
 .sign-up-form h1,
@@ -42,12 +46,8 @@
 
 .sign-up-form button,
 .login-form button {
-  margin-top: 40px;
-  align-self: center;
-}
-
-.file-input {
   margin-top: 20px;
+  align-self: center;
 }
 
 .sign-up-page label,
@@ -71,8 +71,8 @@
   flex-direction: column;
 }
 
-.avatar img {
-  margin: 40px 0 20px 0;
+img {
+  /* margin: 20px 20px 30px 20px; */
   align-self: center;
 }
 
@@ -81,9 +81,12 @@
   width: 200px;
 }
 
-.sign-up-form div,
-.login-form div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.sign-up-form p {
+  /* padding: 0 10px 7px 10px; */
+  font-size: 15px;
+  color: white;
+  font-style: italic;
+  font-weight: bold;
+  /* background-color: rgba(8, 32, 16, 1);
+  border-radius: 20px; */
 }

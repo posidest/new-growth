@@ -1,10 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {useParams, Link} from 'react-router-dom'
+import Modal from 'react-modal';
 import PlantProfile from '../PlantProfile'
 import EntryForm from '../EntryForm'
 import {showEntries} from '../../store/entry';
 import './PlantPage.css'
+
+const customStyles = {
+content : {
+top                   : '50%',
+left                  : '50%',
+right                 : 'auto',
+bottom                : 'auto',
+marginRight           : '-50%',
+transform             : 'translate(-50%, -50%)'
+}
+};
 
 const PlantPage = () => {
    
@@ -47,11 +59,7 @@ const PlantPage = () => {
    }, [])
 
    const displayProfile = (e) => {
-      if (showProfile) {
-         setShowProfile(false)
-      } else {
-         setShowProfile(true)
-      }
+      setShowProfile(!showProfile)
    }
 
    if (plant) {
@@ -85,12 +93,9 @@ const PlantPage = () => {
             </div>
                {showProfile && (
                   <div className='plant-profile'>
-                           {showProfile && (
-                            <PlantProfile profileId={plant.profile_id}/> 
-                           )}
-                        </div>
-                  
-                  )}     
+                     <PlantProfile profileId={plant.profile_id}/> 
+                  </div>
+               )}     
                {entries.map((entry) => (
                   <div key={entry.id} className='individual-entry'>
                      {entry.watered && (

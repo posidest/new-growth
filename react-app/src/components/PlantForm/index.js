@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {Redirect, useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import {newPlant} from '../../store/plant'
+import {newPlant, showPlants} from '../../store/plant'
 import {showProfiles} from '../../store/profile'
 import './PlantForm.css'
 
@@ -27,11 +27,16 @@ const PlantForm = () => {
          'profile_id': profileId, 
          'description': description
       }
-      const res = dispatch(newPlant(myPlant))
-      console.log(res, 'res in plantform')
+      dispatch(newPlant(myPlant))
+      dispatch(showPlants(me.id))
       history.push('/')
    }
    
+   const goBack = (e) => {
+      history.push('/')
+   }
+
+
    const getProfiles = async () => {
       const res = await fetch(`/api/profiles/`)
       if (res.ok) {
@@ -95,71 +100,65 @@ const PlantForm = () => {
     if (profiles) {
        return (
           <div className = 'plant-form-page'>
-            <div className='plant-form'>
-               <h1>New Plant</h1>
-               <form onSubmit={submitPlant}>
-                  <div>
-                     <input 
-                     type='text'
-                     onChange={updateName}
-                     value={name}
-                     placeholder='Plant Name' />
-                  </div>
-                  <div>
-                     <input 
-                     type='text'
-                     onChange={updateNickname}
-                     value={nickname}
-                     placeholder='Add a Nickname' />
-                  </div>
-                  <div>
-                     <label className='file-input'>
-                        <input
-                        type='file'
-                        accept='image/*'
-                        name='plant-pic'
-                        onChange={updatePic}/>
-                     Upload a Picture
-                     </label>
-                     {(imageLoading) && <p>Loading...</p>}
-                     <div className='plant-pic'>
-                        <img src={plantPic}
-                        style={{width: '200px'}}
-                        />
-                     </div>
-                  </div>
-                  <div>
-                     <textarea
-                     placeholder='Description'
-                     value={description}
-                     onChange={updateDescription}
+               <form 
+               className='plant-form' 
+               onSubmit={submitPlant}>
+                  <h1>New Plant</h1>
+                  <input 
+                  type='text'
+                  onChange={updateName}
+                  value={name}
+                  placeholder='Plant Name' />
+                  <input 
+                  type='text'
+                  onChange={updateNickname}
+                  value={nickname}
+                  placeholder='Add a Nickname' />
+                  <label className='file-input'
+                  style={{color: 'rgba(8, 32, 16, 0.8)'}}>
+                     <input
+                     type='file'
+                     accept='image/*'
+                     name='plant-pic'
+                     onChange={updatePic}/>
+                  Upload a Picture
+                  </label>
+                  {(imageLoading) && <p>Loading...</p>}
+                  {plantPic && (
+                  <div className='plant-pic'>
+                     <img src={plantPic}
+                     style={{width: '200px', marginBottom: '10px'}}
                      />
                   </div>
-                  <div>
-                     <select value={profileId}
-                     onChange={updateProfile}>
-                        <option value='0'>Choose A Plant Profile</option>
-                        {profiles.map((profile, i) => (
-                           <option value={profile.id}>
-                              {profile.common_names[0]}
-                           </option>
-                        ))}
-                     </select>
-                  </div>
-                  <>
+                  )}
+                  <textarea
+                  placeholder='Description'
+                  value={description}
+                  onChange={updateDescription}
+                  />
+                  <select value={profileId}
+                  onChange={updateProfile}>
+                     <option value='0'>Choose A Plant Profile</option>
+                     {profiles.map((profile, i) => (
+                        <option value={profile.id}>
+                           {profile.common_names[0]}
+                        </option>
+                     ))}
+                  </select>
+                  <div className='plant-form-buttons'>
                      <button type='submit'>Add Plant</button>
-                  </>
+                     <button type='button' onClick={goBack}>Cancel</button>
+                  </div>
                </form>
-            </div>
-          </div>
-       )
-    }
-    else {
-       return (
-          <h2>...Loading</h2>
-          )
-    }
-}
+             </div>
+            )
+         }
+         else {
+            return (
+               <h2>...Loading</h2>
+            )
+         }
+      }
 
 
 

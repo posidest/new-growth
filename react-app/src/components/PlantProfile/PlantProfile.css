@@ -4,20 +4,25 @@
 table {
   margin: 20px;
   table-layout: fixed;
-  width: 40%;
+  width: 30%;
   border-collapse: collapse;
-  margin-left: 440px;
-  border: 1px solid rgba(200, 200, 200, 0.6);
+  margin-left: 35%;
+  border: 1px solid rgba(8, 32, 16, 0.6);
   border-radius: 2px;
-  box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.6);
+  box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.2);
 }
 
 td {
-  padding: 20px;
+  padding: 10px;
 }
 
 .profile-component {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
+}
+
+tr {
+  border: 1px solid rgba(8, 32, 16, 0.6);
 }

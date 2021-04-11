@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from 'react-modal';
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../services/auth';
+import { signUp } from '../../store/session';
 import HardinessZone from './HardinessZone'
 import './Auth.css'
 import {useDispatch, useSelector} from 'react-redux'
@@ -31,10 +31,10 @@ const SignUpForm = () => {
   
 
 
-  const onSignUp = async (e) => {
+  const onSignUp = (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      await dispatch(signUp({username, email, avatar, bio, zone, password}));
+      dispatch(signUp({username, email, avatar, bio, zone, password}));
       // if (!user.errors) {
       //   setAuthenticated(true);
       // }
@@ -47,7 +47,6 @@ const SignUpForm = () => {
   const showMap = (e) => {
     setShowZone(!showZone)
   }
-
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -112,7 +111,6 @@ const SignUpForm = () => {
       className='sign-up-form'
       onSubmit={onSignUp}>
         <h1>Sign Up</h1>
-        <div className='auth'>
           {/* <label>User Name</label> */}
           <input
             type="text"
@@ -121,8 +119,6 @@ const SignUpForm = () => {
             value={username}
             placeholder='User Name'
           ></input>
-        </div>
-        <div>
           {/* <label>Email</label> */}
           <input
             type="text"
@@ -131,11 +127,9 @@ const SignUpForm = () => {
             value={email}
             placeholder='Email'
           ></input>
-        </div>
-        <div>
           <label 
           className='file-input'
-          style={{color: 'black', marginTop: '20px'}}>
+          style={{color: 'rgba(8, 32, 16, 0.8)'}}>
             Upload an avatar
           <input
             type="file"
@@ -146,23 +140,18 @@ const SignUpForm = () => {
           ></input>
           </label>
           {(imageLoading)&& <p>Loading...</p>}
-            <div className='avatar'>
-              <img 
-              src={avatar}
-              style={{width: '200px', height: '200px', borderRadius: '50%'}}
-              />
-            </div>
-        </div>
-        <div>
+          {avatar && (
+            <img 
+            src={avatar}
+            style={{width: '200px', height: '200px', borderRadius: '50%', margin: '20px 30px 40px 30px'}}
+            />
+          )}
           <textarea
             name="bio"
             onChange={updateBio}
             placeholder="Biography"
             value={bio}
           ></textarea>
-        </div>
-        <div className='zone'>
-          {/* <label>Hardiness Zone</label> */}
           <input
             type="number"
             name='zone'
@@ -172,16 +161,14 @@ const SignUpForm = () => {
             max='13'
             placeholder='Hardiness Zone'
           ></input>
-              <div
-              className='zone'>
-              <p
-              onClick={showMap}
-              style={{color: 'white'}}
-              title='Show Map'>
+              {/* <div
+              className='zone'> */}
+                <p
+                onClick={showMap}
+                title='Show Map'>
                 What's this?
                 </p>
-              </div>
-          </div>
+              {/* </div> */}
           {showZone && (
             <Modal
             isOpen={showZone}
@@ -192,8 +179,6 @@ const SignUpForm = () => {
               <HardinessZone />
             </Modal>
           )}
-        <div>
-          {/* <label>Password</label> */}
           <input
             type="password"
             name="password"
@@ -201,9 +186,6 @@ const SignUpForm = () => {
             value={password}
             placeholder='Password'
           ></input>
-        </div>
-        <div>
-          {/* <label>Repeat Password</label> */}
           <input
             type="password"
             name="repeat_password"
@@ -212,7 +194,6 @@ const SignUpForm = () => {
             required={true}
             placeholder='Repeat Password'
           ></input>
-        </div>
         <button type="submit">Sign Up</button>
       </form>
 
