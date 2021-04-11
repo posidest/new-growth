@@ -31,10 +31,10 @@ const SignUpForm = () => {
   
 
 
-  const onSignUp = (e) => {
+  const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      dispatch(signUp({username, email, avatar, bio, zone, password}));
+      await dispatch(signUp({username, email, avatar, bio, zone, password}));
       // if (!user.errors) {
       //   setAuthenticated(true);
       // }
@@ -108,7 +108,9 @@ const SignUpForm = () => {
 
   return (
     <div className='sign-up-page'>
-      <form onSubmit={onSignUp}>
+      <form 
+      className='sign-up-form'
+      onSubmit={onSignUp}>
         <h1>Sign Up</h1>
         <div className='auth'>
           {/* <label>User Name</label> */}
@@ -130,10 +132,10 @@ const SignUpForm = () => {
             placeholder='Email'
           ></input>
         </div>
-        <div className='uploadDiv'>
+        <div>
           <label 
           className='file-input'
-          style={{color: 'black'}}>
+          style={{color: 'black', marginTop: '20px'}}>
             Upload an avatar
           <input
             type="file"
@@ -147,7 +149,7 @@ const SignUpForm = () => {
             <div className='avatar'>
               <img 
               src={avatar}
-              style={{width: '200px', borderRadius: '50%'}}
+              style={{width: '200px', height: '200px', borderRadius: '50%'}}
               />
             </div>
         </div>
@@ -174,6 +176,7 @@ const SignUpForm = () => {
               className='zone'>
               <p
               onClick={showMap}
+              style={{color: 'white'}}
               title='Show Map'>
                 What's this?
                 </p>

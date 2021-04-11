@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import './PlantProfiles.css'
 
 const PlantProfiles = () => {
 
    const [profiles, setProfiles] = useState([])
-      
+   const history = useHistory()
+
    const getProfiles = async () => {
       const res = await fetch(`/api/profiles/`)
       if (res.ok) {
@@ -13,6 +14,10 @@ const PlantProfiles = () => {
          await console.log(data, 'data')
          return data;
       }
+   }
+
+   const goBack = (e) => {
+      history.push('/')
    }
    
    useEffect(async () => {
@@ -39,9 +44,14 @@ const PlantProfiles = () => {
                   </Link>
                </div>
                ))}
-            </div>
-            </>
-            )
+               <button 
+               type='button'
+               onClick={goBack}
+               >Back
+               </button>
+         </div>
+      </>
+      )
    } else {
       return <h1>loading...</h1>
    }

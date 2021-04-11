@@ -9,7 +9,7 @@ plant_routes = Blueprint("plants", __name__)
 @login_required
 def add_entry(id):
     data = request.get_json()
-    entry = Entry(user_id=current_user.id, plant_id=data['plant_id'], watered=data['watered'], fertilized=data['fertilized'],
+    entry = Entry(user_id=current_user.id, plant_id=data['plant_id'], watered=data['watered'], fertilized=data['fertilized'], date=data['date'],
                   location=data['location'], details=data['details'], progress_pic=data['progress_pic'])
     db.session.add(entry)
     db.session.commit()

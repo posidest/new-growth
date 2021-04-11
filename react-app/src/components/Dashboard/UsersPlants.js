@@ -17,7 +17,7 @@ const UsersPlants = () => {
    if (plants) {
       return (
          <div>
-            <h2 className='plant-header'>My Plants</h2>
+            {/* <h2 className='plant-header'>My Plants</h2> */}
             <div className='plants'>
                {plants.map((plant) => (
                   <div key={plant.id} className='single-plant'>
@@ -30,7 +30,7 @@ const UsersPlants = () => {
                            />
                            <h4 
                            style={{color: 'rgba(8, 32, 16, 0.6)'}}>
-                              {plant.name}
+                           {plant.name}
                            </h4>
                            <p>{plant.description}</p>
                         </div>

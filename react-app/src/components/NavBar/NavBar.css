@@ -7,7 +7,6 @@
   background-size: cover;
   position: fixed;
   top: 0;
-  /* background-color: rgba(8, 32, 16, 0.6); */
 }
 
 .login-btn a,
@@ -24,18 +23,10 @@
   left: 10px;
 }
 
-/* .fa-search {
-  color: rgba(8, 32, 16, 0.6);
-} */
-
-.nav-bar button {
-  border: none;
-}
-
 .navatar {
   position: fixed;
   top: 10px;
-  right: 10px;
+  right: 20px;
 }
 
 .nav-bar input {
@@ -57,3 +48,17 @@
 .nav-bar a {
   padding-top: 5px;
 }
+
+.logout-btn {
+  margin-top: 15px;
+  position: fixed;
+  right: 80px;
+  border: 1px solid rgba(200, 200, 200, 0.6);
+  border-radius: 2px;
+}
+/* 
+.right-btns div {
+  display: flex;
+  width: 40px;
+  justify-content: flex-end;
+} */

@@ -71,11 +71,6 @@ const PlantPage = () => {
                {plant.profile_id && (
                      <>
                      <button onClick={displayProfile} type='button'>Show Profile Details </button>
-                     <div className='plant-profile'>
-                        {showProfile && (
-                         <PlantProfile profileId={plant.profile_id}/> 
-                        )}
-                     </div>
                      </>
                   )}
                {plant.user_id === me.id && (
@@ -84,26 +79,33 @@ const PlantPage = () => {
                   <Link to={`/plants/${id}/tend`}>
                      Tend to me
                      </Link>
-                  </button>   
-                  {/* <button type='button' onClick={tend}>Tend to me</button> */}
+                  </button> 
                   </>
                )}
             </div>
-            {entries.map((entry) => (
-               <div key={entry.id} className='individual-entry'>
-                  {entry.watered && (
-                     <i className="fas fa-tint" style={{color: 'deepskyblue'}}></i>
-                  )}
-                  {entry.fertilized && (
-                     <i className="fas fa-poo" style={{color: 'brown'}}></i>
-                  )}
-                  {entry.progress_pic && (
-                  <img 
-                  src={entry.progress_pic}
-                  style={{width: '400px'}}
-                  />
-                  )}
-                  <h4>{entry.date}</h4>
+               {showProfile && (
+                  <div className='plant-profile'>
+                           {showProfile && (
+                            <PlantProfile profileId={plant.profile_id}/> 
+                           )}
+                        </div>
+                  
+                  )}     
+               {entries.map((entry) => (
+                  <div key={entry.id} className='individual-entry'>
+                     {entry.watered && (
+                        <i className="fas fa-tint" style={{color: 'deepskyblue'}}></i>
+                     )}
+                     {entry.fertilized && (
+                        <i className="fas fa-poo" style={{color: 'brown'}}></i>
+                     )}
+                     {entry.progress_pic && (
+                        <img 
+                        src={entry.progress_pic}
+                        style={{width: '400px'}}
+                        />
+                     )}
+                     <h4>{entry.date}</h4>
                   <p>{`Location: ${entry.location}`}</p>
                   <p>{entry.details}</p>
                   <div 

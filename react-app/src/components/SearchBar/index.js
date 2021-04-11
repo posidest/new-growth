@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import SearchResults from './SearchResults';
 import {showProfiles} from '../../store/profile'
@@ -9,9 +10,15 @@ import './SearchBar.css'
       const [results, setResults] = useState(null)
       const [query, setQuery] = useState('')
       const [value, setValue] = useState('')
+      const history = useHistory()
+
       let profiles = useSelector((state) => state.profile.profiles)
       if (profiles) {
          profiles = profiles['profile']
+      }
+
+      const goBack = (e) => {
+         history.push('/')
       }
       
       const search = (e) => {
@@ -27,7 +34,6 @@ import './SearchBar.css'
                searchResults.push(profile)
             }
          })
-         
          setResults(searchResults)
          return results;
       }
@@ -58,11 +64,16 @@ import './SearchBar.css'
            </form>
            <div>
             {results && (
-               <div>
+               <div style={{background: 'white'}} >
                   <SearchResults results={results}/>
                </div>
             )}
            </div>
+           <button 
+           type='button'
+           onClick={goBack}
+           >Back
+            </button>
          </div>
          )
       } else {

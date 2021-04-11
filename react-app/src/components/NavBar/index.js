@@ -20,21 +20,6 @@ const NavBar = () => {
   const me = useSelector((state) => state.session.user)
 
 
-  // const search = async (e) => {
-  //   e.preventDefault()
-  //   const res = await fetch(`/api/profiles/search`, {
-  //     method: 'POST',
-  //     headers: {'Content-type': 'application/json'},
-  //     body: JSON.stringify({query})
-  //   })
-  //   if (res.ok) {
-  //     const data = await res.json();
-  //     await console.log(data, 'search results')
-  //     return data;
-  //   }
-  // }
-
-
   if (me) {
     buttons = (
       <>
@@ -43,12 +28,13 @@ const NavBar = () => {
             <i className="fas fa-leaf fa-2x" style={{color: 'rgba(8, 32, 16, 0.6)'}}></i>
           </NavLink>
         </div>
-       {/* <SearchBar /> */}
-        <div className='navatar'>
-          <ProfileButton />
-        </div>
-        <div>
-          <LogoutButton />
+        <div className='right-btns'>
+          <div className='navatar'>
+            <ProfileButton />
+          </div>
+          <div className='logout-btn'>
+            <LogoutButton />
+          </div>
         </div>
       </>
     )
@@ -62,7 +48,6 @@ const NavBar = () => {
             <i className="fas fa-leaf fa-2x" style={{color: 'rgba(8, 32, 16, 0.6)'}}></i>
           </NavLink>
         </div>
-        {/* <SearchBar /> */}
         <div className='login-btn'>
           <NavLink to="/login" exact={true} activeClassName="active">
             Login

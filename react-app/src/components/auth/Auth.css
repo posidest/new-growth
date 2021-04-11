@@ -1,7 +1,3 @@
-/* .auth {
-  margin-top: 100px;
-} */
-
 .sign-up-page {
   background: url("../../images/Peperomia_perciliata.jpg") center no-repeat;
 }
@@ -17,34 +13,35 @@
   align-items: center;
   background-size: cover;
   height: 1000px;
+  text-align: center;
 }
 
-.sign-up-page form,
-.login-page form {
+.sign-up-form,
+.login-form {
   background-color: rgba(8, 32, 16, 0.6);
-  margin-top: 200px;
+  margin-top: 100px;
   padding: 20px 20px 30px 20px;
   border-radius: 2px;
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.6);
 }
 
-.sign-up-page h1,
-.login-page h1 {
+.sign-up-form h1,
+.login-form h1 {
   color: white;
   text-align: center;
 }
 
-.sign-up-page input,
-.sign-up-page textarea,
-.login-page input {
+.sign-up-form input,
+.sign-up-form textarea,
+.login-form input {
   margin: 10px;
   border-radius: 2px;
   width: 200px;
   border: 1px solid rgba(200, 200, 200, 0.4);
 }
 
-.sign-up-page button,
-.login-page button {
+.sign-up-form button,
+.login-form button {
   margin-top: 40px;
   align-self: center;
 }
@@ -62,7 +59,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* color: white; */
   font-weight: bold;
 }
 
@@ -73,4 +69,21 @@
 .zone {
   display: flex;
   flex-direction: column;
+}
+
+.avatar img {
+  margin: 40px 0 20px 0;
+  align-self: center;
+}
+
+.sign-up-form textarea {
+  height: 100px;
+  width: 200px;
+}
+
+.sign-up-form div,
+.login-form div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -36,6 +36,13 @@ def add_plant():
     return plant.to_dict()
 
 
+@user_routes.route('/<int:id>/plants')
+def get_plants(id):
+    plants = Plant.query.filter(
+        Plant.user_id == id).order_by(Plant.id.desc()).all()
+    return {plants: [plant.to_dict() for plant in plants]}
+
+
 @user_routes.route('/plants/<int:id>')
 def get_plant(id):
     plant = db.session.query(Plant).get(id)

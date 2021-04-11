@@ -33,6 +33,9 @@ const PlantProfile = ({profileId}) => {
          const names = stringifier(profile.common_names)
          const pests = stringifier(profile.pests)
          const propogations = stringifier(profile.propogation_methods)
+         const toxic = (profile.toxic_to_pets === false) ? 'No' : 'Yes'
+         
+         console.log(profile.toxic_to_pets, 'toxic to pets?')
 
          return (
             <div className='profile-component'>
@@ -93,7 +96,7 @@ const PlantProfile = ({profileId}) => {
                            </tr>
                            <tr>
                               <td>Toxic to pets?</td>
-                              <td>{profile.toxic_to_pets}</td>
+                              <td>{toxic}</td>
                            </tr>
                         </tbody>
                      </table>

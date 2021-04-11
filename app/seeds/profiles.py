@@ -316,7 +316,7 @@ def seed_profiles():
         toxic_to_pets=False
     )
     ctenanthe = Profile(
-        picture='https: // newgrowthbucket.s3.amazonaws.com/Ctenanthe_burle-marxii.jpg',
+        picture='https://newgrowthbucket.s3.amazonaws.com/Ctenanthe_burle-marxii.jpg',
         common_names=['Fishbone Prayer Plant',
                       'Never Never Plant', 'Prayer Plant'],
         genus_species='Ctenanthe burle-marxii',
@@ -332,7 +332,7 @@ def seed_profiles():
         toxic_to_pets=False
     )
     maranta = Profile(
-        picture='https: // newgrowthbucket.s3.amazonaws.com/Maranta_leuconeura3.jpg',
+        picture='https://newgrowthbucket.s3.amazonaws.com/Maranta_leuconeura3.jpg',
         common_names=['Prayer Plant'],
         genus_species='Maranta leuconeura var. kerchoveana',
         family='Marantaceae',
@@ -347,7 +347,7 @@ def seed_profiles():
         toxic_to_pets=False
     )
     red_maranta = Profile(
-        picture='https: // newgrowthbucket.s3.amazonaws.com/maranta-leuconeura-erythroneura.jpeg',
+        picture='https://newgrowthbucket.s3.amazonaws.com/maranta-leuconeura-erythroneura.jpeg',
         common_names=['Red Vein Prayer Plant', 'Prayer Plant'],
         genus_species='Maranta leuconeura var. erythroneura',
         family='Marantaceae',

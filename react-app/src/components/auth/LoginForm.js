@@ -39,7 +39,9 @@ const LoginForm = () => {
 
   return (
     <div className='login-page'>
-      <form onSubmit={onLogin}>
+      <form 
+      className='login-form'
+      onSubmit={onLogin}>
         <h1>Login</h1>  
         <div>
           {errors.map((error) => (
@@ -47,7 +49,7 @@ const LoginForm = () => {
             ))}
         </div>
         <div className='auth'>
-          <label htmlFor="email">Email</label>
+          {/* <label htmlFor="email">Email</label> */}
           <input
             name="email"
             type="text"
@@ -57,7 +59,7 @@ const LoginForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          {/* <label htmlFor="password">Password</label> */}
           <input
             name="password"
             type="password"
