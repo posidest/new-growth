@@ -8,9 +8,6 @@ import './Dashboard.css'
 const Dashboard = () => {
  
    const me = useSelector((state) => state.session.user)
-   const addPlant = (e) => {  
-      return <Redirect to='/plants/new'/>
-   }
 
    if (me) {
       return (
@@ -27,7 +24,7 @@ const Dashboard = () => {
                />
                <h4>{me.username}</h4>
                <p>{me.bio}</p>
-               <p>{`USDA Zone: ${me.zone}`}</p>
+               <p className='zone-info'>{`USDA Zone: ${me.zone}`}</p>
             </div>
             <div className='users-plants-container'>
                <UsersPlants />

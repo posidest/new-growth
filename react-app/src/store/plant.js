@@ -59,9 +59,6 @@ export const showPlants = (userId) => async (dispatch) => {
 
 
 
-
-
-
 export default function reducer(state={}, action) {
    let newState;
    switch(action.type) {

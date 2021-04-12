@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {showProfiles} from '../../store/profile';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import '../PlantProfile/PlantProfile.css';
 import IndividualPlant from '../PlantPage/IndividualPlant'
 
@@ -49,8 +49,8 @@ const PlantProfilePage = () => {
          const propogations = stringifier(profile.propogation_methods)
 
          return (
-            <div>
-               <h1>Plant Profile</h1>
+            <div className='profile-component'>
+               <h1>{profile.genus_species}</h1>
                   <div className='img'>
                      <img 
                      src={profile.picture}
@@ -118,8 +118,17 @@ const PlantProfilePage = () => {
                         View Plants
                      </button>
                      {showPlants && profile.plants.map((plant) => (
-                        <IndividualPlant plantId={plant.id}/>
-                     ))}
+                        <div className='profile-plants'>
+                           <Link to={`/plants/${plant.id}`}>
+                              <h4>{plant.name}</h4>
+                              <div className='img-container' style={{height: '250px', width: '250px'}}>
+                                 <img src={plant.plant_pic} alt='plant-pic' style={{maxWidth:'250px', maxHeight: '250px'}}/>
+                              </div>
+                              <h4>{plant.nickname}</h4>
+                              {/* <IndividualPlant plantId={plant.id}/> */}
+                           </Link>
+                        </div>   
+                        ))}
                   </div>
                </div>
             )

@@ -69,11 +69,13 @@ import './SearchBar.css'
                </div>
             )}
            </div>
-           <button 
-           type='button'
-           onClick={goBack}
-           >Back
-            </button>
+           <div className='back-button'>
+            <button 
+            type='button'
+            onClick={goBack}
+            >Back
+               </button>
+           </div>
          </div>
          )
       } else {

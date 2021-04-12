@@ -25,7 +25,8 @@ const NavBar = () => {
       <>
         <div className='home-btn'>
           <NavLink to="/" exact={true} activeClassName="active">
-            <i className="fas fa-leaf fa-2x" 
+            {/* <i className="fas fa-leaf fa-2x" */}
+            <i className="fas fa-seedling fa-2x"
             style={{color: 'rgba(8, 32, 16, 0.6)'}}
             // style={{color: 'white'}}
             ></i>
@@ -46,7 +47,10 @@ const NavBar = () => {
       <>
         <div className='home-btn'>
           <NavLink to="/" exact={true} activeClassName="active">
-            <i className="fas fa-leaf fa-2x" 
+            {/* <i className="fas fa-leaf fa-2x" 
+            style={{color: 'rgba(8, 32, 16, 0.6)'}} */}
+            {/* // style={{color: 'white'}} */}
+            <i className="fas fa-seedling fa-2x"
             style={{color: 'rgba(8, 32, 16, 0.6)'}}
             // style={{color: 'white'}}
             ></i>

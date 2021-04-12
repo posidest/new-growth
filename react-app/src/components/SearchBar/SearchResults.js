@@ -7,22 +7,29 @@ const SearchResults = ({results}) => {
    // if (results) {
       return (
          <>
-         <div className='profiles-page'>
+         <div className='results-page'>
             {results.length < 1 && (
                <div>
                   <h4>There are no plants associated with that name.</h4>
                </div>
             )}
-            {results.map((result) => (
-               <div key={result.id} className='individual-profile'>
-                  <Link to={`/plants/profile/${result.id}`}>
-                     <h4>{result.genus_species}</h4>
-                     <img src={result.picture}
-                     alt='picture' />
-                     <h4>{result.common_names[0]}</h4>
-                  </Link>
+            <div className='results'>
+               {results.map((result) => (
+                  <div key={result.id} className='individual-result'>
+                     <Link to={`/plants/profile/${result.id}`}>
+                        <h5>{result.genus_species}</h5>
+                        <div 
+                        className='result-img'
+                        style={{height: '200px', width: '200px'}}>
+                           <img src={result.picture}
+                           style={{maxWidth: '200px', maxHeight: '200px'}}
+                           alt='picture' />
+                        </div>
+                        <h5>{result.common_names[0]}</h5>
+                     </Link>
+                  </div>
+                  ))}
                </div>
-               ))}
             </div>
             </>
             )

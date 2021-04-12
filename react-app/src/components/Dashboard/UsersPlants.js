@@ -5,14 +5,35 @@ import {Link} from 'react-router-dom'
 import './Dashboard.css';
 
 const UsersPlants = () => {
-   
+   const [plants, setPlants] = useState([])
    const dispatch = useDispatch()
    const me = useSelector((state) => state.session.user);
-   const plants = useSelector((state) => Object.values(state.session.user.plants))
-   
-   useEffect(() => {
-      dispatch(showPlants(me.id))
-   }, [])
+   // const plants = useSelector((state) => state.plant.plants)
+   // const plant = useSelector((state) => state.plant.plant)
+   // const plants = useSelector((state) => Object.values(state.session.user.plants))
+   // if (userPlants) {
+   //    setPlants(userPlants)
+   // }
+   // useEffect(() => {
+   //    dispatch(showPlants(me.id))      
+   //    // console.log(plants)
+   // }, [])
+
+   const getPlants = async(id) => {
+      const res = await fetch(`/api/users/${id}/plants`)
+      if (res.ok) {
+         const json = await res.json()
+         await console.log(json)
+         await setPlants(json.plant)
+         return plants
+      }
+   }
+
+   useEffect(async() => {
+      await getPlants(me.id)
+   },[])
+
+
 
    if (plants) {
       return (
@@ -23,9 +44,9 @@ const UsersPlants = () => {
                   <div key={plant.id} className='single-plant'>
                      <Link to={`/plants/${plant.id}`}>
                         <h4>{plant.nickname}</h4>
-                        <div style={{width: '300px', height: '300px'}}>
+                        <div style={{width: '250px', height: '250px'}}>
                            <img src={plant.plant_pic}
-                           style={{maxWidth: '300px', maxHeight: '300px'}}
+                           style={{maxWidth: '250px', maxHeight: '250px'}}
                            alt='plant-pic'
                            />
                         </div>

@@ -20,7 +20,7 @@ def seed_profiles():
     )
     tradescantia = Profile(
         picture='https://newgrowthbucket.s3.amazonaws.com/tradescantia.jpg',
-        common_names=['Wandering Jew', 'Inch Plant',
+        common_names=['Inch Plant',
                       'Spiderwort'],
         genus_species='Tradescantia zebrina',
         family='Commelinaceae',

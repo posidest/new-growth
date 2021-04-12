@@ -48,20 +48,13 @@ a {
 
 button {
   padding: 6px 10px 7px 10px;
-  /* font-size: 14px; */
   font-weight: bold;
-  /* border: 1px solid rgba(200, 200, 200, 0.6); */
   border: 0.5px solid rgba(8, 32, 16, 0.2);
   box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.2);
   background-color: white;
   color: rgba(8, 32, 16, 0.8);
   /* background-color: rgba(8, 32, 16, 0.2); */
   border-radius: 20px;
-  /* background-color: rgba(8, 32, 16, 0.6); */
-  /* height: 40px;
-  width: 180px; */
-  /* border-radius: 4px; */
-  /* color: white; */
 }
 
 h1 {
@@ -71,7 +64,8 @@ h1 {
 
 h4,
 h2,
-h3 {
+h3,
+h5 {
   color: rgba(8, 32, 16, 0.8);
   font-family: "Raleway", sans-serif;
 }
@@ -80,6 +74,7 @@ td {
   font-family: "Dosis", sans-serif;
   font-weight: lighter;
   font-size: 13px;
+  color: rgba(8, 32, 16, 0.8))
 }
 
 img {

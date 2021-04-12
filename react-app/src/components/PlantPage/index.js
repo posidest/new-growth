@@ -7,16 +7,6 @@ import EntryForm from '../EntryForm'
 import {showEntries} from '../../store/entry';
 import './PlantPage.css'
 
-const customStyles = {
-content : {
-top                   : '50%',
-left                  : '50%',
-right                 : 'auto',
-bottom                : 'auto',
-marginRight           : '-50%',
-transform             : 'translate(-50%, -50%)'
-}
-};
 
 const PlantPage = () => {
    
