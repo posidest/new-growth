@@ -12,7 +12,7 @@ class Entry(db.Model):
         'plants.id'), nullable=False)
     watered = db.Column(db.Boolean, nullable=False)
     fertilized = db.Column(db.Boolean, nullable=False)
-    date = db.Column(db.Date, nullable=False)
+    date = db.Column(db.String, nullable=False)
     location = db.Column(db.String)
     details = db.Column(db.String(1000))
     progress_pic = db.Column(db.Text)

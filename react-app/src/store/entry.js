@@ -41,7 +41,7 @@ export const createEntry = (entry) => async (dispatch) => {
       if (res.ok) {
          const data = await res.json()
          console.log(data, 'data from entries form')
-         dispatch(addEntry(data.entry))
+         dispatch(addEntry(data))
          return data;
       }
    }

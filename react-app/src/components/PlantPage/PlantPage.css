@@ -7,38 +7,84 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  text-align: center;
+  height: 4000px;
+  background-color: rgba(8, 32, 16, 0.4);
 }
 
-.plant-page h1 {
+/* .plant-page h1 {
   text-align: center;
   margin-top: 50px;
-}
+} */
 
 .plant-profile {
-  margin-top: 100px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.tend-btn button,
-.plant-profile button {
-  /* padding: 20px; */
+.buttons button {
   margin: 20px;
   background-color: rgba(8, 32, 16, 0.6);
   height: 40px;
-  width: 80px;
+  width: 180px;
   border-radius: 4px;
   color: white;
-  /* box-sizing: border-box; */
 }
 
-/* .tend-btn a {
-  padding-top: 20px;
-  padding-left: 10px;
+.buttons button a {
+  color: white;
+}
+
+.individual-entry {
+  border: 0.5px solid rgba(8, 32, 16, 0.6);
+  box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.2);
+  border-radius: 2px;
+  margin: 10px 0 20px 0;
+  padding: 0 20px 30px 20px;
+  background-color: white;
+  width: 400px;
+}
+
+/* .is {
+  display: flex;
+  justify-content: flex-end;
 } */
 
-.plant-profile button {
-  width: 180px;
-  color: white;
+/* .top {
+  display: flex;
+  /* align-items: center; */
+/* position: relative; */
+/* } */
+/* 
+.top h4 {
+  text-align: center;
+  position: absolute;
+  bottom: 0px;
+  left: 145px;
+} */
+
+.fa-tint {
+  position: absolute;
+  right: 600px;
+  top: 1025px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.plant-info {
+  background-color: white;
+  margin-top: 100px;
+  padding: 0 20px 30px 20px;
+}
+
+.plant-info p {
+  width: 400px;
+  font-size: 14px;
 }

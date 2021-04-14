@@ -1,18 +1,25 @@
 import React, {useEffect, useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import SearchResults from './SearchResults';
 import {showProfiles} from '../../store/profile'
-import '../NavBar/NavBar.css'
+import './SearchBar.css'
 
    const SearchBar = () => {
       const dispatch = useDispatch()
       const [results, setResults] = useState(null)
       const [query, setQuery] = useState('')
+      const [value, setValue] = useState('')
+      const history = useHistory()
+
       let profiles = useSelector((state) => state.profile.profiles)
       if (profiles) {
          profiles = profiles['profile']
       }
-      console.log(profiles, 'profiles from search bar')
+
+      const goBack = (e) => {
+         history.push('/')
+      }
       
       const search = (e) => {
          e.preventDefault()
@@ -20,14 +27,13 @@ import '../NavBar/NavBar.css'
          profiles.forEach((profile) => {
             let names = []
             profile.common_names.forEach((name) => {
-               names.push(name.toLowerCase())
+               names.push(...name.toLowerCase().split(' '))
+               names.push(...profile.genus_species.toLowerCase().split(' '))
             })
-            if (names.includes(query.toLowerCase())) {
+            if (names.includes(value[0]) || names.includes(value[1])) {
                searchResults.push(profile)
             }
          })
-         // const results = profiles.filter(profile => profile.common_names.includes(query.toLowerCase()))
-         console.log(searchResults)
          setResults(searchResults)
          return results;
       }
@@ -38,10 +44,12 @@ import '../NavBar/NavBar.css'
 
       const updateSearch = (e) => {
          setQuery(e.target.value)
+         setValue(e.target.value.toLowerCase().split(' '))
       }
+
       if (profiles) {
          return (
-         <div>
+         <div className='search-page'>
            <form onSubmit={search}>
              <div className='search'>
                <input type='text'
@@ -56,10 +64,17 @@ import '../NavBar/NavBar.css'
            </form>
            <div>
             {results && (
-               <div>
+               <div style={{background: 'white'}} >
                   <SearchResults results={results}/>
                </div>
             )}
+           </div>
+           <div className='back-button'>
+            <button 
+            type='button'
+            onClick={goBack}
+            >Back
+               </button>
            </div>
          </div>
          )

@@ -20,34 +20,22 @@ const NavBar = () => {
   const me = useSelector((state) => state.session.user)
 
 
-  // const search = async (e) => {
-  //   e.preventDefault()
-  //   const res = await fetch(`/api/profiles/search`, {
-  //     method: 'POST',
-  //     headers: {'Content-type': 'application/json'},
-  //     body: JSON.stringify({query})
-  //   })
-  //   if (res.ok) {
-  //     const data = await res.json();
-  //     await console.log(data, 'search results')
-  //     return data;
-  //   }
-  // }
-
-
   if (me) {
     buttons = (
       <>
         <div className='home-btn'>
           <NavLink to="/" exact={true} activeClassName="active">
-            <i className="fas fa-leaf fa-2x" style={{color: 'rgba(8, 32, 16, 0.6)'}}></i>
+            {/* <i className="fas fa-leaf fa-2x" */}
+            <i className="fas fa-seedling fa-2x"
+            style={{color: 'rgba(8, 32, 16, 0.6)'}}
+            // style={{color: 'white'}}
+            ></i>
           </NavLink>
         </div>
-       {/* <SearchBar /> */}
         <div className='navatar'>
           <ProfileButton />
         </div>
-        <div>
+        <div className='logout-btn'>
           <LogoutButton />
         </div>
       </>
@@ -59,19 +47,26 @@ const NavBar = () => {
       <>
         <div className='home-btn'>
           <NavLink to="/" exact={true} activeClassName="active">
-            <i className="fas fa-leaf fa-2x" style={{color: 'rgba(8, 32, 16, 0.6)'}}></i>
+            {/* <i className="fas fa-leaf fa-2x" 
+            style={{color: 'rgba(8, 32, 16, 0.6)'}} */}
+            {/* // style={{color: 'white'}} */}
+            <i className="fas fa-seedling fa-2x"
+            style={{color: 'rgba(8, 32, 16, 0.6)'}}
+            // style={{color: 'white'}}
+            ></i>
           </NavLink>
         </div>
-        {/* <SearchBar /> */}
-        <div className='login-btn'>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
-        </div>
-        <div className='sign-up-btn'>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
+        <div className='auth-btns'>
+          <div className='login-btn'>
+            <NavLink to="/login" exact={true} activeClassName="active">
+              Login
+            </NavLink>
+          </div>
+          <div className='sign-up-btn'>
+            <NavLink to="/sign-up" exact={true} activeClassName="active">
+              Sign Up
+            </NavLink>
+          </div>
         </div>
       </>
     )

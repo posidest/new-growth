@@ -4,36 +4,42 @@ import {showProfile} from '../../store/profile';
 import {useParams} from 'react-router-dom';
 import './PlantProfile.css';
 
+
+
 const PlantProfile = ({profileId}) => {
-   const dispatch = useDispatch();
-   // const {id} = useParams();
-   const [loaded, setLoaded] = useState(false)
-   const [profile, setProfile] = useState({})
-
-   // console.log(id, 'id')
-
-   const getProfile = async (id) => {
-      const res = await fetch(`/api/profiles/${id}`)
-         if (res.ok) {
-         const data = await res.json()
-         await console.log(data, 'data')
-         setLoaded(true)
-         return data;
+   let profiles = useSelector((state) => state.profile.profiles);
+   if (profiles) {
+      profiles = profiles['profile']
    }
-}
 
-   useEffect(async() => {
-      const oneProfile = await getProfile(profileId)
-      await setProfile(oneProfile)       
-      await console.log(profile, 'profile')
-      return profile
-   }, [])
+   let profile = profiles.filter((profile) => (
+      profile.id === profileId
+   ))
+   profile = profile[0]
+
    
-   
-   // const profile = useSelector((state) => state.profile);
+   const stringifier = (arr) => {
+      let str = '';
+      arr.forEach((el) => {
+         if (el === arr[arr.length - 1]) {
+            str+= el
+            return str
+         }
+         str+= el + ', '
+      })
+      return str;
+   }
+
       if(profile) {
+         const names = stringifier(profile.common_names)
+         const pests = stringifier(profile.pests)
+         const propogations = stringifier(profile.propogation_methods)
+         const toxic = (profile.toxic_to_pets === false) ? 'No' : 'Yes'
+         
+         console.log(profile.toxic_to_pets, 'toxic to pets?')
+
          return (
-            <div>
+            <div className='profile-component'>
                <h2>{profile.genus_species}</h2>
                   <div className='img'>
                      <img 
@@ -46,52 +52,52 @@ const PlantProfile = ({profileId}) => {
                      <table>
                         <tbody>
                            <tr>
-                              <td>Common Names</td>
-                              <td>{profile.common_names}</td>
+                              <td className='title'>Common Names</td>
+                              <td>{names}</td>
                            </tr>
                            <tr>
-                              <td>Genus Species</td>
+                              <td className='title'>Genus Species</td>
                               <td>{profile.genus_species}</td>
                            </tr>
                            <tr>
-                              <td>Family</td>
+                              <td className='title'>Family</td>
                               <td>{profile.family}</td>
                            </tr>
                            <tr>
-                              <td>Native Range</td>
+                              <td className='title'>Native Range</td>
                               <td>{profile.native_range}</td>
                            </tr>
                            <tr>
-                              <td>Temperature Range</td>
+                              <td className='title'>Temperature Range</td>
                               <td>{profile.temp_range}</td>
                            </tr>
                            <tr>
-                              <td>Light</td>  
+                              <td className='title'>Light</td>  
                               <td>{profile.light}</td>
                            </tr>
                            <tr>
-                              <td>Soil Type</td>   
+                              <td className='title'>Soil Type</td>   
                               <td>{profile.soil_type}</td>
                            </tr>
                            <tr>
-                              <td>Water</td>
+                              <td className='title'>Water</td>
                               <td>{profile.water_when}</td>
                            </tr>
                            <tr>
-                              <td>Fertilization</td>
+                              <td className='title'>Fertilization</td>
                               <td>{profile.fertilization}</td>
                            </tr>
                            <tr>
-                              <td>Pests</td>
-                              <td>{profile.pests}</td>
+                              <td className='title'>Pests</td>
+                              <td>{pests}</td>
                            </tr>
                            <tr>
-                              <td>Propogation Methods</td>
-                              <td>{profile.propogation_methods}</td>
+                              <td className='title'>Propogation Methods</td>
+                              <td>{propogations}</td>
                            </tr>
                            <tr>
-                              <td>Toxic to pets?</td>
-                              <td>{profile.toxic_to_pets}</td>
+                              <td className='title'>Toxic to pets?</td>
+                              <td>{toxic}</td>
                            </tr>
                         </tbody>
                      </table>

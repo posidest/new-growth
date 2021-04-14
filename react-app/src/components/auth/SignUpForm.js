@@ -1,9 +1,21 @@
 import React, { useState } from "react";
+import Modal from 'react-modal';
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../services/auth';
+import { signUp } from '../../store/session';
+import HardinessZone from './HardinessZone'
 import './Auth.css'
 import {useDispatch, useSelector} from 'react-redux'
 
+const customStyles = {
+content : {
+  top                   : '50%',
+  left                  : '50%',
+  right                 : 'auto',
+  bottom                : 'auto',
+  marginRight           : '-50%',
+  transform             : 'translate(-50%, -50%)'
+}
+};
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
@@ -11,15 +23,18 @@ const SignUpForm = () => {
   const [avatar, setAvatar] = useState(null);
   const [bio, setBio] = useState('');
   const [zone, setZone] = useState('');
+  const [showZone, setShowZone] = useState(false)
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
   const dispatch = useDispatch()
   
-  const onSignUp = async (e) => {
+
+
+  const onSignUp = (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      await dispatch(signUp({username, email, avatar, bio, zone, password}));
+      dispatch(signUp({username, email, avatar, bio, zone, password}));
       // if (!user.errors) {
       //   setAuthenticated(true);
       // }
@@ -27,6 +42,11 @@ const SignUpForm = () => {
   };
 
   const me = useSelector((state) => state.session.user)
+
+
+  const showMap = (e) => {
+    setShowZone(!showZone)
+  }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -67,7 +87,9 @@ const SignUpForm = () => {
   };
 
   const updateZone = (e) => {
-    setZone(e.target.value);
+    let { value, min, max } = e.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
+    setZone(value);
   };
 
 
@@ -84,80 +106,98 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div className='auth'>
-        <label>User Name</label>
-        <input
-          type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div className='uploadDiv'>
-        <label>Upload an avatar:</label>
-        <input
-          type="file"
-          name="avatar"
-          accept="image/*"
-          placeholder="Avatar"
-          onChange={updateAvatar}
-        ></input>
-        {(imageLoading)&& <p>Loading...</p>}
-          <div className='avatar'>
+    <div className='sign-up-page'>
+      <form 
+      className='sign-up-form'
+      onSubmit={onSignUp}>
+        <h1>Sign Up</h1>
+          {/* <label>User Name</label> */}
+          <input
+            type="text"
+            name="username"
+            onChange={updateUsername}
+            value={username}
+            placeholder='User Name'
+          ></input>
+          {/* <label>Email</label> */}
+          <input
+            type="text"
+            name="email"
+            onChange={updateEmail}
+            value={email}
+            placeholder='Email'
+          ></input>
+          <label 
+          className='file-input'
+          style={{color: 'rgba(8, 32, 16, 0.8)'}}>
+            Upload an avatar
+          <input
+            type="file"
+            name="avatar"
+            accept="image/*"
+            placeholder="Avatar"
+            onChange={updateAvatar}
+          ></input>
+          </label>
+          {(imageLoading)&& <p>Loading...</p>}
+          {avatar && (
             <img 
             src={avatar}
-            style={{width: '200px', borderRadius: '50%'}}
+            style={{width: '200px', height: '200px', borderRadius: '50%', margin: '20px 30px 40px 30px'}}
             />
-          </div>
-      </div>
-      <div>
-        <textarea
-          name="bio"
-          onChange={updateBio}
-          placeholder="Biography"
-          value={bio}
-        ></textarea>
-      </div>
-      <div>
-        <label>Hardiness Zone</label>
-        <input
-          type="number"
-          name='zone'
-          onChange={updateZone}
-          value={zone}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+          )}
+          <textarea
+            name="bio"
+            onChange={updateBio}
+            placeholder="Biography"
+            value={bio}
+          ></textarea>
+          <input
+            type="number"
+            name='zone'
+            onChange={updateZone}
+            value={zone}
+            min='1'
+            max='13'
+            placeholder='Hardiness Zone'
+          ></input>
+              {/* <div
+              className='zone'> */}
+                <p
+                onClick={showMap}
+                title='Show Map'>
+                What's this?
+                </p>
+              {/* </div> */}
+          {showZone && (
+            <Modal
+            isOpen={showZone}
+            onRequestClose={showMap}
+            style={customStyles}
+            contentLabel='Hardiness Zones'
+            >
+              <HardinessZone />
+            </Modal>
+          )}
+          <input
+            type="password"
+            name="password"
+            onChange={updatePassword}
+            value={password}
+            placeholder='Password'
+          ></input>
+          <input
+            type="password"
+            name="repeat_password"
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+            placeholder='Repeat Password'
+          ></input>
+        <button type="submit">Sign Up</button>
+      </form>
+
+    </div>
   );
 };
 

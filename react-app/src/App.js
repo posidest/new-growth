@@ -46,11 +46,11 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <Route exact path='/plants/profile'>
-          <PlantProfiles />
-        </Route>
         <Route path='/plants/profile/:id'>
           <PlantProfilePage />
+        </Route>
+        <Route exact path='/plants/profile'>
+          <PlantProfiles />
         </Route>
         <ProtectedRoute path='/plants/new' exact={true}>
           <PlantForm/>

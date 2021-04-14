@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import './PlantProfiles.css'
 
 const PlantProfiles = () => {
 
    const [profiles, setProfiles] = useState([])
-      
+   const history = useHistory()
+
    const getProfiles = async () => {
       const res = await fetch(`/api/profiles/`)
       if (res.ok) {
@@ -13,6 +14,10 @@ const PlantProfiles = () => {
          await console.log(data, 'data')
          return data;
       }
+   }
+
+   const goBack = (e) => {
+      history.push('/')
    }
    
    useEffect(async () => {
@@ -24,24 +29,32 @@ const PlantProfiles = () => {
 
    if (profiles) {
       return (
-         <>
-         <div className='profiles-header'>
-            <h1>Plant Profiles</h1>
-         </div>
          <div className='profiles-page'>
-            {profiles.map((profile) => (
+            <button 
+            type='button'
+            onClick={goBack}
+            >Back
+            </button>
+            <div className='profiles-header'>
+               <h1>Plant Profiles</h1>
+            </div>
+            <div className='profiles'>
+               {profiles.map((profile) => (
                <div key={profile.id} className='individual-profile'>
                   <Link to={`/plants/profile/${profile.id}`}>
                      <h4>{profile.genus_species}</h4>
-                     <img src={profile.picture}
-                     alt='picture' />
+                     <div className='container' style={{height: '200px', width: '200px'}}>
+                        <img src={profile.picture}
+                        alt='picture' 
+                        style={{maxHeight: '200px', maxWidth: '200px'}}/>
+                     </div>
                      <h4>{profile.common_names[0]}</h4>
                   </Link>
                </div>
                ))}
-            </div>
-            </>
-            )
+         </div>
+      </div>
+      )
    } else {
       return <h1>loading...</h1>
    }

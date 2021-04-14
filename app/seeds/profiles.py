@@ -20,7 +20,7 @@ def seed_profiles():
     )
     tradescantia = Profile(
         picture='https://newgrowthbucket.s3.amazonaws.com/tradescantia.jpg',
-        common_names=['Wandering Jew', 'Inch Plant',
+        common_names=['Inch Plant',
                       'Spiderwort'],
         genus_species='Tradescantia zebrina',
         family='Commelinaceae',
@@ -285,7 +285,7 @@ def seed_profiles():
         toxic_to_pets=True
     )
     jade = Profile(
-        picture='https://newgrowthbucket.s3.amazonaws.com/aloe.jpg',
+        picture='https://newgrowthbucket.s3.amazonaws.com/Crassula_bonsai.jpg',
         common_names=['Jade Plant', 'Lucky Plant',
                       'Money Plant', 'Money Tree'],
         genus_species='Crassula ovata',
@@ -299,6 +299,67 @@ def seed_profiles():
         pests=['mealybugs'],
         propogation_methods=['stem cuttings', 'leaf cuttings'],
         toxic_to_pets=True
+    )
+    pilea = Profile(
+        picture='https://newgrowthbucket.s3.amazonaws.com/Pilea_peperomioides_Chinese_money_plant.jpg',
+        common_names=['Chinese Money Plant', 'Missionary Plant'],
+        genus_species='Pilea peperomioides',
+        family='Urticaceae',
+        native_range='Yunnan Province in Southern China at the foot of the HImalayas',
+        temp_range='65-75',
+        light='Bright indirect',
+        soil_type='Rich, well-draining',
+        water_when='Water when the top inch of soil is dry.',
+        fertilization='Use a well-balanced fertilizer monthly during the growing season',
+        pests=['thrips, aphids'],
+        propogation_methods=['stem cuttings', 'babies'],
+        toxic_to_pets=False
+    )
+    ctenanthe = Profile(
+        picture='https://newgrowthbucket.s3.amazonaws.com/Ctenanthe_burle-marxii.jpg',
+        common_names=['Fishbone Prayer Plant',
+                      'Never Never Plant', 'Prayer Plant'],
+        genus_species='Ctenanthe burle-marxii',
+        family='Marantaceae',
+        native_range='Tropical Brazil',
+        temp_range='60-75',
+        light='Low to Medium indirect',
+        soil_type='Rich and well-draining, African Violet soil works well',
+        water_when='Water when the top of the soil begins to feel dry.',
+        fertilization='Use a well-balanced fertilizer monthly during the growing season',
+        pests=['mealybugs', 'thrips', 'spider mites'],
+        propogation_methods=['seeds', 'root division'],
+        toxic_to_pets=False
+    )
+    maranta = Profile(
+        picture='https://newgrowthbucket.s3.amazonaws.com/Maranta_leuconeura3.jpg',
+        common_names=['Prayer Plant'],
+        genus_species='Maranta leuconeura var. kerchoveana',
+        family='Marantaceae',
+        native_range='Rainforests of Brazil',
+        temp_range='60-80',
+        light='Low to bright indirect',
+        soil_type='Rich and well-draining, African Violet soil works well',
+        water_when='Water when the top of the soil begins to feel dry.',
+        fertilization='Use a well-balanced fertilizer monthly during the growing season',
+        pests=['spider mites', 'mealybugs'],
+        propogation_methods=['stem cuttings', 'root division'],
+        toxic_to_pets=False
+    )
+    red_maranta = Profile(
+        picture='https://newgrowthbucket.s3.amazonaws.com/maranta-leuconeura-erythroneura.jpeg',
+        common_names=['Red Vein Prayer Plant', 'Prayer Plant'],
+        genus_species='Maranta leuconeura var. erythroneura',
+        family='Marantaceae',
+        native_range='Rainforests of Brazil',
+        temp_range='60-80',
+        light='Low to bright indirect',
+        soil_type='Rich, well-draining, African Violet soil works well',
+        water_when='Water when the top of the soil begins to feel dry.',
+        fertilization='Use a well-balanced fertilizer monthly during the growing season',
+        pests=['spider mites', 'mealybugs'],
+        propogation_methods=['stem cuttings', 'root division'],
+        toxic_to_pets=False
     )
 
     db.session.add(boston_fern)
@@ -318,6 +379,10 @@ def seed_profiles():
     db.session.add(parlor)
     db.session.add(dragon)
     db.session.add(jade)
+    db.session.add(pilea)
+    db.session.add(maranta)
+    db.session.add(ctenanthe)
+    db.session.add(red_maranta)
 
     db.session.commit()
 

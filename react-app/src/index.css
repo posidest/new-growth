@@ -1,17 +1,23 @@
 /* TODO Add site wide styles */
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
 p,
 input,
 file-input,
-button,
 select,
 textarea,
-a,
 label {
   font-family: "Dosis", sans-serif;
-  font-weight: lighter;
-  /* padding: 5px;
-  margin: 5px; */
+  /* font-weight: lighter; */
+  font-size: 14px;
+  color: rgba(8, 32, 16, 1);
+}
+
+a,
+button {
+  font-family: "Dosis", sans-serif;
+  font-size: 15px;
 }
 
 input[type="file"] {
@@ -19,11 +25,14 @@ input[type="file"] {
 }
 
 .file-input {
-  padding: 4px 8px 4px 8px;
-  border: 1px solid rgba(200, 200, 200, 0.6);
-  font-size: 14px;
+  padding: 6px 10px 7px 10px;
+  border: 0.5px solid rgba(200, 200, 200, 0.6);
+  font-size: 15px;
   margin: 20px 20px 20px 10px;
   background-color: white;
+  border-radius: 20px;
+  font-weight: bold;
+  color: rgba(8, 32, 16, 0.6);
 }
 
 form {
@@ -33,50 +42,51 @@ form {
 }
 
 a {
-  color: black;
+  color: rgba(8, 32, 16, 0.6);
   text-decoration: none;
-  /* font-weight: bold; */
 }
 
 button {
-  font-family: "Dosis", sans-serif;
-  padding: 4px 8px 4px 8px;
-  margin: 5px;
-  /* font-weight: bold; */
-  font-size: 16px;
-  border: 1px solid rgba(200, 200, 200, 0.6);
-  /* background-color: rgba(8, 32, 16, 0.6); */
+  padding: 6px 10px 7px 10px;
+  font-weight: bold;
+  border: 0.5px solid rgba(8, 32, 16, 0.2);
+  box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.2);
   background-color: white;
-  border-radius: 2px;
+  color: rgba(8, 32, 16, 0.8);
+  /* background-color: rgba(8, 32, 16, 0.2); */
+  border-radius: 20px;
 }
 
 h1 {
-  /* margin-top: 100px; */
-  font-family: "Montserrat", sans-serif;
   color: rgba(8, 32, 16, 0.6);
-  font-weight: lighter;
+  font-family: "Raleway", sans-serif;
 }
 
 h4,
 h2,
-h3 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: lighter;
+h3,
+h5 {
+  color: rgba(8, 32, 16, 0.8);
+  font-family: "Raleway", sans-serif;
 }
 
 td {
   font-family: "Dosis", sans-serif;
   font-weight: lighter;
+  font-size: 13px;
+  color: rgba(8, 32, 16, 0.8))
 }
-
-/* body {
-  overflow: auto;
-} */
 
 img {
   border-radius: 2px;
+  /* margin: 10px; */
 }
 
 select {
   background-color: white;
+}
+
+input {
+  padding: 5px;
+  width: 200px;
 }

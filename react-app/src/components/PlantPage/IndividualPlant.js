@@ -60,8 +60,8 @@ const IndividualPlant = ({plantId}) => {
    if (plant) {
 
       return (
-         <div className='plant-page'>
-            <div className='plant-info'>
+         <div className='individual-plant'>
+            <div className='individual-plant-info'>
                <h1>{plant.nickname}</h1>
                <h2>{plant.name}</h2>
                <img 

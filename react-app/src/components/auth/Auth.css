@@ -1,3 +1,92 @@
-.auth {
-  margin-top: 100px;
+.sign-up-page {
+  background: url("../../images/Peperomia_perciliata.jpg") center no-repeat;
+}
+
+.login-page {
+  background: url("../../images/maiden-hair.jpg") center no-repeat;
+}
+
+.sign-up-page,
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size: cover;
+  height: 1000px;
+  text-align: center;
+}
+
+.sign-up-form,
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(8, 32, 16, 0.6);
+  margin-top: 150px;
+  padding: 10px 30px 40px 30px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.6);
+  text-align: center;
+}
+
+.sign-up-form h1,
+.login-form h1 {
+  color: white;
+  text-align: center;
+}
+
+.sign-up-form input,
+.sign-up-form textarea,
+.login-form input {
+  margin: 10px;
+  border-radius: 2px;
+  width: 200px;
+  border: 1px solid rgba(200, 200, 200, 0.4);
+}
+
+.sign-up-form button,
+.login-form button {
+  margin-top: 20px;
+  align-self: center;
+}
+
+.sign-up-page label,
+.login-page label {
+  color: white;
+}
+
+.hardiness {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+
+.hardiness img {
+  padding: 20px 0 40px 0;
+}
+
+.zone {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  /* margin: 20px 20px 30px 20px; */
+  align-self: center;
+}
+
+.sign-up-form textarea {
+  height: 100px;
+  width: 200px;
+}
+
+.sign-up-form p {
+  /* padding: 0 10px 7px 10px; */
+  font-size: 15px;
+  color: white;
+  font-style: italic;
+  font-weight: bold;
+  /* background-color: rgba(8, 32, 16, 1);
+  border-radius: 20px; */
 }

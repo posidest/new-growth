@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {useParams, Link} from 'react-router-dom'
+import Modal from 'react-modal';
 import PlantProfile from '../PlantProfile'
 import EntryForm from '../EntryForm'
 import {showEntries} from '../../store/entry';
 import './PlantPage.css'
+
 
 const PlantPage = () => {
    
@@ -47,13 +49,8 @@ const PlantPage = () => {
    }, [])
 
    const displayProfile = (e) => {
-      if (showProfile) {
-         setShowProfile(false)
-      } else {
-         setShowProfile(true)
-      }
+      setShowProfile(!showProfile)
    }
-
 
    if (plant) {
 
@@ -68,37 +65,47 @@ const PlantPage = () => {
                />
                <p>{plant.description}</p>
             </div>
-            {plant.profile_id && (
-               <div className='plant-profile'>
-                  <button onClick={displayProfile} type='button'>Show Profile Details </button>
-                  {showProfile && (
-                  <PlantProfile profileId={plant.profile_id}/> 
+            <div className='buttons'>
+               {plant.profile_id && (
+                     <>
+                     <button onClick={displayProfile} type='button'>Show Profile Details </button>
+                     </>
                   )}
-               </div>
-            )}
-            <div className='tend-btn'>
-               <button type='button'>
-               <Link to={`/plants/${id}/tend`}>
-                  Tend to me
-                  </Link>
-               </button>   
-               {/* <button type='button' onClick={tend}>Tend to me</button> */}
+               {plant.user_id === me.id && (
+                  <>
+                  <button type='button'>
+                  <Link to={`/plants/${id}/tend`}>
+                     Tend to me
+                     </Link>
+                  </button> 
+                  </>
+               )}
             </div>
-            {entries.map((entry) => (
-               <div key={entry.id}>
-                  {entry.watered && (
-                     <i className="fas fa-tint" style={{color: 'deepskyblue'}}></i>
-                  )}
-                  {entry.fertilized && (
-                     <i className="fas fa-poo" style={{color: 'brown'}}></i>
-                  )}
-                  {entry.progress_pic && (
-                  <img 
-                  src={entry.progress_pic}
-                  style={{width: '400px'}}
-                  />
-                  )}
-                  <h4>{`Location: ${entry.location}`}</h4>
+               {showProfile && (
+                  <div className='plant-profile'>
+                     <PlantProfile profileId={plant.profile_id}/> 
+                  </div>
+               )}     
+               {entries.map((entry) => (
+                  <div key={entry.id} className='individual-entry'>
+                     <div className='top'>
+                        <h4>{entry.date}</h4>
+                        <div className='is'>
+                           {entry.watered && (
+                              <i className="fas fa-tint fa-lg" style={{color: 'deepskyblue', paddingBottom: '10px'}}></i>
+                           )}
+                           {entry.fertilized && (
+                              <i className="fas fa-poo" style={{color: 'brown'}}></i>
+                           )}
+                        </div>
+                     </div>
+                     {entry.progress_pic && (
+                        <img 
+                        src={entry.progress_pic}
+                        style={{width: '400px'}}
+                        />
+                     )}
+                  <h5>{`Location: ${entry.location}`}</h5>
                   <p>{entry.details}</p>
                   <div 
                   onClick={deleteEntry} 

@@ -1,0 +1,60 @@
+.entry-form {
+  background-color: rgba(8, 32, 16, 0.5);
+  margin-top: 160px;
+  padding: 10px 30px 40px 30px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* position: fixed; */
+}
+
+.entry-form h1 {
+  color: white;
+}
+
+.entry-form input,
+.entry-form textarea,
+.entry-form select {
+  margin: 10px;
+  border-radius: 2px;
+  width: 200px;
+  border: 1px solid rgba(200, 200, 200, 0.6);
+}
+
+.entry-form-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.entry-form button {
+  margin-top: 20px;
+}
+
+.fertilized label,
+.watered label {
+  color: white;
+}
+
+.checks input {
+  width: 20px;
+}
+
+.watered,
+.fertilized {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.entry-form-buttons {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.entry-form-buttons button {
+  margin: 40px 10px 0 10px;
+}

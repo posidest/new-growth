@@ -2,7 +2,7 @@
   width: 300px;
 }
 
-.profiles-page {
+.profiles {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -12,11 +12,10 @@
 
 .profiles-page h4 {
   text-align: center;
-  /* margin-top: 20px; */
 }
 
 .profiles-header h1 {
-  margin-top: 100px;
+  margin-top: 80px;
   align-self: center;
 }
 
@@ -27,5 +26,18 @@
 }
 
 .individual-profile {
-  margin: 20px;
+  margin: 20px 10px 20px 10px;
+  border: 1px solid rgba(8, 32, 16, 0.2);
+  padding: 20px;
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.2);
+}
+
+.individual-profile h4 {
+  width: 160px;
+}
+
+.profiles-page {
+  background: rgba(8, 32, 16, 0.1);
 }

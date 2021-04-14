@@ -4,6 +4,7 @@
   height: 55px;
   width: 100%;
   background-color: white;
+  /* background-color: rgba(8, 32, 16, 0.6); */
   background-size: cover;
   position: fixed;
   top: 0;
@@ -11,44 +12,66 @@
 
 .login-btn a,
 .sign-up-btn a,
-.user-btn a,
-.home-btn a {
-  position: absolute;
-  top: 10px;
-}
-
-.fa-leaf {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-}
-
-.fa-search {
+.user-btn a {
+  /* color: black; */
   color: rgba(8, 32, 16, 0.6);
+  position: fixed;
+  top: 12px;
+  font-family: "Dosis", sans-serif;
+  /* font-size: 15px; */
+  background: rgba(8, 32, 16, 0.1);
+  background: white;
+  box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.2);
+  font-weight: bold;
+  border: 0.5px solid rgba(8, 32, 16, 0.2);
+  border-radius: 20px;
+  padding: 6px 10px 7px 10px;
 }
 
-.nav-bar button {
-  border: none;
+.fa-seedling {
+  position: fixed;
+  left: 20px;
+  top: 12px;
+  /* background-color: white; */
 }
 
 .navatar {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-}
-
-.nav-bar input {
-  padding: 5px;
-  margin-top: 15px;
-}
-
-.search input {
-  width: 200px;
-  border: 1px solid rgba(200, 200, 200, 0.6);
-  border-radius: 2px;
-}
-
-.search {
   position: absolute;
-  left: 140px;
+  right: 25px;
+  top: 10px;
 }
+
+.login-btn {
+  position: fixed;
+  right: 70px;
+}
+
+.sign-up-btn {
+  position: fixed;
+  top: 12px;
+  right: 140px;
+}
+
+/* .nav-bar a { */
+/* padding-top: 5px; */
+/* font-family: "Dosis", sans-serif;
+  font-size: 15px;
+  box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.6);
+  font-weight: bold;
+  /* background-color: rgba(8, 32, 16, 0.6); */
+/* border-radius: 20px; */
+/*} */
+
+.logout-btn {
+  margin-top: 15px;
+  position: fixed;
+  right: 80px;
+}
+
+/* .drop-down-profile ul {
+  right: 40px;
+}
+
+.drop-down-profile li {
+  padding: 5px;
+} */
