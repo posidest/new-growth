@@ -88,20 +88,24 @@ const PlantPage = () => {
                )}     
                {entries.map((entry) => (
                   <div key={entry.id} className='individual-entry'>
-                     {entry.watered && (
-                        <i className="fas fa-tint" style={{color: 'deepskyblue'}}></i>
-                     )}
-                     {entry.fertilized && (
-                        <i className="fas fa-poo" style={{color: 'brown'}}></i>
-                     )}
+                     <div className='top'>
+                        <h4>{entry.date}</h4>
+                        <div className='is'>
+                           {entry.watered && (
+                              <i className="fas fa-tint fa-lg" style={{color: 'deepskyblue', paddingBottom: '10px'}}></i>
+                           )}
+                           {entry.fertilized && (
+                              <i className="fas fa-poo" style={{color: 'brown'}}></i>
+                           )}
+                        </div>
+                     </div>
                      {entry.progress_pic && (
                         <img 
                         src={entry.progress_pic}
                         style={{width: '400px'}}
                         />
                      )}
-                     <h4>{entry.date}</h4>
-                  <p>{`Location: ${entry.location}`}</p>
+                  <h5>{`Location: ${entry.location}`}</h5>
                   <p>{entry.details}</p>
                   <div 
                   onClick={deleteEntry} 
