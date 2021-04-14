@@ -13,6 +13,7 @@ const PlantPage = () => {
    const dispatch = useDispatch()
    const [plant, setPlant] = useState({})
    const [entries, setEntries] = useState([])
+   const [user, setUser] = useState(null)
    const [profile, setProfile] = useState(null)
    const [profileId, setProfileId] = useState(null)
    const {id} = useParams()
@@ -32,6 +33,15 @@ const PlantPage = () => {
       }
    }
 
+     const getUser = async(id) => {
+      const res = await fetch(`/api/users/${id}`)
+      if (res.ok) {
+         const data = await res.json()
+         await setUser(data)
+         return user;
+      }
+   }
+
    const deleteEntry = async (e) => {
       const entryId = e.target.value;
       const res = await fetch(`/api/plants/entries/${entryId}`, {
@@ -48,15 +58,24 @@ const PlantPage = () => {
       // await dispatch(showEntries(id))
    }, [])
 
+   useEffect(async() => {
+      await getUser(plant.user_id)
+   },[plant])
+
    const displayProfile = (e) => {
       setShowProfile(!showProfile)
    }
 
-   if (plant) {
+   if (plant && user) {
 
       return (
          <div className='plant-page'>
             <div className='plant-info'>
+               <Link to={`/users/${user.id}`}>
+                  <img 
+                  style={{height: '50px', width: '50px', borderRadius: '50%'}}
+                  src={user.avatar} alt='avatar'/>
+               </Link>
                <h1>{plant.nickname}</h1>
                <h2>{plant.name}</h2>
                <img 
@@ -64,7 +83,7 @@ const PlantPage = () => {
                style={{width: '400px'}}
                />
                <p>{plant.description}</p>
-            </div>
+               </div>
             <div className='buttons'>
                {plant.profile_id && (
                      <>
