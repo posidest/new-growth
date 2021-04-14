@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link, Redirect} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import UsersPlants from './UsersPlants'
+import MyPlants from './MyPlants'
 import {showProfiles} from '../../store/profile'
 import DashNav from './DashNav'
 import './Dashboard.css'
@@ -33,7 +33,7 @@ const Dashboard = () => {
                <p className='zone-info'>{`USDA Zone: ${me.zone}`}</p>
             </div>
             <div className='users-plants-container'>
-               <UsersPlants />
+               <MyPlants />
             </div>
          </div>
       </div>
