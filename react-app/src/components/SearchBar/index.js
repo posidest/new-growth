@@ -25,12 +25,23 @@ import './SearchBar.css'
          e.preventDefault()
          let searchResults = []
          profiles.forEach((profile) => {
-            let names = []
+            let index = []
             profile.common_names.forEach((name) => {
-               names.push(...name.toLowerCase().split(' '))
-               names.push(...profile.genus_species.toLowerCase().split(' '))
+               index.push(...name.toLowerCase().split(' '))
             })
-            if (names.includes(value[0]) || names.includes(value[1])) {
+            profile.pests.forEach((pest) => {
+               index.push(...pest.toLowerCase().split(' '))
+            })
+            profile.propogation_methods.forEach((method) => {
+               index.push(...method.toLowerCase().split(' '))
+            })
+            index.push(...profile.genus_species.toLowerCase().split(' '))
+            index.push(...profile.native_range.toLowerCase().split(' '))
+            index.push(profile.family.toLowerCase())
+            index.push(...profile.temp_range.split('-'))
+            index.push(...profile.soil_type.toLowerCase().split(' '))
+            index.push(...profile.light.toLowerCase().split(' '))
+            if (index.includes(value[0]) || index.includes(value[1])) {
                searchResults.push(profile)
             }
          })
