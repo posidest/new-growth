@@ -4,12 +4,14 @@ import plant from './plant';
 import profile from './profile';
 import session from './session';
 import entry from './entry';
+import user from './user'
 
 const rootReducer = combineReducers({
 plant,
 profile,
 session,
-entry
+entry,
+user
 })
 
 

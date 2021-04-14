@@ -5,7 +5,7 @@ import {NavLink, Link} from 'react-router-dom'
 import './Dashboard.css'
 import LogoutButton from '../auth/LogoutButton';
 
-const DashNav = ({authenticated}) => {
+const DashNav = () => {
    // const me = useSelector((state) => state.session.user)
 return (
 <div className ='dash-nav'>

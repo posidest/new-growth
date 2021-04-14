@@ -64,9 +64,12 @@ function App() {
         <Route path='/plants/:id'>
           <PlantPage/>
         </Route>
-        <ProtectedRoute path='/users/:userId' exact={true}>
+        <Route path='/users/:id'>
           <UserProfile />
-        </ProtectedRoute>
+        </Route>
+        <Route exact path='/users'>
+          <UsersList />
+        </Route>
         <ProtectedRoute path="/" exact={true}>
           <Dashboard />
         </ProtectedRoute>
