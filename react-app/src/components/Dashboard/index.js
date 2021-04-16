@@ -8,7 +8,7 @@ import DashNav from './DashNav'
 import './Dashboard.css'
 
 const Dashboard = () => {
-   // const [loaded, setLoaded] = useState(false)
+   const [, setLoaded] = useState(false)
    const me = useSelector((state) => state.session.user)
    const dispatch = useDispatch()
    let follows = useSelector((state) => state.user.follows)
@@ -22,9 +22,9 @@ const Dashboard = () => {
       // setLoaded(true)
    },[])
    
-   // useEffect(() => {
+   useEffect(() => {
       dispatch(showFollows(me.id))
-      // },[])
+      },[])
 
    const getUser = async(id) => {
       const res = await fetch(`/api/users/${id}`)
@@ -42,6 +42,7 @@ const Dashboard = () => {
          await following.push(friend) 
       })
       console.log(following, 'following')
+      
    }
    if (me) { return (
       <div className='dashboard'>

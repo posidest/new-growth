@@ -6,7 +6,6 @@ import './Dashboard.css'
 import LogoutButton from '../auth/LogoutButton';
 
 const DashNav = () => {
-   // const me = useSelector((state) => state.session.user)
 return (
 <div className ='dash-nav'>
    <Link to='/plants/profile'>

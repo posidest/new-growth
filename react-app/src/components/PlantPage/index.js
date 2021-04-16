@@ -6,7 +6,7 @@ import PlantProfile from '../PlantProfile'
 import EntryForm from '../EntryForm'
 import {showEntries} from '../../store/entry';
 import './PlantPage.css'
-
+import PlantNav from './PlantNav'
 
 const PlantPage = () => {
    
@@ -43,9 +43,11 @@ const PlantPage = () => {
    }
 
    const deleteEntry = async (e) => {
-      const entryId = e.target.value;
+      const entryId = e.target.id;
+      console.log(entryId)
       const res = await fetch(`/api/plants/entries/${entryId}`, {
-         method: 'DELETE'
+         method: 'DELETE',
+         headers: {'Content-Type': 'application/json'}
       })
       if (res.ok) {
          const data = await res.json()
@@ -57,10 +59,10 @@ const PlantPage = () => {
       await getPlant(id)
       // await dispatch(showEntries(id))
    }, [])
-
-   useEffect(async() => {
+   
+    useEffect(async() => {
       await getUser(plant.user_id)
-   },[plant])
+    },[plant])
 
    const displayProfile = (e) => {
       setShowProfile(!showProfile)
@@ -69,6 +71,10 @@ const PlantPage = () => {
    if (plant && user) {
 
       return (
+          <>
+          <div className='plant-nav'>
+               <PlantNav plant={plant} user={user}/>
+            </div>
          <div className='plant-page'>
             <div className='plant-info'>
                <Link to={`/users/${user.id}`}>
@@ -126,17 +132,20 @@ const PlantPage = () => {
                      )}
                   <h5>{`Location: ${entry.location}`}</h5>
                   <p>{entry.details}</p>
-                  <div 
-                  onClick={deleteEntry} 
-                  value={entry.id}>
-                     <i 
-                     className="far fa-trash-alt" style={{color: 'green'}}> 
-                     </i>
-                  </div>
+                  {(entry.user_id === me.id) && (
+                     <div> 
+                        <i 
+                        onClick={deleteEntry}
+                        id={entry.id}
+                        className="far fa-trash-alt" style={{color: 'green'}}> 
+                        </i>
+                     </div>
+                  )}
                   {/* <div onClick={editEntry}><i className="far fa-edit"></i></div> */}
                </div>
             ))}
          </div>
+         </>
       )}
    else {
       return (

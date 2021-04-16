@@ -19,22 +19,6 @@ const UserProfile = () => {
    const user = useSelector((state) => state.user.user)
    
 
-
-//    const getUser = async(id) => {
-//    const res = await fetch(`/api/users/${id}`)
-//    if (res.ok) {
-//       const data = await res.json()
-//       // console.log(data, 'data from user thunk')
-//       // dispatch(getUser(data))
-//       await setUser(data)
-//       return user
-//    }
-// }
-
-   // useEffect(async() => {
-   //    await getUser(id)
-   // },[])
-
       if(user) {
          return (
          <div className='dashboard'>
