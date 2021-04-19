@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Link, Redirect} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import MyPlants from './MyPlants'
 import {showProfiles} from '../../store/profile'
@@ -13,7 +13,8 @@ const Dashboard = () => {
    const me = useSelector((state) => state.session.user)
    const dispatch = useDispatch()
    let follows = useSelector((state) => state.user.follows)
-   
+   const history= useHistory()
+
    if (follows) { 
       follows = follows['follow']
    }
@@ -33,6 +34,11 @@ const Dashboard = () => {
    useEffect(() => {
       dispatch(showFollows(me.id))
       },[me])
+
+   const editProfile = (e) => {
+      history.push('/users/edit')
+   }
+
 
 
    const findFollowing = async (follows) => {
@@ -71,6 +77,11 @@ const Dashboard = () => {
                <h4>{me.username}</h4>
                <p>{me.bio}</p>
                <p className='zone-info'>{`USDA Zone: ${me.zone}`}</p>
+               <i 
+               className="far fa-edit" 
+               style={{color: 'green'}}
+               onClick={editProfile}>
+               </i>
             </div>
             <div className='following'>
                {/* {following.length > 0 && ( */}

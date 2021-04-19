@@ -74,6 +74,7 @@ const UserNav = () => {
             <Link to='/users'>Browse Other Users</Link>
             <Link to='/plants/profile'>Discover Plants</Link>
             <Link to='/plants/search'>Find a Plant</Link>
+            <Link to={`/plants/zone/${user.zone}`}>Other Users in this Zone</Link>
          </>
          )
    }
@@ -84,12 +85,35 @@ const UserNav = () => {
          <Link to='/'>My Dashboard</Link>
          <Link to='/users'>Browse Other Users</Link>
          {me.id !== user.id && !followed && (
-         <button type='button' onClick={followThem}>{`Follow ${user.username}`}</button>
+         <button 
+         type='button' 
+         onClick={followThem}
+            style={{
+               color: 'white', 
+               background: 'transparent', 
+               border: 'none', 
+               fontWeight: 'lighter', 
+               boxShadow: 'none'
+               }}
+               >{`Follow ${user.username}`}
+               </button>
          )}
          {followed && (
             <>
             <Link to={`/users/${user.id}/follows`}>Following</Link>
-            <button type='button' onClick={unFollow} id={followed.id}>{`Unfollow ${user.username}`}</button>
+            <button 
+            type='button' 
+            onClick={unFollow} 
+            id={followed.id}
+            style={{
+               color: 'white', 
+               background: 'transparent', 
+               border: 'none', 
+               fontWeight: 'lighter', 
+               boxShadow: 'none'
+               }}>
+               {`Unfollow ${user.username}`}
+               </button>
             </>
          )}
          </>

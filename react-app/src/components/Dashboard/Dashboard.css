@@ -8,17 +8,19 @@
   /* box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.6); */
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.3);
   border-radius: 2px;
-  /* margin-top: 40px;
-  margin-left: 40px; */
+  padding-bottom: 40px;
+  /*margin-left: 40px; */
   margin: 40px 40px 40px 20px;
   box-sizing: border-box;
   height: 420px;
   width: 250px;
+  box-sizing: border-box;
   position: relative;
 }
 
-.zone-info {
+.fa-edit {
   position: absolute;
+  right: 20px;
   bottom: 20px;
 }
 
@@ -29,9 +31,9 @@
 .plants {
   display: flex;
   margin: 0px;
-  padding: 20px 0px 0px 0px;
+  padding: 20px 0px 0px 40px;
   flex-direction: row;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
   flex-wrap: wrap;
   text-align: center;
@@ -96,7 +98,7 @@
 
 .following {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
   position: absolute;
   top: 500px;
@@ -110,9 +112,17 @@
   background-color: white;
   margin: 10px;
   border-radius: 2px;
+  border: 0.5px solid rgba(8, 32, 16, 0.2);
+  box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.3);
 }
 
 .follow:hover {
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
+}
+
+.single-plant:hover {
   -webkit-transform: scale(1.02);
   -ms-transform: scale(1.02);
   transform: scale(1.02);

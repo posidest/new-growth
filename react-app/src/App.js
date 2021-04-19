@@ -15,6 +15,8 @@ import PlantProfilePage from './components/PlantProfilePage'
 import PlantProfiles from './components/PlantProfiles'
 import EntryForm from './components/EntryForm'
 import PlantForm from './components/PlantForm'
+import EditPlant from './components/EditPlant'
+import EditProfile from './components/EditProfile'
 import Dashboard from './components/Dashboard'
 import { authenticate } from "./store/session";
 
@@ -57,6 +59,12 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/plants/:id/tend' exact={true}>
           <EntryForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/plants/:id/edit' exact={true}>
+          <EditPlant /> 
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/edit' exact={true}>
+          <EditProfile /> 
         </ProtectedRoute>
         <Route exact path='/plants/search'>
           <SearchBar/>
