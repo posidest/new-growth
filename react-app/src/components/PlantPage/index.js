@@ -42,6 +42,7 @@ const PlantPage = () => {
       }
    }
 
+
    const deleteEntry = async (e) => {
       const entryId = e.target.id;
       console.log(entryId)

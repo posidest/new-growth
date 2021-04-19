@@ -26,8 +26,6 @@ const PlantNav = ({plant, user}) => {
       await history.push('/')
    }
 
-
-
    if (me && user && plant) {
       if (me.id === user.id) {
          links = (
