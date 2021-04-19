@@ -8,50 +8,50 @@
   /* box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.6); */
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.3);
   border-radius: 2px;
-  margin-top: 40px;
-  margin-left: 40px;
+  padding-bottom: 40px;
+  /*margin-left: 40px; */
+  margin: 40px 40px 40px 20px;
   box-sizing: border-box;
-  height: 450px;
+  height: 420px;
+  width: 250px;
+  box-sizing: border-box;
   position: relative;
 }
 
-.zone-info {
+.fa-edit {
   position: absolute;
+  right: 20px;
   bottom: 20px;
 }
 
 .user-info h4 {
   color: rgba(8, 32, 16, 0.6);
-  grid-column-start: 0;
-  grid-column-end: 1;
 }
 
 .plants {
   display: flex;
-  margin: 40px 0 40px 20px;
+  margin: 0px;
+  padding: 20px 0px 0px 40px;
   flex-direction: row;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
-  width: 100%;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   text-align: center;
-  grid-column-start: 3;
-  grid-column-end: 6;
 }
 
 .single-plant {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 10px 0px 10px;
+  margin: 20px 10px 20px 10px;
   text-align: center;
-  padding: 0 10px 20px 10px;
+  padding: 0px 0px 0px 0px;
   border: 0.5px solid rgba(8, 32, 16, 0.3);
   border-radius: 2px;
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.3);
   background-color: white;
-  height: 450px;
-  width: 270px;
+  height: 420px;
+  width: 250px;
   box-sizing: border-box;
 }
 
@@ -77,8 +77,8 @@
   margin-top: 40px;
   font-weight: lighter;
   color: rgba(8, 32, 16, 0.6);
-  grid-column-start: 3;
-  grid-column-end: 4;
+  /* grid-column-start: 3;
+  grid-column-end: 4; */
 }
 
 .dash-nav a {
@@ -87,9 +87,43 @@
 }
 
 .dash {
-  display: grid;
+  /* display: grid; */
+  display: flex;
   background: rgba(8, 32, 16, 0.2);
   height: 4000px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
   width: 100%;
+  position: relative;
+}
+
+.following {
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: center;
+  position: absolute;
+  top: 500px;
+  margin-left: 20px;
+  width: 250px;
+}
+
+.follow {
+  padding: 7px;
+  /* background-color: rgba(8, 32, 16, 0.6); */
+  background-color: white;
+  margin: 10px;
+  border-radius: 2px;
+  border: 0.5px solid rgba(8, 32, 16, 0.2);
+  box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.3);
+}
+
+.follow:hover {
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
+}
+
+.single-plant:hover {
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
 }

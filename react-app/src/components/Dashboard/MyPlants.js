@@ -44,9 +44,9 @@ const MyPlants = () => {
                   <div key={plant.id} className='single-plant'>
                      <Link to={`/plants/${plant.id}`}>
                         <h4>{plant.nickname}</h4>
-                        <div style={{width: '250px', height: '250px'}}>
+                        <div style={{width: '230px', height: '230px'}}>
                            <img src={plant.plant_pic}
-                           style={{maxWidth: '250px', maxHeight: '250px'}}
+                           style={{maxWidth: '230px', maxHeight: '230px'}}
                            alt='plant-pic'
                            />
                         </div>

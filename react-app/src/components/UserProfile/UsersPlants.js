@@ -5,7 +5,7 @@ import {showUser} from '../../store/user'
 import {Link, useParams} from 'react-router-dom'
 import '../Dashboard/Dashboard.css';
 
-const UsersPlants = ({userId}) => {
+const UsersPlants = () => {
    const [plants, setPlants] = useState([])
    const dispatch = useDispatch()
 
@@ -24,9 +24,8 @@ const UsersPlants = ({userId}) => {
    }
 
    useEffect(async() => {
-      await getPlants(userId)
+      await getPlants(user.id)
    },[])
-
 
 
    if (plants) {

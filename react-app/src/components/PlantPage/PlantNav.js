@@ -26,8 +26,6 @@ const PlantNav = ({plant, user}) => {
       await history.push('/')
    }
 
-
-
    if (me && user && plant) {
       if (me.id === user.id) {
          links = (
@@ -38,7 +36,9 @@ const PlantNav = ({plant, user}) => {
                <Link to='/plants/edit'>
                   Edit Plant
                </Link>
-               <button type='button' onClick={deleteEvent}>
+               <button type='button' 
+               onClick={deleteEvent}
+               style={{color: 'white', background: 'transparent', border: 'none', fontWeight: 'lighter', boxShadow: 'none'}}>
                   Delete Plant
                </button>
                </>

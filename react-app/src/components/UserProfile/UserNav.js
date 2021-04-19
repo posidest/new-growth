@@ -1,45 +1,71 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import {authenticate} from '../../store/session'
 import {useParams, Link} from 'react-router-dom'
 import {showFollows} from '../../store/user'
 import '../Dashboard/Dashboard.css'
-import LogoutButton from '../auth/LogoutButton';
+
 
 const UserNav = () => {
+   const [following, setFollowing] = useState(false)
+   const [loaded, setLoaded] = useState(false)
+
+   const dispatch = useDispatch()
+   const {id} = useParams()
    const me = useSelector((state) => state.session.user)
    const user = useSelector((state) => state.user.user)
-   const {id} = useParams()
+   let followed = null;
+
    let follows = useSelector((state) => state.user.follows)
    if (follows) {
       follows = follows['follow']
-   }
-   const dispatch = useDispatch()
-   
+      followed = follows.filter((follow) => (
+         follow.friend_id === user.id 
+      ))
+      if (followed) {
+         followed = followed[0]
+       }
+      }
+
+
    useEffect(() => {
       dispatch(showFollows(me.id))
-   },[])
+   },[following, followed])
 
    const followThem = async(e) => {
-   const user_id = me.id;
-   const friend_id = user.id;
-   if (user_id === friend_id) {
-      return {'errors': 'you cannot follow yourself'}
-   }
-   const res = await fetch(`/api/users/follows`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-         user_id,
-         friend_id
+      const user_id = me.id;
+      const friend_id = user.id;
+      if (user_id === friend_id) {
+         return {'errors': 'you cannot follow yourself'}
+      }
+      const res = await fetch(`/api/users/follows`, {
+         method: 'POST',
+         headers: {'Content-Type': 'application/json'},
+         body: JSON.stringify({
+            user_id,
+            friend_id
+         })
+      });
+      if (res.ok) {
+         const data = await res.json()
+         console.log(data, 'data from follow request')
+         await setFollowing(true)
+         return data
+      }}
+
+   const unFollow = async(e) => {
+      // const selectedId = e.target.id;
+      // const user_id = me.id;
+      // const friend_id = user.id;
+      const res = await fetch(`/api/users/follows/${followed.id}`, {
+         method: 'DELETE',
+         headers: {'Content-Type': 'application/json'}
       })
-   });
-   if (res.ok) {
-      const data = await res.json()
-      console.log(data, 'data from follow request')
-      return data
+      if (res.ok) {
+         const data = await res.json()
+         await setFollowing(false)
+         return data
+      }
    }
-}
 
    let links;
    if(!me) {
@@ -48,36 +74,64 @@ const UserNav = () => {
             <Link to='/users'>Browse Other Users</Link>
             <Link to='/plants/profile'>Discover Plants</Link>
             <Link to='/plants/search'>Find a Plant</Link>
+            <Link to={`/plants/zone/${user.zone}`}>Other Users in this Zone</Link>
          </>
          )
    }
 
    if (me && follows) {
-      const followed = follows.filter((follow) => (
-         follow.friend_id === user.id 
-      ))
-      console.log(followed, 'followed')
       links = (
          <>
          <Link to='/'>My Dashboard</Link>
          <Link to='/users'>Browse Other Users</Link>
-         {me.id !== user.id && !followed.length && (
-         <button type='button' onClick={followThem}>{`Follow ${user.username}`}</button>
+         {me.id !== user.id && !followed && (
+         <button 
+         type='button' 
+         onClick={followThem}
+            style={{
+               color: 'white', 
+               background: 'transparent', 
+               border: 'none', 
+               fontWeight: 'lighter', 
+               boxShadow: 'none'
+               }}
+               >{`Follow ${user.username}`}
+               </button>
          )}
-         {followed.length && (
+         {followed && (
+            <>
             <Link to={`/users/${user.id}/follows`}>Following</Link>
+            <button 
+            type='button' 
+            onClick={unFollow} 
+            id={followed.id}
+            style={{
+               color: 'white', 
+               background: 'transparent', 
+               border: 'none', 
+               fontWeight: 'lighter', 
+               boxShadow: 'none'
+               }}>
+               {`Unfollow ${user.username}`}
+               </button>
+            </>
          )}
          </>
       )
    }
-
-return (
-<div className ='dash-nav'>
-   {links}
-</div>
-)
-
+   if (user) {
+      return (
+      <div className ='dash-nav'>
+         {links}
+      </div>
+      )
+   } else {
+      return (
+      <h1>Loading...</h1>
+      )
+   }
 }
+
 
 
 export default UserNav;
