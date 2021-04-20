@@ -102,6 +102,15 @@ const Dashboard = () => {
             <div className='users-plants-container'>
                <MyPlants />
             </div>
+            <div className='credits'>
+               
+               <h5>Photo Credits:</h5>
+               <ul>
+                  <li>Forest and Kim Starr via Wikipedia</li>
+                  <li>Balles2601 via Wikipedia</li>
+                  <li></li>
+               </ul>
+            </div>
          </div>
       </div>
       ) 

@@ -85,8 +85,8 @@ const PlantPage = () => {
                   style={{height: '50px', width: '50px', borderRadius: '50%'}}
                   src={user.avatar} alt='avatar'/>
                </Link>
-               <h1>{plant.nickname}</h1>
-               <h2>{plant.name}</h2>
+               <h2>{plant.nickname}</h2>
+               <h3>{plant.name}</h3>
                <img 
                src={plant.plant_pic}
                style={{width: '400px'}}

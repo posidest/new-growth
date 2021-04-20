@@ -16,12 +16,14 @@ class User(db.Model, UserMixin):
 
     entries = db.relationship('Entry')
     plants = db.relationship('Plant')
+    follows = db.relationship('Follow', foreign_keys='[Follow.friend_id]')
+    user = db.relationship('Follow', foreign_keys='[Follow.user_id]')
 
-    @property
+    @ property
     def password(self):
         return self.hashed_password
 
-    @password.setter
+    @ password.setter
     def password(self, password):
         self.hashed_password = generate_password_hash(password)
 
@@ -36,5 +38,5 @@ class User(db.Model, UserMixin):
             "avatar": self.avatar,
             "bio": self.bio,
             "zone": self.zone,
-            "plants": [plant.to_dict() for plant in self.plants]
+            "plants": [plant.to_dict() for plant in self.plants],
         }

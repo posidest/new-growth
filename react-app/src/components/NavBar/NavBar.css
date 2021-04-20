@@ -1,12 +1,14 @@
 .nav-bar {
   display: flex;
   justify-content: space-around;
-  height: 55px;
+  height: 50px;
   width: 100%;
   background-color: white;
+  background-color: rgba(8, 32, 16, 0.1);
   /* background-color: rgba(8, 32, 16, 0.6); */
   background-size: cover;
-  position: fixed;
+  /* position: fixed; */
+  position: relative;
   top: 0;
 }
 
@@ -15,7 +17,7 @@
 .user-btn a {
   /* color: black; */
   color: rgba(8, 32, 16, 0.6);
-  position: fixed;
+  position: absolute;
   top: 12px;
   font-family: "Dosis", sans-serif;
   /* font-size: 15px; */
@@ -29,7 +31,7 @@
 }
 
 .fa-seedling {
-  position: fixed;
+  position: absolute;
   left: 20px;
   top: 12px;
   /* background-color: white; */
@@ -37,8 +39,8 @@
 
 .navatar {
   position: absolute;
-  right: 25px;
-  top: 10px;
+  right: 15px;
+  top: 6px;
 }
 
 .login-btn {
@@ -63,9 +65,9 @@
 /*} */
 
 .logout-btn {
-  margin-top: 15px;
-  position: fixed;
-  right: 80px;
+  margin-top: 8px;
+  position: absolute;
+  right: 70px;
 }
 
 /* .drop-down-profile ul {
