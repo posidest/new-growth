@@ -74,7 +74,7 @@ td {
   font-family: "Dosis", sans-serif;
   font-weight: lighter;
   font-size: 13px;
-  color: rgba(8, 32, 16, 0.8))
+  color: rgba(8, 32, 16, 0.8);
 }
 
 img {
@@ -90,3 +90,9 @@ input {
   padding: 5px;
   width: 200px;
 }
+
+/* button:hover {
+    -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
+} */
