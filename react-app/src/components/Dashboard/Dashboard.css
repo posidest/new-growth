@@ -71,7 +71,7 @@
   box-sizing: border-box;
   justify-content: space-around;
   /* background-color: green; */
-  background-color: rgba(8, 32, 16, 0.8);
+  background-color: rgba(8, 32, 16, 0.75);
 }
 
 .plant-header {
@@ -85,6 +85,7 @@
 
 .dash-nav a {
   color: white;
+  color: rgb(230, 233, 231);
   margin-top: 15px;
 }
 
@@ -98,14 +99,22 @@
   position: relative;
 }
 
+.follows {
+  display: flex;
+  /* justify-content: space-around; */
+  /* align-items: center; */
+}
+
 .following {
   display: flex;
+  flex-direction: column;
   /* justify-content: space-around; */
   align-items: center;
   position: absolute;
+  padding: 5px;
   top: 500px;
   margin-left: 20px;
-  width: 240px;
+  width: fit-content;
   background-color: rgba(8, 32, 16, 0.4);
   box-sizing: border-box;
 }

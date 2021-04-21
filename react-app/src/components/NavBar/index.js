@@ -27,7 +27,9 @@ const NavBar = () => {
           <NavLink to="/" exact={true} activeClassName="active">
             {/* <i className="fas fa-leaf fa-2x" */}
             <i className="fas fa-seedling fa-2x"
-            style={{color: 'rgba(8, 32, 16, 0.6)'}}
+            style={{color: 'rgba(8, 32, 16, 0.7)'}}
+            // style={{color: 'rgb(230, 233, 231)'}}
+            // style={{color: 'rgb(156, 166, 159)'}}
             // style={{color: 'white'}}
             ></i>
           </NavLink>

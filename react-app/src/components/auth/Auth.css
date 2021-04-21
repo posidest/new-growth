@@ -32,6 +32,7 @@
 .sign-up-form h1,
 .login-form h1 {
   color: white;
+  color: rgb(230, 233, 231);
   text-align: center;
 }
 
@@ -53,6 +54,7 @@
 .sign-up-page label,
 .login-page label {
   color: white;
+  color: rgb(230, 233, 231);
 }
 
 .hardiness {
@@ -85,6 +87,7 @@ img {
   /* padding: 0 10px 7px 10px; */
   font-size: 15px;
   color: white;
+  color: rgb(230, 233, 231);
   font-style: italic;
   font-weight: bold;
   /* background-color: rgba(8, 32, 16, 1);

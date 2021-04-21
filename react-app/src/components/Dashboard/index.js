@@ -79,25 +79,27 @@ const Dashboard = () => {
                <p className='zone-info'>{`USDA Zone: ${me.zone}`}</p>
                <i 
                className="far fa-edit" 
-               style={{color: 'green'}}
+               style={{color: 'rgba(8,32,16,0.6)'}}
                onClick={editProfile}>
                </i>
             </div>
             <div className='following'>
-               {/* {following.length > 0 && ( */}
-               {following.map((follow) => (
-                  <div key={follow.id} className='follow'>
-                     {console.log('friend')}
-                     <Link to={`/users/${follow.id}`}>
-                        <img src={follow.avatar} 
-                        alt='avatar' 
-                        style={{height: '50px', width: '50px', borderRadius: '50%'}}/>
-                        <p 
-                        // style={{color: 'white'}}
-                        >{follow.username}</p>
-                     </Link>
+                  <h5 style={{color: 'rgb(230, 233, 231)'}}>Following</h5>
+                  <div className='follows'>
+                     {following.map((follow) => (
+                        <div key={follow.id} className='follow'>
+                           {console.log('friend')}
+                           <Link to={`/users/${follow.id}`}>
+                              <img src={follow.avatar} 
+                              alt='avatar' 
+                              style={{height: '50px', width: '50px', borderRadius: '50%'}}/>
+                              <p 
+                              // style={{color: 'white'}}
+                              >{follow.username}</p>
+                           </Link>
+                        </div>
+                     ))}
                   </div>
-               ))}
             </div>
             <div className='users-plants-container'>
                <MyPlants />

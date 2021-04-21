@@ -31,6 +31,7 @@
   padding: 20px;
   border-radius: 2px;
   background-color: white;
+  background-color: rgb(230, 233, 231);
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.2);
 }
 
@@ -39,9 +40,26 @@
 }
 
 .profiles-page {
-  background: rgba(8, 32, 16, 0.1);
+  background: rgba(8, 32, 16, 0.2);
 }
 
-.filter-by {
-  margin-top: 50px;
+.profile-nav {
+  height: 50px;
+  background-color: rgba(8, 32, 16, 0.7);
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.filter-by form {
+  display: flex;
+  flex-direction: row;
+}
+
+.filter-by form select {
+  margin-top: 15px;
+}
+
+.filter-by form button {
+  margin-top: 10px;
 }
