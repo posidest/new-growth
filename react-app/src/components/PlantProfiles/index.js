@@ -89,7 +89,7 @@ const PlantProfiles = () => {
                   color: 'rgb(230, 233, 231', 
                   border: 'none', 
                   boxShadow: 'none', 
-                  fontWeight: 'lighter'
+                  // fontWeight: 'lighter'
                }}
                onClick={goBack}
                >Back

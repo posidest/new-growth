@@ -93,3 +93,16 @@ img {
   /* background-color: rgba(8, 32, 16, 1);
   border-radius: 20px; */
 }
+
+.sign-up-form button:hover,
+.login-form button:hover {
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
+}
+
+.sign-up-form p:hover {
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
+}

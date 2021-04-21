@@ -5,7 +5,7 @@ import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 import {showProfiles} from '../../store/profile'
 import ctenanthe from '../../images/Ctenanthe.jpg'
-import ProfileButton from './ProfileDropdown'
+import ProfilePic from './ProfilePic'
 import SearchBar from '../SearchBar'
 
 const NavBar = () => {
@@ -35,7 +35,7 @@ const NavBar = () => {
           </NavLink>
         </div>
         <div className='navatar'>
-          <ProfileButton />
+          <ProfilePic />
         </div>
         <div className='logout-btn'>
           <LogoutButton />

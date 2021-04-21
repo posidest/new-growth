@@ -92,7 +92,7 @@ const UserNav = () => {
                color: 'white', 
                background: 'transparent', 
                border: 'none', 
-               fontWeight: 'lighter', 
+               // fontWeight: 'lighter', 
                boxShadow: 'none'
                }}
                >{`Follow ${user.username}`}
@@ -109,7 +109,7 @@ const UserNav = () => {
                color: 'white', 
                background: 'transparent', 
                border: 'none', 
-               fontWeight: 'lighter', 
+               // fontWeight: 'lighter', 
                boxShadow: 'none'
                }}>
                {`Unfollow ${user.username}`}

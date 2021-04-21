@@ -32,6 +32,7 @@
   border-radius: 2px;
   background-color: white;
   background-color: rgb(230, 233, 231);
+  background-color: rgb(243, 244, 243);
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.2);
 }
 
@@ -49,6 +50,17 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
+}
+
+.profile-nav button {
+  font-weight: lighter;
+}
+
+.profile-nav button:hover {
+  /* -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02); */
+  font-weight: bolder;
 }
 
 .filter-by form {

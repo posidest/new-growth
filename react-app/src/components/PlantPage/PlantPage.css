@@ -39,13 +39,20 @@
   margin: 10px 0 20px 0;
   padding: 0 20px 30px 20px;
   background-color: white;
+  position: relative;
   width: 400px;
 }
 
 .fa-tint {
   position: absolute;
-  right: 600px;
-  top: 1025px;
+  right: 20px;
+  top: 20px;
+}
+
+.fa-poo {
+  position: absolute;
+  right: 40px;
+  top: 20px;
 }
 
 .buttons {

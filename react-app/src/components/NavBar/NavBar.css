@@ -4,7 +4,8 @@
   height: 50px;
   width: 100%;
   background-color: white;
-  background-color: rgba(8, 32, 16, 0.15);
+  background-color: rgba(8, 32, 16, 0.05);
+  background-color: rgb(243, 244, 243);
   /* background-color: rgba(8, 32, 16, 0.6); */
   background-size: cover;
   /* position: fixed; */
@@ -18,7 +19,7 @@
   /* color: black; */
   color: rgba(8, 32, 16, 0.6);
   position: absolute;
-  top: 12px;
+  top: 9px;
   font-family: "Dosis", sans-serif;
   /* font-size: 15px; */
   background: rgba(8, 32, 16, 0.1);
@@ -45,15 +46,24 @@
 
 .login-btn {
   position: absolute;
-  right: 30px;
+  right: 25px;
   width: 40px;
 }
 
 .sign-up-btn {
   position: absolute;
   /* top: 12px; */
-  right: 70px;
+  right: 65px;
   width: 70px;
+}
+
+.sign-up-btn:hover,
+.login-btn:hover,
+.fa-seedling:hover,
+.logout-btn:hover {
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 /* .nav-bar a { */
@@ -79,3 +89,9 @@
 .drop-down-profile li {
   padding: 5px;
 } */
+
+.fa-seedling:hover {
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
+}

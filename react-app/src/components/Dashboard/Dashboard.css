@@ -17,6 +17,7 @@
   box-sizing: border-box;
   position: relative;
   background-color: rgb(230, 233, 231);
+  background-color: rgb(243, 244, 243);
 }
 
 .fa-edit {
@@ -52,16 +53,11 @@
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.3);
   background-color: white;
   background-color: rgb(230, 233, 231);
+  background-color: rgb(243, 244, 243);
   height: 420px;
   width: 250px;
   box-sizing: border-box;
 }
-
-/* .single-plant p {
-  width: 200px;
-  color: rgba(8, 32, 16, 1);
-  margin-bottom: 30px;
-} */
 
 .dash-nav {
   margin-top: 0px;
@@ -92,7 +88,7 @@
 .dash {
   /* display: grid; */
   display: flex;
-  background: rgba(8, 32, 16, 0.4);
+  background: rgba(8, 32, 16, 0.3);
   height: 4000px;
   /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
   width: 100%;
@@ -129,6 +125,7 @@
   border: 0.5px solid rgba(8, 32, 16, 0.2);
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.3);
   background-color: rgb(230, 233, 231);
+  background-color: rgb(243, 244, 243);
 }
 
 .follow:hover {
@@ -143,11 +140,12 @@
   transform: scale(1.02);
 }
 
+.dash-nav button {
+  font-weight: lighter;
+}
+
 .dash-nav a:hover,
 .dash-nav button:hover {
-  /* -webkit-transform: scale(1.02);
-  -ms-transform: scale(1.02);
-  transform: scale(1.02); */
   font-weight: bold;
 }
 
