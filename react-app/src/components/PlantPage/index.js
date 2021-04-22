@@ -63,18 +63,13 @@ const PlantPage = () => {
       }
    }
 
-
-
    const editPlant = (e) => {
       history.push(`/plants/${id}/edit`)
    }
 
-
-
-
    useEffect(async() => {
       await getPlant(id)
-   }, [])
+   }, [entries])
    
     useEffect(async() => {
       await getUser(plant.user_id)
@@ -106,8 +101,8 @@ const PlantPage = () => {
                <p>{plant.description}</p>
                {me.id === plant.user_id && (
                   <>
-                  <i className="far fa-edit" onClick={editPlant}></i>
-                  <i className="far fa-trash-alt" onClick={deletePlant} style={{color: 'green'}}></i>
+                  <i className="far fa-edit" onClick={editPlant} style={{color: 'rgba(8,32,16,0.6'}}></i>
+                  <i className="far fa-trash-alt" onClick={deletePlant} style={{color: 'rgba(8,32,16,0.6'}}></i>
                   </>
                )}
                </div>
@@ -138,18 +133,20 @@ const PlantPage = () => {
                         <h4>{entry.date}</h4>
                         <div className='is'>
                            {entry.watered && (
-                              <i className="fas fa-tint fa-lg" style={{color: 'deepskyblue', paddingBottom: '10px'}}></i>
+                              <i className="fas fa-tint fa-lg" style={{color: 'rgba(8,32,16,0.4', paddingBottom: '10px'}}></i>
                            )}
                            {entry.fertilized && (
-                              <i className="fas fa-poo" style={{color: 'brown'}}></i>
+                              <i className="fas fa-poo" style={{color: 'rgba(8,32,16,0.6'}}></i>
                            )}
                         </div>
                      </div>
                      {entry.progress_pic && (
-                        <img 
-                        src={entry.progress_pic}
-                        style={{width: '400px'}}
-                        />
+                        <div style={{width: '400px', height: '400px'}}>
+                           <img 
+                           src={entry.progress_pic}
+                           style={{maxWidth: '400px', maxHeight: '400px'}}
+                           />
+                        </div>
                      )}
                   <h5>{`Location: ${entry.location}`}</h5>
                   <p>{entry.details}</p>
@@ -158,7 +155,7 @@ const PlantPage = () => {
                         <i 
                         onClick={deleteEntry}
                         id={entry.id}
-                        className="far fa-trash-alt" style={{color: 'green'}}> 
+                        className="far fa-trash-alt" style={{color: 'rgba(8,32,16,0.6'}}> 
                         </i>
                      </div>
                   )}

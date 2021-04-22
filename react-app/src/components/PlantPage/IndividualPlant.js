@@ -83,10 +83,10 @@ const IndividualPlant = ({plantId}) => {
             {entries.map((entry) => (
                <div key={entry.id}>
                   {entry.watered && (
-                     <i className="fas fa-tint" style={{color: 'deepskyblue'}}></i>
+                     <i className="fas fa-tint" style={{color: 'rgba(8,32,16,0.4'}}></i>
                   )}
                   {entry.fertilized && (
-                     <i className="fas fa-poo" style={{color: 'brown'}}></i>
+                     <i className="fas fa-poo" style={{color: 'rgba(8,32,16,0.6'}}></i>
                   )}
                   {entry.progress_pic && (
                   <img 
@@ -101,7 +101,7 @@ const IndividualPlant = ({plantId}) => {
                   onClick={deleteEntry} 
                   value={entry.id}>
                         <i 
-                        className="far fa-trash-alt" style={{color: 'green'}}> 
+                        className="far fa-trash-alt" style={{color:'rgba(8,32,16,0.6)'}}> 
                         </i>
                   </div>
                   )}

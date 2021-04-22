@@ -33,7 +33,7 @@ const PlantNav = ({plant, user}) => {
                <Link to={`/plants/${plant.id}/tend`}>
                   Tend to me
                </Link>
-               <Link to='/plants/edit'>
+               <Link to={`/plants/${id}/edit`}>
                   Edit Plant
                </Link>
                <button type='button' 

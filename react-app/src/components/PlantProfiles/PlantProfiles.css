@@ -27,13 +27,15 @@
 
 .individual-profile {
   margin: 20px 10px 20px 10px;
-  border: 1px solid rgba(8, 32, 16, 0.2);
-  padding: 20px;
+  border: 1px solid rgba(56, 124, 78, 0.2);
+  padding: 0px 20px 0px 20px;
   border-radius: 2px;
   background-color: white;
   background-color: rgb(230, 233, 231);
   background-color: rgb(243, 244, 243);
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.2);
+  height: 325px;
+  position: relative;
 }
 
 .individual-profile h4 {
@@ -42,6 +44,7 @@
 
 .profiles-page {
   background: rgba(8, 32, 16, 0.2);
+  height: 3000px;
 }
 
 .profile-nav {
@@ -69,9 +72,19 @@
 }
 
 .filter-by form select {
-  margin-top: 15px;
+  margin-top: 11px;
+  width: 200px;
+  border: 1px solid rgba(200, 200, 200, 0.6);
+  border-radius: 2px;
+  /* margin: 100px 10px 50px 10px; */
+  padding: 3px;
 }
 
 .filter-by form button {
   margin-top: 10px;
+}
+
+.common-name h5 {
+  position: absolute;
+  /* bottom: 20px; */
 }
