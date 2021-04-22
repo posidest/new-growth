@@ -34,7 +34,7 @@ const PlantProfiles = () => {
       if (plantProfiles) {
       plantProfiles = plantProfiles['profile']
 }
-      const variegatedArr = ['Tradescantia zebrina', 'Hypoestes phyllostachya', 'Epipremnum aureum', 'Syngonium podophyllum', 'Maranta leuconeura var. erythroneura', 'Maranta leuconeura var. kerchoveana', 'Ctenanthe burle-marxii']
+      const variegatedArr = ['Tradescantia zebrina', 'Hypoestes phyllostachya', 'Epipremnum aureum', 'Syngonium podophyllum', 'Maranta leuconeura var. erythroneura', 'Maranta leuconeura var. kerchoveana', 'Ctenanthe burle-marxii', 'Calathea ornata', 'Calathea zebrina', 'Calathea orbifolia', 'Calathea makoyana']
       
       const filter = (e) => {
          e.preventDefault()
@@ -81,23 +81,40 @@ const PlantProfiles = () => {
    if(profiles) {
       return (
          <div className='profiles-page'>
-            <button 
-            type='button'
-            onClick={goBack}
-            >Back
-            </button>
-            <div className='filter-by'>
-               <form onSubmit={filter}>
-                  <select value={type} onChange={updateType}>
-                     <option value=''>Filter Profiles</option>
-                     <option value='non-toxic'>Safe For Pets</option>
-                     <option value='low-light'>Low Light Tolerant</option>
-                     <option value='variegated'>Variegated Plants</option>
-                     <option value='drought'>Drought Tolerant Plants</option>
-                  </select> 
-               <button type='submit'>Show Plants</button>
-            </form>
-         </div>
+            <div className='profile-nav'>
+               <button 
+               type='button'
+               style={{
+                  backgroundColor: 'transparent', 
+                  color: 'rgb(230, 233, 231', 
+                  border: 'none', 
+                  boxShadow: 'none', 
+                  // fontWeight: 'lighter'
+               }}
+               onClick={goBack}
+               >Back
+               </button>
+               <div className='filter-by'>
+                  <form onSubmit={filter}>
+                     <select value={type} onChange={updateType}>
+                        <option value=''>Filter Profiles</option>
+                        <option value='non-toxic'>Safe For Pets</option>
+                        <option value='low-light'>Low Light Tolerant</option>
+                        <option value='variegated'>Variegated Plants</option>
+                        <option value='drought'>Drought Tolerant Plants</option>
+                     </select> 
+                     <button type='submit' 
+                     style={{
+                        backgroundColor: 'transparent', 
+                        border: 'none', 
+                        boxShadow: 'none'}}>
+                        <i className="fas fa-search"
+                        style={{color: 'rgb(230, 233, 231)'}}>
+                        </i>
+                     </button>
+                  </form>
+               </div>
+            </div>
          <div className='profiles-header'>
             <h1>Plant Profiles</h1>
          </div>

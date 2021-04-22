@@ -14,8 +14,8 @@ const LogoutButton = () => {
   return (
   <button 
   style={{
-    // backgroundColor: 'rgba(8, 32, 16, 0.1)',
-    color: 'rgba(8, 32, 16, 0.6)',
+    // backgroundColor: 'rgb(156, 166, 159)',
+    color: 'rgba(8, 32, 16, 0.8)',
     borderRadius: '4px',
     boxShadow: '1px 1px 1px rgba(8, 32, 16, 0.2)',
   padding: '5px 9px 6px 9px'}}

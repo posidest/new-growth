@@ -52,6 +52,18 @@ const PlantPage = () => {
       }
    }
 
+   const deletePlant = async(e) => {
+      const res = await fetch(`/api/users/plants/${plant.id}`, {
+         method: 'DELETE',
+         headers: {'Content-Type': 'application/json'}
+      })
+      if (res.ok) {
+         const data = await res.json()
+         return
+      }
+   }
+
+
 
    const editPlant = (e) => {
       history.push(`/plants/${id}/edit`)
@@ -95,6 +107,7 @@ const PlantPage = () => {
                {me.id === plant.user_id && (
                   <>
                   <i className="far fa-edit" onClick={editPlant}></i>
+                  <i className="far fa-trash-alt" onClick={deletePlant} style={{color: 'green'}}></i>
                   </>
                )}
                </div>

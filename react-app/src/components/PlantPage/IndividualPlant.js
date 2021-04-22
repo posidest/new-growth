@@ -34,7 +34,8 @@ const IndividualPlant = ({plantId}) => {
    const deleteEntry = async (e) => {
       const entryId = e.target.value;
       const res = await fetch(`/api/plants/entries/${entryId}`, {
-         method: 'DELETE'
+         method: 'DELETE',
+         headers: {'Content-Type': 'application/json'}
       })
       if (res.ok) {
          const data = await res.json()

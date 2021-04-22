@@ -11,7 +11,7 @@
 }
 
 .search-page {
-  background-color: rgba(8, 32, 16, 0.4);
+  background-color: rgba(8, 32, 16, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,6 +32,7 @@
   border-radius: 2px;
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.2);
   background-color: rgb(230, 233, 231);
+  background-color: rgb(243, 244, 243);
 }
 
 .results {
