@@ -34,7 +34,7 @@ const PlantProfiles = () => {
       if (plantProfiles) {
       plantProfiles = plantProfiles['profile']
 }
-      const variegatedArr = ['Tradescantia zebrina', 'Hypoestes phyllostachya', 'Epipremnum aureum', 'Syngonium podophyllum', 'Maranta leuconeura var. erythroneura', 'Maranta leuconeura var. kerchoveana', 'Ctenanthe burle-marxii']
+      const variegatedArr = ['Tradescantia zebrina', 'Hypoestes phyllostachya', 'Epipremnum aureum', 'Syngonium podophyllum', 'Maranta leuconeura var. erythroneura', 'Maranta leuconeura var. kerchoveana', 'Ctenanthe burle-marxii', 'Calathea ornata', 'Calathea zebrina', 'Calathea orbifolia', 'Calathea makoyana']
       
       const filter = (e) => {
          e.preventDefault()
