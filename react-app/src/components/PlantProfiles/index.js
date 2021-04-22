@@ -122,13 +122,13 @@ const PlantProfiles = () => {
             {profiles.map((profile) => (
             <div key={profile.id} className='individual-profile'>
                <Link to={`/plants/profile/${profile.id}`}>
-                  <h4>{profile.genus_species}</h4>
+                  <h5>{profile.genus_species}</h5>
                   <div className='container' style={{height: '200px', width: '200px'}}>
                      <img src={profile.picture}
                      alt='picture' 
                      style={{maxHeight: '200px', maxWidth: '200px'}}/>
                   </div>
-                  <h4>{profile.common_names[0]}</h4>
+                  <h5 className='common-name'>{profile.common_names[0]}</h5>
                </Link>
             </div>
             ))}

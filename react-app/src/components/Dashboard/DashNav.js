@@ -17,6 +17,9 @@ return (
    <Link to='/plants/search'>
       Find a Plant
    </Link>
+   <Link to='/users'>
+      Discover Users
+   </Link>
 </div>
 )
 

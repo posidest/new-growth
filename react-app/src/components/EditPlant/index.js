@@ -41,7 +41,7 @@ const EditPlant = () => {
    }
    
    const goBack = (e) => {
-      history.push('/')
+      history.push(`/plants/${id}`)
    }
 
 

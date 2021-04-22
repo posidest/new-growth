@@ -31,6 +31,7 @@ input[type="file"] {
   margin: 20px 20px 20px 10px;
   background-color: white;
   background-color: rgb(230, 233, 231);
+  background-color: rgb(243, 244, 243);
   border-radius: 20px;
   font-weight: bold;
   color: rgba(8, 32, 16, 0.6);
@@ -54,6 +55,7 @@ button {
   box-shadow: 1px 1px 1px rgba(200, 200, 200, 0.2);
   background-color: white;
   background-color: rgb(230, 233, 231);
+  background-color: rgb(243, 244, 243);
   color: rgba(8, 32, 16, 0.8);
   /* background-color: rgba(8, 32, 16, 0.2); */
   border-radius: 20px;
@@ -87,6 +89,7 @@ img {
 select {
   background-color: white;
   background-color: rgb(230, 233, 231);
+  background-color: rgb(243, 244, 243);
 }
 
 input {
