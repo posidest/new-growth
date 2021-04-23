@@ -92,7 +92,7 @@ const PlantProfile = ({profileId}) => {
                               <td>{pests}</td>
                            </tr>
                            <tr>
-                              <td className='title'>Propogation Methods</td>
+                              <td className='title'>Propagation Methods</td>
                               <td>{propogations}</td>
                            </tr>
                            <tr>
