@@ -15,9 +15,9 @@ const Dashboard = () => {
    let follows = useSelector((state) => state.user.follows)
    const history= useHistory()
 
-   if (follows) { 
-      follows = follows['follow']
-   }
+   // if (follows) { 
+   //    follows = follows['follow']
+   // }
       
    const getUser = async(id) => {
          const res = await fetch(`/api/users/${id}`)

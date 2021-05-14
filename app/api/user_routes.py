@@ -32,7 +32,7 @@ def add_follow():
 @user_routes.route('/<int:id>/follows')
 def get_follows(id):
     follows = Follow.query.filter(Follow.user_id == id)
-    return {'follow': [follow.to_dict() for follow in follows]}
+    return {'follows': [follow.to_dict() for follow in follows]}
 
 # @user_routes.route('/<int:id>/plants')
 # def get_users_plants(id):
@@ -106,8 +106,8 @@ def delete_plant(id):
             db.session.delete(plant)
             db.session.commit()
         except:
-            return 'unsuccessful'
-        return 'successful'
+            return {'result': 'unsuccessful'}
+        return {'result': 'successful'}
 
 
 @user_routes.route('/follows/<int:id>', methods=['DELETE'])
@@ -119,5 +119,5 @@ def unfollow(id):
             db.session.delete(follow)
             db.session.commit()
         except:
-            return 'unsuccessful'
-        return 'successful'
+            return {'result': 'unsuccessful'}
+        return {'deleted': id}
