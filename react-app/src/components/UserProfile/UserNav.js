@@ -16,71 +16,74 @@ const UserNav = () => {
    let followed = null;
 
    let follows = useSelector((state) => state.user.follows)
-   // if (follows) {
+   if (follows) {
+      followed = follows.filter((follow) => (
+         follow.friend_id === user.id 
+      ))
+      if (followed) {
+         followed = followed[0]
+       }
+      }
+
+   // useEffect(() => {
+   //    if (follows) {
+   //    followed = null;
    //    followed = follows.filter((follow) => (
    //       follow.friend_id === user.id 
    //    ))
    //    if (followed) {
    //       followed = followed[0]
+   //       // setFollowing(true)
    //     }
    //    }
-
-   if (follows) {
-   followed = follows.filter((follow) => (
-      follow.friend_id === user.id 
-   ))
-   if (followed.length > 0) {
-      followed = followed[0]
-      // setFollowing(true)
-    }
-   }
-   // useEffect(() => {
-   // }, [dispatch, following, follows])
+      
+   // }, [following, follows])
 
 
    useEffect(() => {
       dispatch(showFollows(me.id))
-   },[following, me])
+   },[followed, following])
 
    const followThem = async(e) => {
       // e.preventDefault()
       const user_id = me.id;
       const friend_id = user.id;
-      dispatch(newFollow({user_id, friend_id}))
-      // if (user_id === friend_id) {
-      //    return {'errors': 'you cannot follow yourself'}
-      // }
-      // const res = await fetch(`/api/users/follows`, {
-      //    method: 'POST',
-      //    headers: {'Content-Type': 'application/json'},
-      //    body: JSON.stringify({
-      //       user_id,
-      //       friend_id
-      //    })
-      // });
-      // if (res.ok) {
-      //    const data = await res.json()
-      //    console.log(data, 'data from follow request')
-         setFollowing(true)
-         // return data
+      // dispatch(newFollow({user_id, friend_id}))
+      if (user_id === friend_id) {
+         return {'errors': 'you cannot follow yourself'}
+      }
+      const res = await fetch(`/api/users/follows`, {
+         method: 'POST',
+         headers: {'Content-Type': 'application/json'},
+         body: JSON.stringify({
+            user_id,
+            friend_id
+         })
+      });
+      if (res.ok) {
+         const data = await res.json()
+         console.log(data, 'data from follow request')
+         await setFollowing(true)
+         return data
+      }
       }
 
    const unFollow = async(e) => {
       // e.preventDefault()
-      dispatch(unfollow(followed.id))
+      // dispatch(unfollow(followed.id))
       // const selectedId = e.target.id;
       // const user_id = me.id;
       // const friend_id = user.id;
-      // const res = await fetch(`/api/users/follows/${followed.id}`, {
-      //    method: 'DELETE',
-      //    headers: {'Content-Type': 'application/json'}
-      // })
-      // if (res.ok) {
-      //    const data = await res.json()
-      //    await setFollowing(false)
-      //    return data
-      // }
-      setFollowing(false)
+      const res = await fetch(`/api/users/follows/${followed.id}`, {
+         method: 'DELETE',
+         headers: {'Content-Type': 'application/json'}
+      })
+      if (res.ok) {
+         const data = await res.json()
+         await setFollowing(false)
+         return data
+      }
+      // setFollowing(false)
    }
 
    let links;
