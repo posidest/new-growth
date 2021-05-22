@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {useParams, Link} from 'react-router-dom'
-import {showFollows} from '../../store/user'
+import {showFollows, unfollow, newFollow} from '../../store/user'
 import '../Dashboard/Dashboard.css'
 
 
@@ -17,7 +17,6 @@ const UserNav = () => {
 
    let follows = useSelector((state) => state.user.follows)
    if (follows) {
-      follows = follows['follow']
       followed = follows.filter((follow) => (
          follow.friend_id === user.id 
       ))
@@ -26,14 +25,30 @@ const UserNav = () => {
        }
       }
 
+   // useEffect(() => {
+   //    if (follows) {
+   //    followed = null;
+   //    followed = follows.filter((follow) => (
+   //       follow.friend_id === user.id 
+   //    ))
+   //    if (followed) {
+   //       followed = followed[0]
+   //       // setFollowing(true)
+   //     }
+   //    }
+      
+   // }, [following, follows])
+
 
    useEffect(() => {
       dispatch(showFollows(me.id))
-   },[following, followed])
+   },[followed, following])
 
    const followThem = async(e) => {
+      // e.preventDefault()
       const user_id = me.id;
       const friend_id = user.id;
+      // dispatch(newFollow({user_id, friend_id}))
       if (user_id === friend_id) {
          return {'errors': 'you cannot follow yourself'}
       }
@@ -50,9 +65,12 @@ const UserNav = () => {
          console.log(data, 'data from follow request')
          await setFollowing(true)
          return data
-      }}
+      }
+      }
 
    const unFollow = async(e) => {
+      // e.preventDefault()
+      // dispatch(unfollow(followed.id))
       // const selectedId = e.target.id;
       // const user_id = me.id;
       // const friend_id = user.id;
@@ -65,6 +83,7 @@ const UserNav = () => {
          await setFollowing(false)
          return data
       }
+      // setFollowing(false)
    }
 
    let links;

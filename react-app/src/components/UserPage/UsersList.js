@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import '../PlantProfiles/PlantProfiles.css'
+import {getUsers} from '../../store/user'
+import {useDispatch, useSelector} from 'react-redux';
 
 function UsersList() {
   const [users, setUsers] = useState([])
    const [results, setResults] = useState([])
    const [zone, setZone] = useState('')
   const history = useHistory()
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.user.users)
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("/api/users/");
-      const responseData = await response.json();
-      setUsers(responseData.users);
-    }
-    fetchData();
+    dispatch(getUsers())
   }, []);
 
-        
+    useEffect(() => {
+      if (userData) {
+        setUsers(userData)      
+      }
+    },[userData])
+    
   const filter = (e) => {
       e.preventDefault()
       let filtered;
-      filtered = users.filter((user) => (
+      filtered = userData.filter((user) => (
         user.zone === Number(zone)
       ))
         setUsers(filtered)
@@ -51,8 +55,9 @@ function UsersList() {
      const goBack = (e) => {
       history.push('/')
    }
-
-  return (
+   
+  if (users) {
+    return (
     <div className='profiles-page'>
       <div className='profile-nav'>
         <button 
@@ -79,14 +84,15 @@ function UsersList() {
                 <option value='8'>8</option>
                 <option value='9'>9</option>
               </select> 
-              <button type='submit' 
-              style={{
+              <button type='submit'>
+                Filter 
+              {/* style={{
                 backgroundColor: 'transparent', 
                 border: 'none', 
                 boxShadow: 'none'}}>
                 <i className="fas fa-search"
                 style={{color: 'rgb(230, 233, 231)'}}>
-                </i>
+                </i> */}
               </button>
           </form>
         </div>
@@ -96,7 +102,12 @@ function UsersList() {
       </div>
       <div className='profiles'>{userComponents}</div>
     </div>
-  );
+  )
+} else {
+  return (
+    <h1>Loading...</h1>
+  )
+}
 }
 
 export default UsersList;
