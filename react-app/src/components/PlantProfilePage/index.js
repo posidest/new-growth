@@ -27,7 +27,6 @@ const PlantProfilePage = () => {
       const res = await fetch(`/api/profiles/${id}`)
          if (res.ok) {
          const data = await res.json()
-         await console.log(data, 'data')
          await setProfile(data)
    
          return profile;

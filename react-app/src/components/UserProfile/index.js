@@ -13,17 +13,11 @@ const UserProfile = () => {
    const me = useSelector((state) => state.session.user)
    const user = useSelector((state) => state.user.user)
    let follows = useSelector((state) => state.user.follows) 
-   // if (follows) {
-   //    follows = follows['follow']
-   // }
+ 
    
    useEffect(() => {
       dispatch(showUser(id))
    },[])
-
-   // useEffect(() => {
-   //    dispatch(showFollows(me.id))
-   // },[])
    
       if(user) {
          return (

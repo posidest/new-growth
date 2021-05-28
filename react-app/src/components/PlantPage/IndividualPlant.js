@@ -26,7 +26,6 @@ const IndividualPlant = ({plantId}) => {
          const data = await res.json()
          await setPlant(data)
          await setEntries(data.entries)
-         console.log(plant, 'plant')
          return plant
       }
    }
