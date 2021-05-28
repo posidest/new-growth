@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 import {showProfiles} from '../../store/profile'
+import {login} from '../../store/session'
 import ctenanthe from '../../images/Ctenanthe.jpg'
 import ProfilePic from './ProfilePic'
 import SearchBar from '../SearchBar'
@@ -17,6 +18,12 @@ const NavBar = () => {
     },[])
 
   
+  const loginDemo = (e) => {
+    e.preventDefault();
+    const demoUser = dispatch(login('demo@aa.io', 'password'));
+    return demoUser;
+  }
+
   const me = useSelector((state) => state.session.user)
 
 
@@ -25,12 +32,8 @@ const NavBar = () => {
       <>
         <div className='home-btn'>
           <NavLink to="/" exact={true} activeClassName="active">
-            {/* <i className="fas fa-leaf fa-2x" */}
             <i className="fas fa-seedling fa-2x"
             style={{color: 'rgba(8, 32, 16, 0.7)'}}
-            // style={{color: 'rgb(230, 233, 231)'}}
-            // style={{color: 'rgb(156, 166, 159)'}}
-            // style={{color: 'white'}}
             ></i>
           </NavLink>
         </div>
@@ -49,16 +52,15 @@ const NavBar = () => {
       <>
         <div className='home-btn'>
           <NavLink to="/" exact={true} activeClassName="active">
-            {/* <i className="fas fa-leaf fa-2x" 
-            style={{color: 'rgba(8, 32, 16, 0.6)'}} */}
-            {/* // style={{color: 'white'}} */}
             <i className="fas fa-seedling fa-2x"
             style={{color: 'rgba(8, 32, 16, 0.6)'}}
-            // style={{color: 'white'}}
             ></i>
           </NavLink>
         </div>
         <div className='auth-btns'>
+          <div className='demo-btn'>
+            <button type='button' onClick= {loginDemo} style={{backgroundColor: 'white'}}>Demo</button>
+          </div>
           <div className='login-btn'>
             <NavLink to="/login" exact={true} activeClassName="active">
               Login
