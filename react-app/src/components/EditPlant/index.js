@@ -117,12 +117,11 @@ const EditPlant = () => {
 
     const updateProfile = (e) => {
       setProfileId(e.target.value)
-      console.log(e.target.value, 'profileId in update profile handler')
     }
 
     if (profiles && plant) {
        return (
-          <div className = 'plant-form-page'>
+          <div className='plant-form-page'>
                <form 
                className='plant-form' 
                onSubmit={editPlant}>

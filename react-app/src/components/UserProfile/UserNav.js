@@ -42,13 +42,11 @@ const UserNav = () => {
 
    useEffect(() => {
       dispatch(showFollows(me.id))
-   },[followed, following])
+   },[following])
 
    const followThem = async(e) => {
-      // e.preventDefault()
       const user_id = me.id;
       const friend_id = user.id;
-      // dispatch(newFollow({user_id, friend_id}))
       if (user_id === friend_id) {
          return {'errors': 'you cannot follow yourself'}
       }
@@ -69,11 +67,6 @@ const UserNav = () => {
       }
 
    const unFollow = async(e) => {
-      // e.preventDefault()
-      // dispatch(unfollow(followed.id))
-      // const selectedId = e.target.id;
-      // const user_id = me.id;
-      // const friend_id = user.id;
       const res = await fetch(`/api/users/follows/${followed.id}`, {
          method: 'DELETE',
          headers: {'Content-Type': 'application/json'}
@@ -83,7 +76,6 @@ const UserNav = () => {
          await setFollowing(false)
          return data
       }
-      // setFollowing(false)
    }
 
    let links;
@@ -96,14 +88,14 @@ const UserNav = () => {
             <Link to={`/plants/zone/${user.zone}`}>Other Users in this Zone</Link>
          </>
          )
-   }
+      }
 
    if (me && follows) {
       links = (
          <>
          <Link to='/'>My Dashboard</Link>
          <Link to='/users'>Browse Other Users</Link>
-         {me.id !== user.id && !followed && (
+         {me.id !== user.id && !following && (
          <button 
          type='button' 
          onClick={followThem}
@@ -111,13 +103,12 @@ const UserNav = () => {
                color: 'white', 
                background: 'transparent', 
                border: 'none', 
-               // fontWeight: 'lighter', 
                boxShadow: 'none'
                }}
                >{`Follow ${user.username}`}
                </button>
          )}
-         {followed && (
+         {following && (
             <>
             <Link to={`/users/${user.id}/follows`}>Following</Link>
             <button 
@@ -128,13 +119,12 @@ const UserNav = () => {
                color: 'white', 
                background: 'transparent', 
                border: 'none', 
-               // fontWeight: 'lighter', 
                boxShadow: 'none'
                }}>
                {`Unfollow ${user.username}`}
                </button>
             </>
-         )}
+         )}    
          </>
       )
    }

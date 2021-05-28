@@ -18,11 +18,10 @@ const EntryForm = () => {
    const {id} = useParams()
    const dispatch = useDispatch()
    const history = useHistory()   
-   console.log(id, 'this is the id from the entry form')
 
    useEffect(() => {
       dispatch(showPlant(id))
-   })
+   },[])
 
    const plant = useSelector((state) => state.plant.currentPlant)
 
@@ -37,9 +36,7 @@ const EntryForm = () => {
          'details': details, 
          'progress_pic': progressPic
       }
-      console.log(newEntry)
       const res = dispatch(createEntry(newEntry))
-      console.log(res, 'res from entry form')
       setEntry(res)
       history.push(`/plants/${id}`)
    }

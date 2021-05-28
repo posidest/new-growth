@@ -17,7 +17,6 @@ const PlantProfiles = () => {
       const res = await fetch(`/api/profiles/`)
       if (res.ok) {
             const data = await res.json()
-            await console.log(data, 'data')
             return data;
          }
       }

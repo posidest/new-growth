@@ -17,7 +17,7 @@ const UsersPlants = () => {
       const res = await fetch(`/api/users/${id}/plants`)
       if (res.ok) {
          const json = await res.json()
-         await console.log(json, 'data from usersplants')
+         // await console.log(json, 'data from usersplants')
          await setPlants(json.plant)
          return plants
       }
@@ -31,7 +31,6 @@ const UsersPlants = () => {
    if (plants) {
       return (
          <div>
-            {/* <h2 className='plant-header'>My Plants</h2> */}
             <div className='plants'>
                {plants.map((plant) => (
                   <div key={plant.id} className='single-plant'>

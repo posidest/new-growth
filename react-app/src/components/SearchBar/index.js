@@ -75,9 +75,7 @@ import './SearchBar.css'
            </form>
            <div>
             {results && (
-               <div 
-               // style={{background: 'white'}} 
-               >
+               <div>
                   <SearchResults results={results}/>
                </div>
             )}

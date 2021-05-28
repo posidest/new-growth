@@ -25,7 +25,6 @@ const PlantPage = () => {
          const data = await res.json()
          await setPlant(data)
          await setEntries(data.entries)
-         console.log(plant, 'plant')
          return plant
       }
    }
@@ -41,7 +40,7 @@ const PlantPage = () => {
 
    const deleteEntry = async(e) => {
       const entryId = e.target.id;
-      console.log(entryId)
+      // console.log(entryId)
       const res = await fetch(`/api/plants/entries/${entryId}`, {
          method: 'DELETE',
          headers: {'Content-Type': 'application/json'}
@@ -69,10 +68,12 @@ const PlantPage = () => {
 
    useEffect(async() => {
       await getPlant(id)
-   }, [entries])
+   }, [])
    
     useEffect(async() => {
-      await getUser(plant.user_id)
+       if(plant) {
+         await getUser(plant.user_id)
+       }
     },[plant])
 
    const displayProfile = (e) => {
