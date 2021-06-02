@@ -93,13 +93,22 @@ const Dashboard = () => {
                               <img src={follow.avatar} 
                               alt='avatar' 
                               style={{height: '50px', width: '50px', borderRadius: '50%'}}/>
-                              <p 
-                              // style={{color: 'white'}}
-                              >{follow.username}</p>
+                              <p>
+                                 {follow.username}
+                              </p>
                            </Link>
                         </div>
                      ))}
                   </div>
+            </div>
+            <div className='dev-info'>
+            <p>developed by Alana LaPoint</p>
+               <a href='https://github.com/posidest' target="_blank">
+                  <i className="fab fa-github-alt fa-2x"></i>
+               </a>
+               <a href='https://www.linkedin.com/in/alana-lapoint/' target="_blank">
+                  <i className="fab fa-linkedin fa-2x" ></i>
+               </a>
             </div>
             <div className='users-plants-container'>
                <MyPlants />

@@ -118,6 +118,16 @@
   box-shadow: 1px 1px 1px rgba(8, 32, 16, 0.3);
 }
 
+.dev-info {
+  position: absolute;
+  top: 700px;
+  margin-left: 20px;
+}
+
+.dev-info i {
+  padding: 10px;
+}
+
 .follow {
   padding: 5px;
   /* background-color: rgba(8, 32, 16, 0.6); */
