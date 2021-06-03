@@ -1,12 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {showProfiles} from '../../store/profile';
 import {useParams, Link} from 'react-router-dom';
 import '../PlantProfile/PlantProfile.css';
-import IndividualPlant from '../PlantPage/IndividualPlant'
 
 const PlantProfilePage = () => {
-   const dispatch = useDispatch();
    const {id} = useParams();
    const [profile, setProfile] = useState(null)
    const [showPlants, setShowPlants] = useState(false)
@@ -32,9 +28,9 @@ const PlantProfilePage = () => {
          return profile;
    }
 }
-   useEffect(async() => {
-      await getProfile(id)
-   },[])
+   useEffect(() => {
+      getProfile(id)
+   },[id])
 
 
    const displayPlants = (e) => {
@@ -54,7 +50,7 @@ const PlantProfilePage = () => {
                   <div className='img'>
                      <img 
                      src={profile.picture}
-                     alt='picture'
+                     alt='plant-profile'
                      style={{width: '400px'}}
                      />
                   </div>
@@ -125,7 +121,6 @@ const PlantProfilePage = () => {
                               <img src={plant.plant_pic} alt='plant-pic' style={{maxWidth:'250px', maxHeight: '250px'}}/>
                            </div>
                            <h4>{plant.nickname}</h4>
-                           {/* <IndividualPlant plantId={plant.id}/> */}
                         </Link>
                      </div>   
                      ))}

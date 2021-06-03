@@ -19,6 +19,7 @@ content : {
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
+  const [errors, setErrors] = useState([])
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState(null);
   const [bio, setBio] = useState('');
@@ -34,7 +35,14 @@ const SignUpForm = () => {
   const onSignUp = (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      dispatch(signUp({username, email, avatar, bio, zone, password}));
+      const user = dispatch(signUp({username, email, avatar, bio, zone, password}));
+      if(!user.errors) {
+        return user;
+      } else {
+        setErrors(user.errors)
+      }
+    } else {
+      errors.push('Password must match repeat password')
     }
   };
 
@@ -188,8 +196,12 @@ const SignUpForm = () => {
             placeholder='Repeat Password'
           ></input>
         <button type="submit">Sign Up</button>
+        <div className='errors'>
+          {errors.map((err) => (
+            <p key={err}>{err}</p>
+          ))}
+        </div>
       </form>
-
     </div>
   );
 };

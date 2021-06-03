@@ -54,7 +54,7 @@ const PlantPage = () => {
       })
       if (res.ok) {
          const data = await res.json()
-         return
+         return 'deleted'
       }
    }
 
@@ -62,13 +62,13 @@ const PlantPage = () => {
       history.push(`/plants/${id}/edit`)
    }
 
-   useEffect(async() => {
-      await getPlant(id)
-   }, [])
+   useEffect(() => {
+      getPlant(id)
+   }, [id])
    
-    useEffect(async() => {
+    useEffect(() => {
        if(plant) {
-         await getUser(plant.user_id)
+         getUser(plant.user_id)
        }
     },[plant])
 
@@ -87,12 +87,14 @@ const PlantPage = () => {
                <Link to={`/users/${user.id}`}>
                   <img 
                   style={{height: '50px', width: '50px', borderRadius: '50%'}}
-                  src={user.avatar} alt='avatar'/>
+                  src={user.avatar} 
+                  alt='avatar'/>
                </Link>
                <h2>{plant.nickname}</h2>
                <h3>{plant.name}</h3>
                <img 
                src={plant.plant_pic}
+               alt='plant'
                style={{width: '400px'}}
                />
                <p>{plant.description}</p>
@@ -141,6 +143,7 @@ const PlantPage = () => {
                         <div style={{width: '400px', height: '400px'}}>
                            <img 
                            src={entry.progress_pic}
+                           alt='progress'
                            style={{maxWidth: '400px', maxHeight: '400px'}}
                            />
                         </div>

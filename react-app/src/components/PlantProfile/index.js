@@ -6,9 +6,9 @@ import './PlantProfile.css';
 
 const PlantProfile = ({profileId}) => {
    let profiles = useSelector((state) => state.profile.profiles);
-   if (profiles) {
-      profiles = profiles['profile']
-   }
+   // if (profiles) {
+   //    profiles = profiles['profile']
+   // }
 
    let profile = profiles.filter((profile) => (
       profile.id === profileId
@@ -42,7 +42,7 @@ const PlantProfile = ({profileId}) => {
                   <div className='img'>
                      <img 
                      src={profile.picture}
-                     alt='picture'
+                     alt='plant-profile'
                      style={{width: '400px'}}
                      />
                   </div>

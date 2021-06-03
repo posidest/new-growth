@@ -1,23 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux'
-import {showPlants} from '../../store/plant'
+import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import './Dashboard.css';
 
 const MyPlants = () => {
    const [plants, setPlants] = useState([])
-   const dispatch = useDispatch()
    const me = useSelector((state) => state.session.user);
-   // const plants = useSelector((state) => state.plant.plants)
-   // const plant = useSelector((state) => state.plant.plant)
-   // const plants = useSelector((state) => Object.values(state.session.user.plants))
-   // if (userPlants) {
-   //    setPlants(userPlants)
-   // }
-   // useEffect(() => {
-   //    dispatch(showPlants(me.id))      
-   //    // console.log(plants)
-   // }, [])
 
    const getPlants = async(id) => {
       const res = await fetch(`/api/users/${id}/plants`)
@@ -29,16 +17,15 @@ const MyPlants = () => {
       }
    }
 
-   useEffect(async() => {
-      await getPlants(me.id)
-   },[])
+   useEffect(() => {
+      getPlants(me.id)
+   },[me.id])
 
 
 
    if (plants) {
       return (
          <div>
-            {/* <h2 className='plant-header'>My Plants</h2> */}
             <div className='plants'>
                {plants.map((plant) => (
                   <div key={plant.id} className='single-plant'>

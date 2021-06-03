@@ -23,7 +23,7 @@ const SearchResults = ({results}) => {
                         style={{height: '200px', width: '200px'}}>
                            <img src={result.picture}
                            style={{maxWidth: '200px', maxHeight: '200px'}}
-                           alt='picture' />
+                           alt='search-result' />
                         </div>
                         <h5>{result.common_names[0]}</h5>
                      </Link>

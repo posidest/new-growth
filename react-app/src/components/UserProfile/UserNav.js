@@ -1,16 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import {useParams, Link} from 'react-router-dom'
-import {showFollows, unfollow, newFollow} from '../../store/user'
+import {Link} from 'react-router-dom'
+import {showFollows} from '../../store/user'
 import '../Dashboard/Dashboard.css'
 
 
 const UserNav = () => {
    const [following, setFollowing] = useState(false)
-   const [loaded, setLoaded] = useState(false)
 
    const dispatch = useDispatch()
-   const {id} = useParams()
    const me = useSelector((state) => state.session.user)
    const user = useSelector((state) => state.user.user)
    let followed = null;
@@ -25,24 +23,10 @@ const UserNav = () => {
        }
       }
 
-   // useEffect(() => {
-   //    if (follows) {
-   //    followed = null;
-   //    followed = follows.filter((follow) => (
-   //       follow.friend_id === user.id 
-   //    ))
-   //    if (followed) {
-   //       followed = followed[0]
-   //       // setFollowing(true)
-   //     }
-   //    }
-      
-   // }, [following, follows])
-
 
    useEffect(() => {
       dispatch(showFollows(me.id))
-   },[following])
+   },[following, dispatch, me.id])
 
    const followThem = async(e) => {
       const user_id = me.id;

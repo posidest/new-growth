@@ -26,6 +26,7 @@ const UserProfile = () => {
                <div className='user-info'>
                   <img src={user.avatar}
                   style={{width:'200px', height:'200px', borderRadius:'50%'}}
+                  alt='user-avatar'
                   />
                   <h4>{user.username}</h4>
                   <p>{user.bio}</p>

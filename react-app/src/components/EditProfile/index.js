@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Modal from 'react-modal';
 import { useHistory } from 'react-router-dom';
-import { signUp } from '../../store/session';
 import HardinessZone from '../auth/HardinessZone'
 import '../auth/Auth.css'
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 
 const customStyles = {
 content : {
@@ -24,17 +23,13 @@ const EditProfile = () => {
   const [bio, setBio] = useState('');
   const [zone, setZone] = useState('');
   const [showZone, setShowZone] = useState(false)
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
-  const dispatch = useDispatch()
   const me = useSelector((state) => state.session.user)
    const history = useHistory()
 
 
   const editProfile = async (e) => {
      e.preventDefault();
-     if (password === repeatPassword) {
       const res = await fetch(`/api/users/${me.id}/edit`, {
          method: 'POST',
          headers: {'Content-Type': 'application/json'},
@@ -50,7 +45,6 @@ const EditProfile = () => {
          const data = await res.json()
          history.push('/')
          return data;
-      }
      }
   }
 
@@ -118,7 +112,6 @@ const EditProfile = () => {
       className='sign-up-form'
       onSubmit={editProfile}>
         <h1>Edit Profile</h1>
-          {/* <label>User Name</label> */}
           <input
             type="text"
             name="username"
@@ -126,7 +119,6 @@ const EditProfile = () => {
             value={username}
             placeholder='User Name'
           ></input>
-          {/* <label>Email</label> */}
           <input
             type="text"
             name="email"
@@ -150,6 +142,7 @@ const EditProfile = () => {
           {avatar && (
             <img 
             src={avatar}
+            alt='avatar'
             style={{width: '200px', height: '200px', borderRadius: '50%', margin: '20px 30px 40px 30px'}}
             />
           )}
@@ -168,14 +161,11 @@ const EditProfile = () => {
             max='13'
             placeholder='Hardiness Zone'
           ></input>
-              {/* <div
-              className='zone'> */}
                 <p
                 onClick={showMap}
                 title='Show Map'>
                 What's this?
                 </p>
-              {/* </div> */}
           {showZone && (
             <Modal
             isOpen={showZone}

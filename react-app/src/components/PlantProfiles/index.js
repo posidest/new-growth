@@ -1,15 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {Link, useHistory} from 'react-router-dom';
 import './PlantProfiles.css'
-import {showProfiles} from '../../store/profile'
 
 const PlantProfiles = () => {
 
    const history = useHistory()
-   const dispatch = useDispatch()
    const [profiles, setProfiles] = useState([])
-   const [results, setResults] = useState([])
    const [type, setType] = useState('')
 
 
@@ -17,22 +14,19 @@ const PlantProfiles = () => {
       const res = await fetch(`/api/profiles/`)
       if (res.ok) {
             const data = await res.json()
-            return data;
+            const plants = await Object.values(data)
+            await setProfiles(plants[0])    
+            return profiles
          }
       }
       
-      useEffect(async () => {
-         const profileObject = await getProfiles()
-         const plantProfiles = await Object.values(profileObject)
-         await setProfiles(plantProfiles[0])    
-         return profiles
+      useEffect(() => {
+         getProfiles()
       }, [])
       
       
-      let plantProfiles = useSelector((state) => state.profile.profiles)
-      if (plantProfiles) {
-      plantProfiles = plantProfiles['profile']
-}
+      let plantProfiles = useSelector((state) => state.profile.profile)
+      
       const variegatedArr = ['Tradescantia zebrina', 'Hypoestes phyllostachya', 'Epipremnum aureum', 'Syngonium podophyllum', 'Maranta leuconeura var. erythroneura', 'Maranta leuconeura var. kerchoveana', 'Ctenanthe burle-marxii', 'Calathea ornata', 'Calathea zebrina', 'Calathea orbifolia', 'Calathea makoyana']
       
       const filter = (e) => {
@@ -63,15 +57,14 @@ const PlantProfiles = () => {
                profile.water_when.includes('completely dry')
                ))
             }
-            console.log(filtered, 'profiles in filter handler')
             setProfiles(filtered)
            return profiles
          }
          
-      const updateType = (e) => {
-         setType(e.target.value)
-      }
-         
+   const updateType = (e) => {
+      setType(e.target.value)
+   }
+      
    const goBack = (e) => {
       history.push('/')
    }
@@ -87,8 +80,7 @@ const PlantProfiles = () => {
                   backgroundColor: 'transparent', 
                   color: 'rgb(230, 233, 231', 
                   border: 'none', 
-                  boxShadow: 'none', 
-                  // fontWeight: 'lighter'
+                  boxShadow: 'none'
                }}
                onClick={goBack}
                >Back
@@ -124,7 +116,7 @@ const PlantProfiles = () => {
                   <h5>{profile.genus_species}</h5>
                   <div className='container' style={{height: '200px', width: '200px'}}>
                      <img src={profile.picture}
-                     alt='picture' 
+                     alt='plant-profile' 
                      style={{maxHeight: '200px', maxWidth: '200px'}}/>
                   </div>
                   <h5 className='common-name'>{profile.common_names[0]}</h5>
