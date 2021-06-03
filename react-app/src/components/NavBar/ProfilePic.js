@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {useSelector} from 'react-redux'
 import {NavLink} from 'react-router-dom'
 const ProfilePic = () => {
@@ -8,7 +8,7 @@ const ProfilePic = () => {
     return (
         <>
         <NavLink to={`/users/${me.id}`}>
-            <img src={me.avatar} style={{width: '40px', height: '40px', borderRadius: '50%'}}/>   
+            <img src={me.avatar} alt='user avatar' style={{width: '40px', height: '40px', borderRadius: '50%'}}/>   
         </NavLink> 
     </>
     )} else {

@@ -14,10 +14,6 @@ const Dashboard = () => {
    const dispatch = useDispatch()
    let follows = useSelector((state) => state.user.follows)
    const history= useHistory()
-
-   // if (follows) { 
-   //    follows = follows['follow']
-   // }
       
    const getUser = async(id) => {
          const res = await fetch(`/api/users/${id}`)
@@ -102,7 +98,7 @@ const Dashboard = () => {
                   </div>
             </div>
             <div className='dev-info'>
-            <p>developed by Alana LaPoint</p>
+            <p className='dev-name'>developed by <a style={{color: 'rgba(8, 32, 16, 0.8)'}} href='https://alanalapoint.dev' target='_blank'>Alana LaPoint</a></p>
                <a href='https://github.com/posidest' target="_blank">
                   <i className="fab fa-github-alt fa-2x"></i>
                </a>

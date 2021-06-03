@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {useParams, Link, useHistory} from 'react-router-dom'
 import PlantProfile from '../PlantProfile'
 import './PlantPage.css'
@@ -7,12 +7,9 @@ import PlantNav from './PlantNav'
 
 const PlantPage = () => {
    const history = useHistory()
-   const dispatch = useDispatch()
    const [plant, setPlant] = useState({})
    const [entries, setEntries] = useState([])
    const [user, setUser] = useState(null)
-   const [profile, setProfile] = useState(null)
-   const [profileId, setProfileId] = useState(null)
    const {id} = useParams()
    const [showProfile, setShowProfile] = useState(false)
    
@@ -40,7 +37,6 @@ const PlantPage = () => {
 
    const deleteEntry = async(e) => {
       const entryId = e.target.id;
-      // console.log(entryId)
       const res = await fetch(`/api/plants/entries/${entryId}`, {
          method: 'DELETE',
          headers: {'Content-Type': 'application/json'}
