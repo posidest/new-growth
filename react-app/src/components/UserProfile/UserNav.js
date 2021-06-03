@@ -44,7 +44,8 @@ const UserNav = () => {
       });
       if (res.ok) {
          const data = await res.json()
-         console.log(data, 'data from follow request')
+         // console.log(data, 'data from follow request')
+         dispatch(showFollows(me.id))
          await setFollowing(true)
          return data
       }
@@ -57,6 +58,7 @@ const UserNav = () => {
       })
       if (res.ok) {
          const data = await res.json()
+         dispatch(showFollows(me.id))
          await setFollowing(false)
          return data
       }
