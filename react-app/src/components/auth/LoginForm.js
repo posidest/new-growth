@@ -5,7 +5,7 @@ import { login } from "../../store/session";
 import './Auth.css'
 
 const LoginForm = () => {
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([])
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch()
@@ -13,14 +13,12 @@ const LoginForm = () => {
   const onLogin = async(e) => {
     e.preventDefault();
     const user = await dispatch(login(email, password));
-    await console.log(user)
-    return user;
-    // if (!user.errors) {
-    //   setAuthenticated(true);
-    // } else {
-    //   setErrors(user.errors);
-    // }
-  };
+    if (!user.errors) {
+      return user;
+  } else {
+    setErrors(user.errors)
+  }
+};
 
   const me = useSelector((state) => state.session.user)
 
@@ -49,7 +47,6 @@ const LoginForm = () => {
             ))}
         </div>
         <div className='auth'>
-          {/* <label htmlFor="email">Email</label> */}
           <input
             name="email"
             type="text"
@@ -59,7 +56,6 @@ const LoginForm = () => {
           />
         </div>
         <div>
-          {/* <label htmlFor="password">Password</label> */}
           <input
             name="password"
             type="password"

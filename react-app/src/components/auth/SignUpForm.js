@@ -19,6 +19,7 @@ content : {
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
+  const [errors, setErrors] = useState([])
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState(null);
   const [bio, setBio] = useState('');
@@ -34,10 +35,14 @@ const SignUpForm = () => {
   const onSignUp = (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      dispatch(signUp({username, email, avatar, bio, zone, password}));
-      // if (!user.errors) {
-      //   setAuthenticated(true);
-      // }
+      const user = dispatch(signUp({username, email, avatar, bio, zone, password}));
+      if(!user.errors) {
+        return user;
+      } else {
+        setErrors(user.errors)
+      }
+    } else {
+      errors.push('Password must match repeat password')
     }
   };
 
@@ -111,7 +116,6 @@ const SignUpForm = () => {
       className='sign-up-form'
       onSubmit={onSignUp}>
         <h1>Sign Up</h1>
-          {/* <label>User Name</label> */}
           <input
             type="text"
             name="username"
@@ -119,7 +123,6 @@ const SignUpForm = () => {
             value={username}
             placeholder='User Name'
           ></input>
-          {/* <label>Email</label> */}
           <input
             type="text"
             name="email"
@@ -143,6 +146,7 @@ const SignUpForm = () => {
           {avatar && (
             <img 
             src={avatar}
+            alt='user avatar'
             style={{width: '200px', height: '200px', borderRadius: '50%', margin: '20px 30px 40px 30px'}}
             />
           )}
@@ -161,14 +165,11 @@ const SignUpForm = () => {
             max='13'
             placeholder='Hardiness Zone'
           ></input>
-              {/* <div
-              className='zone'> */}
                 <p
                 onClick={showMap}
                 title='Show Map'>
                 What's this?
                 </p>
-              {/* </div> */}
           {showZone && (
             <Modal
             isOpen={showZone}
@@ -195,8 +196,12 @@ const SignUpForm = () => {
             placeholder='Repeat Password'
           ></input>
         <button type="submit">Sign Up</button>
+        <div className='errors'>
+          {errors.map((err) => (
+            <p key={err}>{err}</p>
+          ))}
+        </div>
       </form>
-
     </div>
   );
 };

@@ -6,7 +6,6 @@ import {useDispatch, useSelector} from 'react-redux';
 
 function UsersList() {
   const [users, setUsers] = useState([])
-   const [results, setResults] = useState([])
    const [zone, setZone] = useState('')
   const history = useHistory()
   const dispatch = useDispatch();
@@ -14,7 +13,7 @@ function UsersList() {
 
   useEffect(() => {
     dispatch(getUsers())
-  }, []);
+  }, [dispatch]);
 
     useEffect(() => {
       if (userData) {
@@ -66,8 +65,7 @@ function UsersList() {
           backgroundColor: 'transparent', 
           color: 'rgb(230, 233, 231', 
           border: 'none', 
-          boxShadow: 'none', 
-          // fontWeight: 'lighter'
+          boxShadow: 'none'
         }}
         onClick={goBack}
         >Back
@@ -84,15 +82,8 @@ function UsersList() {
                 <option value='8'>8</option>
                 <option value='9'>9</option>
               </select> 
-              <button type='submit'>
+              <button type='submit' style={{marginLeft: '10px'}}>
                 Filter 
-              {/* style={{
-                backgroundColor: 'transparent', 
-                border: 'none', 
-                boxShadow: 'none'}}>
-                <i className="fas fa-search"
-                style={{color: 'rgb(230, 233, 231)'}}>
-                </i> */}
               </button>
           </form>
         </div>

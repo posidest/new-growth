@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
 import {useSelector} from 'react-redux';
 import './SplashPage.css'
 import Dashboard from '../Dashboard'

@@ -14,10 +14,6 @@ const Dashboard = () => {
    const dispatch = useDispatch()
    let follows = useSelector((state) => state.user.follows)
    const history= useHistory()
-
-   // if (follows) { 
-   //    follows = follows['follow']
-   // }
       
    const getUser = async(id) => {
          const res = await fetch(`/api/users/${id}`)
@@ -29,16 +25,15 @@ const Dashboard = () => {
 
    useEffect(() => {
       dispatch(showProfiles())
-   },[])
+   },[dispatch])
    
    useEffect(() => {
       dispatch(showFollows(me.id))
-      },[me])
+      },[me, dispatch])
 
    const editProfile = (e) => {
       history.push('/users/edit')
    }
-
 
 
    const findFollowing = async (follows) => {
@@ -51,7 +46,6 @@ const Dashboard = () => {
          }
          setFollowing(followed)
          setLoaded(true)
-      // await console.log(following, 'following from findFollowing helper')
          return following
       } 
       return
@@ -72,6 +66,7 @@ const Dashboard = () => {
             className='user-info'
             >
                <img src={me.avatar}
+               alt='my-avatar'
                style={{width:'200px', height:'200px', borderRadius: '50%'}}
                />
                <h4>{me.username}</h4>
@@ -102,11 +97,11 @@ const Dashboard = () => {
                   </div>
             </div>
             <div className='dev-info'>
-            <p>developed by Alana LaPoint</p>
-               <a href='https://github.com/posidest' target="_blank">
+            <p className='dev-name'>developed by <a style={{color: 'rgba(8, 32, 16, 0.8)'}} href='https://alanalapoint.dev' target='_blank' rel="noopener noreferrer">Alana LaPoint</a></p>
+               <a href='https://github.com/posidest' target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-github-alt fa-2x"></i>
                </a>
-               <a href='https://www.linkedin.com/in/alana-lapoint/' target="_blank">
+               <a href='https://www.linkedin.com/in/alana-lapoint/' target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-linkedin fa-2x" ></i>
                </a>
             </div>

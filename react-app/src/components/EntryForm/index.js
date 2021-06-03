@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useParams, Redirect, useHistory} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {showPlant} from '../../store/plant'
 import {createEntry} from '../../store/entry'
@@ -7,7 +7,6 @@ import './EntryForm.css'
 
 const EntryForm = () => {
    const [entry, setEntry] = useState({})
-   const [plantId, setPlantId] = useState('')
    const [watered, setWatered] = useState(false)
    const [date, setDate] = useState(null)
    const [fertilized, setFertilized] = useState(false)
@@ -21,7 +20,7 @@ const EntryForm = () => {
 
    useEffect(() => {
       dispatch(showPlant(id))
-   },[])
+   },[dispatch, id])
 
    const plant = useSelector((state) => state.plant.currentPlant)
 
@@ -123,6 +122,7 @@ const EntryForm = () => {
                {progressPic && (
                   <div className='progress-pic'>
                      <img src={progressPic}
+                     alt='progress'
                      style={{width: '200px', marginBottom: '10px'}}
                      />
                   </div>

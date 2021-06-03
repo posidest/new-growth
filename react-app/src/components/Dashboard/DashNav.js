@@ -1,9 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector} from 'react-redux'
-import {authenticate} from '../../store/session'
-import {NavLink, Link} from 'react-router-dom'
+import React from 'react';
+import {Link} from 'react-router-dom'
 import './Dashboard.css'
-import LogoutButton from '../auth/LogoutButton';
 
 const DashNav = () => {
 return (

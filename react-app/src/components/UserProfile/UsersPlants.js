@@ -1,15 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux'
-import {showPlants} from '../../store/plant'
-import {showUser} from '../../store/user'
-import {Link, useParams} from 'react-router-dom'
+import {useSelector} from 'react-redux'
+import {Link} from 'react-router-dom'
 import '../Dashboard/Dashboard.css';
 
 const UsersPlants = () => {
    const [plants, setPlants] = useState([])
-   const dispatch = useDispatch()
 
-   const me = useSelector((state) => state.session.user);
    const user = useSelector((state) => state.user.user)
    
 
@@ -17,15 +13,14 @@ const UsersPlants = () => {
       const res = await fetch(`/api/users/${id}/plants`)
       if (res.ok) {
          const json = await res.json()
-         // await console.log(json, 'data from usersplants')
          await setPlants(json.plant)
          return plants
       }
    }
 
-   useEffect(async() => {
-      await getPlants(user.id)
-   },[])
+   useEffect(() => {
+      getPlants(user.id)
+   },[user])
 
 
    if (plants) {

@@ -1,13 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 import {showProfiles} from '../../store/profile'
 import {login} from '../../store/session'
-import ctenanthe from '../../images/Ctenanthe.jpg'
 import ProfilePic from './ProfilePic'
-import SearchBar from '../SearchBar'
 
 const NavBar = () => {
   const dispatch = useDispatch()
@@ -15,7 +13,7 @@ const NavBar = () => {
 
   useEffect(() => {
     dispatch(showProfiles())
-    },[])
+    },[dispatch])
 
   
   const loginDemo = (e) => {

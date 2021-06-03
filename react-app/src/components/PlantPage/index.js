@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {useParams, Link, useHistory} from 'react-router-dom'
 import PlantProfile from '../PlantProfile'
 import './PlantPage.css'
@@ -7,12 +7,9 @@ import PlantNav from './PlantNav'
 
 const PlantPage = () => {
    const history = useHistory()
-   const dispatch = useDispatch()
    const [plant, setPlant] = useState({})
    const [entries, setEntries] = useState([])
    const [user, setUser] = useState(null)
-   const [profile, setProfile] = useState(null)
-   const [profileId, setProfileId] = useState(null)
    const {id} = useParams()
    const [showProfile, setShowProfile] = useState(false)
    
@@ -40,7 +37,6 @@ const PlantPage = () => {
 
    const deleteEntry = async(e) => {
       const entryId = e.target.id;
-      // console.log(entryId)
       const res = await fetch(`/api/plants/entries/${entryId}`, {
          method: 'DELETE',
          headers: {'Content-Type': 'application/json'}
@@ -58,7 +54,7 @@ const PlantPage = () => {
       })
       if (res.ok) {
          const data = await res.json()
-         return
+         return 'deleted'
       }
    }
 
@@ -66,13 +62,13 @@ const PlantPage = () => {
       history.push(`/plants/${id}/edit`)
    }
 
-   useEffect(async() => {
-      await getPlant(id)
-   }, [])
+   useEffect(() => {
+      getPlant(id)
+   }, [id])
    
-    useEffect(async() => {
+    useEffect(() => {
        if(plant) {
-         await getUser(plant.user_id)
+         getUser(plant.user_id)
        }
     },[plant])
 
@@ -91,12 +87,14 @@ const PlantPage = () => {
                <Link to={`/users/${user.id}`}>
                   <img 
                   style={{height: '50px', width: '50px', borderRadius: '50%'}}
-                  src={user.avatar} alt='avatar'/>
+                  src={user.avatar} 
+                  alt='avatar'/>
                </Link>
                <h2>{plant.nickname}</h2>
                <h3>{plant.name}</h3>
                <img 
                src={plant.plant_pic}
+               alt='plant'
                style={{width: '400px'}}
                />
                <p>{plant.description}</p>
@@ -145,6 +143,7 @@ const PlantPage = () => {
                         <div style={{width: '400px', height: '400px'}}>
                            <img 
                            src={entry.progress_pic}
+                           alt='progress'
                            style={{maxWidth: '400px', maxHeight: '400px'}}
                            />
                         </div>

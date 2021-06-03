@@ -1,16 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {showProfile} from '../../store/profile';
-import {useParams} from 'react-router-dom';
+import React from 'react';
+import {useSelector} from 'react-redux';
 import './PlantProfile.css';
 
 
 
 const PlantProfile = ({profileId}) => {
    let profiles = useSelector((state) => state.profile.profiles);
-   if (profiles) {
-      profiles = profiles['profile']
-   }
+   // if (profiles) {
+   //    profiles = profiles['profile']
+   // }
 
    let profile = profiles.filter((profile) => (
       profile.id === profileId
@@ -44,7 +42,7 @@ const PlantProfile = ({profileId}) => {
                   <div className='img'>
                      <img 
                      src={profile.picture}
-                     alt='picture'
+                     alt='plant-profile'
                      style={{width: '400px'}}
                      />
                   </div>

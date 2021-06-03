@@ -12,10 +12,10 @@ import './SearchBar.css'
       const [value, setValue] = useState('')
       const history = useHistory()
 
-      let profiles = useSelector((state) => state.profile.profiles)
-      if (profiles) {
-         profiles = profiles['profile']
-      }
+      let profiles = useSelector((state) => state.profile.profile)
+      // if (profiles) {
+      //    profiles = profiles['profile']
+      // }
 
       const goBack = (e) => {
          history.push('/')
@@ -51,7 +51,7 @@ import './SearchBar.css'
 
       useEffect(() => {
          dispatch(showProfiles())
-      },[])
+      },[dispatch])
 
       const updateSearch = (e) => {
          setQuery(e.target.value)

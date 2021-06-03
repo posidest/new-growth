@@ -35,10 +35,10 @@ export default function reducer(state={}, action) {
    let newState;
    switch(action.type) {
       case GET_PROFILES:
-         newState={...state, ['profiles']: action.profiles};
+         newState={...state, ...action.profiles};
          return newState;
       case GET_PROFILE:
-         newState={...state, ['profile']: action.profile}
+         newState={...state, ...action.profile}
          return newState;
       default:
          return state;
