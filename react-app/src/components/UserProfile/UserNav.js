@@ -81,7 +81,7 @@ const UserNav = () => {
          <>
          <Link to='/'>My Dashboard</Link>
          <Link to='/users'>Browse Other Users</Link>
-         {me.id !== user.id && !following && (
+         {me.id !== user.id && !followed && (
          <button 
          type='button' 
          onClick={followThem}
@@ -94,7 +94,7 @@ const UserNav = () => {
                >{`Follow ${user.username}`}
                </button>
          )}
-         {following && (
+         {followed && (
             <>
             <Link to={`/users/${user.id}/follows`}>Following</Link>
             <button 
