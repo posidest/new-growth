@@ -1,4 +1,6 @@
 # New Growth
+![splash](https://github.com/posidest/new-growth/blob/main/react-app/public/new-growth-splash-2.png)
+![user-profile](https://github.com/posidest/new-growth/blob/main/react-app/public/new-growth-user-profile.png)
 
 ## Table of contents
 * [About](#about)
