@@ -11,6 +11,7 @@
 
 ## About
 New Growth is a social house plant care app. Users can track their plants' growth, and compare notes with other gardeners. 
+[Live Link](https://new-growth.herokuapp.com/)
 
 ## Motivation
 I wanted to create an application geared towards new plant parents or anyone who feels they "can't" keep plants alive, people who have killed plants before, and anyone who is excited about house plants. New Growth makes it easy to show your friends your plant babies, to discover plants you might wish to add to your collection, and to see how others are caring for their plants.
